@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { useI18n } from "@/i18n/I18nProvider";
 import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
 import { onSiteReady, prefersReducedMotion } from "@/lib/site";
+import { staggerFrom } from "@/lib/scene";
 import { Stamp } from "@/components/ui/Icons";
 import { RectButton } from "@/components/ui/RectButton";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
@@ -20,6 +22,7 @@ const SPLIT_DISTANCE = 1.625;
 const SNAP_THRESHOLD = 0.3;
 
 export function Room() {
+  const copy = useI18n().t.home.room;
   const root = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -93,10 +96,10 @@ export function Room() {
             // The lines draw first, then everything enters from its own side.
             .fromTo(content, { "--p": 0 }, { "--p": 1, duration: 1.75, ease: "quad.inOut" }, 1.75)
             .from(scoped(".home-room__stamp"), { y: height, duration: 1.15 }, 2.05)
-            .from(article.lines, { y: height, duration: 1.15, stagger: 0.025 }, 2.15)
-            .from(subtitle.lines, { y: () => -height(), duration: 1.15, stagger: -0.025 }, 2.25)
+            .add(staggerFrom(article.lines, { y: height, duration: 1.15, ease: "quad.out" }, 0.025), 2.15)
+            .add(staggerFrom(subtitle.lines, { y: () => -height(), duration: 1.15, ease: "quad.out" }, -0.025), 2.25)
             .fromTo(scoped(".home-room__subtitle"), { "--r": "3deg" }, { "--r": "0deg", duration: 1.15 }, 2.35)
-            .from(scoped(".home-room__line"), { x: () => width() * 0.4, duration: 1.15, stagger: -0.1 }, 2.35)
+            .add(staggerFrom(scoped(".home-room__line"), { x: () => width() * 0.4, duration: 1.15, ease: "quad.out" }, -0.1), 2.35)
             .fromTo(scoped(".home-room__title"), { "--r": "-3deg" }, { "--r": "0deg", duration: 1.15 }, 2.35)
             .from(scoped(".home-room__bt"), { y: height, duration: 0.9 }, 2.75);
 
@@ -179,7 +182,7 @@ export function Room() {
               <Image
                 key={layer}
                 src={`/images/room/${layer}.webp`}
-                alt={index === 0 ? "An old town and its stone bridge, lit up along the river at dusk" : ""}
+                alt={index === 0 ? copy.alt : ""}
                 width={1920}
                 height={1233}
                 sizes="100vw"
@@ -193,23 +196,18 @@ export function Room() {
           <div className="home-room__box">
             <div className="home-room__left">
               <h2 className="home-room__title display">
-                <span className="home-room__line">Born after</span> <span className="home-room__line">dark</span>
+                <span className="home-room__line">{copy.title[0]}</span> <span className="home-room__line">{copy.title[1]}</span>
               </h2>
             </div>
             <div className="home-room__right">
               <div className="home-room__top">
-                <h3 className="home-room__subtitle serif">
-                  Hidden down the old town&rsquo;s last quiet alley, we make evenings that stay with you.
-                </h3>
+                <h3 className="home-room__subtitle serif">{copy.subtitle}</h3>
               </div>
               <div className="home-room__bottom">
-                <RectButton label="About Scafe" href="/about" className="home-room__bt" />
+                <RectButton label={copy.cta} href="/about" className="home-room__bt" />
                 <article className="home-room__article">
                   <Stamp className="home-room__stamp" />
-                  <p>
-                    The alley isn&rsquo;t just where we live, it&rsquo;s how we think. Its shadow, warmth and grit shape
-                    every drink we pour: daring, distinct and grounded in something real.
-                  </p>
+                  <p>{copy.text}</p>
                 </article>
               </div>
             </div>

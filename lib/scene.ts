@@ -53,6 +53,18 @@ export function revealScene(section: HTMLElement, from: string, previousScene?: 
 }
 
 // Timeline scrubbed across the section's dwell, after its reveal has finished.
+// A `stagger` on `.from()` leaves every target but the first at its end state until
+// its turn, so text shows early. Separate tweens each take their start state at once.
+// A negative `each` runs from the last target back, as `stagger` does.
+export function staggerFrom(targets: gsap.DOMTarget, vars: gsap.TweenVars, each: number) {
+  const items = gsap.utils.toArray<HTMLElement>(targets);
+  const timeline = gsap.timeline();
+  items.forEach((item, index) => {
+    timeline.from(item, vars, each * (each < 0 ? index - items.length + 1 : index));
+  });
+  return timeline;
+}
+
 export function sceneTimeline(section: HTMLElement, start = 1, end = 2) {
   return gsap.timeline({
     scrollTrigger: {

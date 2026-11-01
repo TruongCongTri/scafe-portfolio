@@ -10,6 +10,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { useI18n } from "@/i18n/I18nProvider";
 import { site } from "@/lib/content";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { getLenis } from "@/lib/site";
@@ -24,25 +25,27 @@ export type FormConfig = {
   messageLabel?: string;
 };
 
-export const forms: Record<"contact" | "book" | "private", FormConfig> = {
-  contact: { tone: "red", title: "Thank you for reaching out", subject: "Hello from the website" },
-  book: { tone: "blue", title: "Tell us when. We'll keep a seat warm", subject: "Table request", messageLabel: "Date, time and party size" },
-  private: { tone: "orange", title: "We're looking forward to hosting you", subject: "Private hire", messageLabel: "Tell us about your night" },
-};
+export type FormName = "contact" | "book" | "private";
 
-const FormsContext = createContext<(config: FormConfig) => void>(() => {});
+const tones: Record<FormName, FormConfig["tone"]> = { contact: "red", book: "blue", private: "orange" };
+
+const FormsContext = createContext<(form: FormName | FormConfig) => void>(() => {});
 
 export const useContactForm = () => useContext(FormsContext);
 
 export function ContactForms({ children }: { children: ReactNode }) {
+  const { t } = useI18n();
   const [config, setConfig] = useState<FormConfig | null>(null);
   const root = useRef<HTMLDivElement>(null);
   const form = useRef<HTMLFormElement>(null);
 
-  const open = useCallback((next: FormConfig) => {
-    setConfig(next);
-    getLenis()?.stop();
-  }, []);
+  const open = useCallback(
+    (next: FormName | FormConfig) => {
+      setConfig(typeof next === "string" ? { tone: tones[next], ...t.forms[next] } : next);
+      getLenis()?.stop();
+    },
+    [t]
+  );
 
   const close = useCallback(() => {
     gsap.to(".contact-forms__bg", { autoAlpha: 0, duration: 0.3 });
@@ -95,26 +98,26 @@ export function ContactForms({ children }: { children: ReactNode }) {
           <div className="contact-forms" role="dialog" aria-modal="true" aria-label={config.title}>
             <div className="contact-forms__bg" data-cursor="close" onClick={close} />
             <div className={`contact-forms__panel contact-forms__panel--${config.tone}`} data-lenis-prevent>
-              <button type="button" className="contact-forms__close" aria-label="Close" onClick={close}>
+              <button type="button" className="contact-forms__close" aria-label={t.forms.close} onClick={close}>
                 &times;
               </button>
               <h3 className="contact-forms__title display">{config.title}</h3>
               {config.text && <p className="contact-forms__text">{config.text}</p>}
               <form ref={form} className="contact-forms__inputs">
                 <label>
-                  <span>Your name</span>
-                  <input type="text" name="name" placeholder="Your name" required autoFocus />
+                  <span>{t.forms.name}</span>
+                  <input type="text" name="name" placeholder={t.forms.name} required autoFocus />
                 </label>
                 <label>
-                  <span>Your email</span>
-                  <input type="email" name="email" placeholder="Email" required />
+                  <span>{t.forms.email}</span>
+                  <input type="email" name="email" placeholder={t.forms.emailPlaceholder} required />
                 </label>
                 <label>
-                  <span>{config.messageLabel ?? "Message"}</span>
-                  <textarea name="message" placeholder="Type here" required />
+                  <span>{config.messageLabel ?? t.forms.message}</span>
+                  <textarea name="message" placeholder={t.forms.messagePlaceholder} required />
                 </label>
               </form>
-              <RectButton label="send" className="contact-forms__send" onClick={send} />
+              <RectButton label={t.forms.send} className="contact-forms__send" onClick={send} />
             </div>
           </div>
         )}

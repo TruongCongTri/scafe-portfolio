@@ -3,11 +3,14 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { nav, socials } from "@/lib/content";
+import { useI18n } from "@/i18n/I18nProvider";
+import { withoutLocale } from "@/i18n/config";
+import { socials } from "@/lib/content";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { getLenis } from "@/lib/site";
 import { Arrow, Logo } from "@/components/ui/Icons";
 import { VectorGrid } from "@/components/ui/VectorGrid";
+import { LanguageSwitch } from "./LanguageSwitch";
 import { TransitionLink } from "./TransitionLink";
 import "./Navbar.css";
 
@@ -19,6 +22,8 @@ export function Navbar() {
   const icon = useRef<gsap.core.Timeline>(null);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const path = withoutLocale(pathname);
+  const { t, content } = useI18n();
 
   const showPanel = (visible: boolean) => {
     const panel = root.current?.querySelector<HTMLElement>(".navbar__panel");
@@ -121,7 +126,7 @@ export function Navbar() {
   }, [open]);
 
   const closeIfCurrent = (href: string) => {
-    if (href === pathname) setOpen(false);
+    if (href === path) setOpen(false);
     else closingForRoute.current = open;
   };
 
@@ -134,12 +139,12 @@ export function Navbar() {
             <div className="navbar__box-inner">
               <VectorGrid />
               <div className="navbar__navs">
-                <nav className="navbar__main" aria-label="Main">
-                  {nav.map((item) => (
+                <nav className="navbar__main" aria-label={t.shell.mainNav}>
+                  {content.nav.map((item) => (
                     <TransitionLink
                       key={item.href}
                       href={item.href}
-                      className={`navbar__link ${pathname.startsWith(item.href) ? "is-current" : ""}`}
+                      className={`navbar__link ${path.startsWith(item.href) ? "is-current" : ""}`}
                       onClick={() => closeIfCurrent(item.href)}
                     >
                       <span className="navbar__label">
@@ -149,7 +154,7 @@ export function Navbar() {
                     </TransitionLink>
                   ))}
                 </nav>
-                <nav className="navbar__social" aria-label="Social">
+                <nav className="navbar__social" aria-label={t.shell.socialNav}>
                   {socials.map((social) => (
                     <a key={social.label} href={social.href} target="_blank" rel="noopener">
                       <span className="navbar__label">{social.label}</span>
@@ -169,13 +174,13 @@ export function Navbar() {
 
       <div className="navbar__rail">
         <span className="navbar__progress" aria-hidden="true" />
-        <TransitionLink href="/" aria-label="Scafe home" className="navbar__home" onClick={() => closeIfCurrent("/")}>
+        <TransitionLink href="/" aria-label={t.shell.homeLabel} className="navbar__home" onClick={() => closeIfCurrent("/")}>
           <Logo className="navbar__logo" />
         </TransitionLink>
         <button
           type="button"
           className="navbar__toggle"
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? t.shell.closeMenu : t.shell.openMenu}
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
         >
@@ -188,8 +193,9 @@ export function Navbar() {
             <span />
           </span>
         </button>
+        <LanguageSwitch />
         <div className="navbar__tip" aria-hidden="true">
-          <span>scroll for more</span>
+          <span>{t.shell.scrollTip}</span>
         </div>
       </div>
     </div>

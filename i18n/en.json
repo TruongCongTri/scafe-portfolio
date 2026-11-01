@@ -1,0 +1,897 @@
+{
+  "meta": {
+    "homeTitle": "Scafe | Cocktail bar",
+    "description": "Scafe is an independent cocktail bar in the old town, serving precise drinks, low light and long evenings.",
+    "about": "About",
+    "crew": "Crew",
+    "menu": "Menu",
+    "nights": "Nights",
+    "press": "Press",
+    "privacy": "Privacy"
+  },
+  "site": {
+    "tagline": [
+      "Pouring late",
+      "seven nights a week"
+    ],
+    "address": "17 Ember Alley, Old Town"
+  },
+  "nav": {
+    "menu": "Menu",
+    "about": "About",
+    "crew": "Crew",
+    "nights": "Nights",
+    "press": "Press"
+  },
+  "shell": {
+    "preloader": "Pouring",
+    "scrollTip": "scroll for more",
+    "homeLabel": "Scafe home",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNav": "Main",
+    "socialNav": "Social",
+    "footerNav": "Footer",
+    "switchLanguage": "Tiếng Việt",
+    "cursor": {
+      "play": "play",
+      "pause": "pause",
+      "close": "close"
+    }
+  },
+  "footer": {
+    "address": "Address",
+    "explore": "Explore",
+    "follow": "Follow us",
+    "copyright": "Copyright",
+    "privacy": "Privacy",
+    "hello": "Say hello"
+  },
+  "forms": {
+    "contact": {
+      "title": "Thank you for reaching out",
+      "subject": "Hello from the website"
+    },
+    "book": {
+      "title": "Tell us when. We'll keep a seat warm",
+      "subject": "Table request",
+      "messageLabel": "Date, time and party size"
+    },
+    "private": {
+      "title": "We're looking forward to hosting you",
+      "subject": "Private hire",
+      "messageLabel": "Tell us about your night"
+    },
+    "close": "Close",
+    "name": "Your name",
+    "email": "Your email",
+    "emailPlaceholder": "Email",
+    "message": "Message",
+    "messagePlaceholder": "Type here",
+    "send": "send"
+  },
+  "cookies": {
+    "title": "Cookie preferences",
+    "back": "Back",
+    "intro": "We use cookies to improve your experience and understand how the site is used.",
+    "statistics": {
+      "name": "Statistics",
+      "text": "Statistics cookies anonymously show us how visitors use the site."
+    },
+    "media": {
+      "name": "External Media",
+      "text": "External media cookies allow embedded content from music and social platforms."
+    },
+    "essential": {
+      "name": "Essential",
+      "text": "Essential cookies enable basic functions and are required for the site to work."
+    },
+    "accept": "Accept all",
+    "decline": "Decline",
+    "manage": "Manage preferences",
+    "save": "Save",
+    "more": "Learn more"
+  },
+  "contact": {
+    "rows": [
+      {
+        "label": "contact",
+        "title": "Get in touch with us",
+        "cta": "Contact us"
+      },
+      {
+        "label": "Book a table",
+        "title": "Your seat is waiting",
+        "cta": "Book now"
+      },
+      {
+        "label": "Private hire",
+        "title": "Want the whole room?",
+        "cta": "Rent the bar"
+      }
+    ]
+  },
+  "home": {
+    "hero": {
+      "title": [
+        "Ready for",
+        "a proper pour?"
+      ],
+      "copyTitle": "Scafe is where good nights meet great drinks.",
+      "copyText": "From first stir to last call, we pour evenings worth retelling.",
+      "open": "Open the reel",
+      "play": "Play the reel",
+      "pause": "Pause the reel",
+      "reelAlts": [
+        "A red cocktail being poured into a coupe",
+        "Whisky over ice on a dark bar",
+        "Glasses hanging over rows of bottles",
+        "A crowded back bar lined with bottles",
+        "Gin and tonic against a dark background",
+        "An old fashioned with a cherry"
+      ]
+    },
+    "pours": {
+      "title": [
+        "Serious",
+        "drinks",
+        "well-made."
+      ],
+      "subtitle": "We chase the flavours that matter and build them with precision, patience and care.",
+      "text": "From first shake to final garnish, we believe a great drink isn't just a recipe. It's a small piece of theatre that changes the mood of a room and keeps you out later than you planned.",
+      "cta": "See the menu",
+      "brandsLabel": "Brands behind the bar",
+      "brands": [
+        {
+          "type": "Gin",
+          "origin": "London"
+        },
+        {
+          "type": "Vodka",
+          "origin": "Sweden"
+        },
+        {
+          "type": "Vodka",
+          "origin": "France"
+        },
+        {
+          "type": "Vodka",
+          "origin": "Poland"
+        },
+        {
+          "type": "Rum",
+          "origin": "Caribbean"
+        },
+        {
+          "type": "Rum",
+          "origin": "Cuba"
+        },
+        {
+          "type": "Coconut rum",
+          "origin": "Barbados"
+        },
+        {
+          "type": "Tequila",
+          "origin": "Jalisco"
+        },
+        {
+          "type": "Blended Scotch",
+          "origin": "Scotland"
+        },
+        {
+          "type": "Single malt",
+          "origin": "Speyside"
+        },
+        {
+          "type": "Single malt",
+          "origin": "Speyside"
+        },
+        {
+          "type": "Bourbon",
+          "origin": "Kentucky"
+        },
+        {
+          "type": "Cognac",
+          "origin": "France"
+        },
+        {
+          "type": "Cognac",
+          "origin": "France"
+        },
+        {
+          "type": "Cognac",
+          "origin": "France"
+        },
+        {
+          "type": "Bitter",
+          "origin": "Italy"
+        },
+        {
+          "type": "Aperitivo",
+          "origin": "Italy"
+        },
+        {
+          "type": "Vermouth",
+          "origin": "Italy"
+        },
+        {
+          "type": "Herbal liqueur",
+          "origin": "Germany"
+        },
+        {
+          "type": "Irish cream",
+          "origin": "Ireland"
+        },
+        {
+          "type": "Orange liqueur",
+          "origin": "France"
+        }
+      ]
+    },
+    "room": {
+      "title": [
+        "Born after",
+        "dark"
+      ],
+      "subtitle": "Hidden down the old town's last quiet alley, we make evenings that stay with you.",
+      "text": "The alley isn't just where we live, it's how we think. Its shadow, warmth and grit shape every drink we pour: daring, distinct and grounded in something real.",
+      "cta": "About Scafe",
+      "alt": "An old town and its stone bridge, lit up along the river at dusk"
+    },
+    "crew": {
+      "title": [
+        "Great",
+        "drinks",
+        "require",
+        "great",
+        "hands"
+      ],
+      "cta": "Meet the crew"
+    },
+    "news": {
+      "title": [
+        "big nights.",
+        "big buzz."
+      ],
+      "subtitle": "The latest from Scafe",
+      "text": "News, press and behind-the-bar stories worth talking about.",
+      "cta": "All the news"
+    }
+  },
+  "people": {
+    "leads": [
+      "Owner",
+      "Bar Bartender",
+      "Cafe Bartender",
+      "TBD"
+    ]
+  },
+  "about": {
+    "hero": {
+      "title": [
+        "Ready for",
+        "a good night?",
+        "We are!"
+      ],
+      "subtitle": "We chase the flavours that matter and build them with precision, patience and care.",
+      "text": "From first shake to final garnish, we believe a great drink isn't just a recipe. It's a small piece of theatre that changes the mood of a room and keeps you out later than you planned."
+    },
+    "alley": {
+      "alt": "An old town and its stone bridge, lit up along the river at dusk",
+      "title": "born after dark",
+      "subtitle": "Scafe brings slow, cinematic evenings to life, with a perspective as deep as the alley it calls home."
+    },
+    "pillars": [
+      {
+        "title": [
+          "Serious",
+          "drinks"
+        ],
+        "subtitle": "Stir, shake, repeat",
+        "text": "Scafe is devoted to the small decisions behind a great drink. We test every ratio, cut our own ice and treat each glass as if it were the only one going out tonight."
+      },
+      {
+        "title": [
+          "Serious",
+          "welcome"
+        ],
+        "subtitle": "Unforgettable evenings",
+        "text": "We believe a bar is only as good as how it makes you feel. Your name gets remembered, your usual gets noticed, and nobody who walks in alone stays that way for long."
+      },
+      {
+        "title": [
+          "Serious",
+          "room"
+        ],
+        "subtitle": "A place that holds you",
+        "text": "Dark wood, warm lamps and a record that was chosen on purpose. The room is built to slow you down, so one drink quietly becomes the best part of your week."
+      }
+    ],
+    "partners": {
+      "title": [
+        "Serious drinks.",
+        "Serious partners."
+      ],
+      "cta": "Partner with us",
+      "subtitle": "Together with growers, makers and musicians who share our obsession, we build evenings that delight.",
+      "list": [
+        "A small-batch rye made to our spec, aged in barrels we picked ourselves and poured nowhere else in town.",
+        "Coastal herbs and citrus from one family farm, in season and delivered the same morning they are picked.",
+        "Our resident selectors, who fill the listening corner with rare vinyl every Thursday and Sunday night.",
+        "The single-origin beans behind The Night Shift, roasted a few streets away and ground to order."
+      ],
+      "photoAlt": "A busy back bar",
+      "photoTitle": [
+        "Great drinks require",
+        "great hands"
+      ],
+      "photoCta": "Meet the crew"
+    }
+  },
+  "crewPage": {
+    "title": [
+      "Meet the",
+      "crew"
+    ],
+    "subtitle": "The people turning long shifts into unforgettable nights.",
+    "text": "From ice carvers to record diggers, our crew is as lively as the room itself. This is the team that obsesses over every pour and every moment, making sure each guest is looked after properly."
+  },
+  "menu": {
+    "heroAlt": "A crowded back bar lined with bottles",
+    "heroTitle": [
+      "Ready for an",
+      "unforgettable night?"
+    ],
+    "seat": "Save me a seat",
+    "signatures": [
+      {
+        "tag": "Signature / 250",
+        "text": "My go-to drink whenever I visit this place. Not just for the bitterness, the spice or the strength, but for the story you shared with me. I started to fall in love with it, and that's why I keep coming back: to feel the care you put into every drink, to listen to your voice, and most of all, to see you."
+      },
+      {
+        "tag": "New experiment",
+        "text": "Your newest experiment. It opens with a strong orange flavor and finishes bitter, which makes me wonder about your life story. It isn't spicy anymore, and there's some sweetness in it now, but it still feels sad."
+      },
+      {
+        "tag": "Shooter / 99",
+        "text": "A layered shooter from our classic list, lit at the bar and gone in one go."
+      }
+    ],
+    "collectionTitle": "The Scafe menu",
+    "credits": "Drink photos are illustrative. Photo credits",
+    "evening": {
+      "tab": "Evening",
+      "subtitle": "Cocktails, shooters and bar snacks",
+      "text": "The alcohol menu, from our signatures to the classics.",
+      "footnote": "Prices exclude 5% service charge.",
+      "groups": [
+        {
+          "title": "Signature",
+          "items": [
+            {
+              "name": "SWEEET",
+              "note": "Salted cookie-infused Chivas Regal 12YO, Kahlua, honey syrup, apple juice"
+            },
+            {
+              "name": "SOURRR",
+              "note": "Bumbu Original Rum, Aperol, kumquat juice, egg white foam"
+            },
+            {
+              "name": "SSSPICY",
+              "note": "Bumbu Original Rum infused with tabasco, cinnamon & pepper, Captain Morgan Spiced Rum, Cointreau"
+            },
+            {
+              "name": "BESPOKE",
+              "note": "Made with your own recipe"
+            },
+            {
+              "name": "ALTOS MARGARITA",
+              "note": "Altos Plata Tequila, Cointreau, lime juice, salt"
+            },
+            {
+              "name": "JAMESON GINGER & LIME",
+              "note": "Jameson Irish Whiskey, ginger ale, lime"
+            }
+          ]
+        },
+        {
+          "title": "Whisky",
+          "items": [
+            {
+              "name": "Godfather"
+            },
+            {
+              "name": "Boulevardier"
+            },
+            {
+              "name": "Old Fashioned"
+            },
+            {
+              "name": "Whisky Sour"
+            }
+          ]
+        },
+        {
+          "title": "Gin",
+          "items": [
+            {
+              "name": "Aviation"
+            },
+            {
+              "name": "Negroni"
+            },
+            {
+              "name": "Clover Club"
+            },
+            {
+              "name": "Gin Fizz"
+            }
+          ]
+        },
+        {
+          "title": "Tequila",
+          "items": [
+            {
+              "name": "Margarita"
+            },
+            {
+              "name": "Paloma"
+            },
+            {
+              "name": "Brave Bull"
+            },
+            {
+              "name": "Tequila Sunrise"
+            }
+          ]
+        },
+        {
+          "title": "Rum",
+          "items": [
+            {
+              "name": "Mojito"
+            },
+            {
+              "name": "Hemingway Daiquiri"
+            },
+            {
+              "name": "Piña Colada"
+            },
+            {
+              "name": "Mai Tai"
+            },
+            {
+              "name": "Kingston Negroni"
+            }
+          ]
+        },
+        {
+          "title": "Vodka",
+          "items": [
+            {
+              "name": "Coffee Martini"
+            },
+            {
+              "name": "Pornstar Martini"
+            },
+            {
+              "name": "Wet Pussy"
+            },
+            {
+              "name": "The Kamikaze"
+            }
+          ]
+        },
+        {
+          "title": "Brandy",
+          "items": [
+            {
+              "name": "Sidecar"
+            },
+            {
+              "name": "French Connection"
+            }
+          ]
+        },
+        {
+          "title": "Others",
+          "items": [
+            {
+              "name": "Midori Sour"
+            },
+            {
+              "name": "Toblerone"
+            },
+            {
+              "name": "Mimosa"
+            },
+            {
+              "name": "Japanese Slipper"
+            },
+            {
+              "name": "Aperol Spritz"
+            }
+          ]
+        },
+        {
+          "title": "Shooter",
+          "items": [
+            {
+              "name": "B52"
+            },
+            {
+              "name": "BJ"
+            },
+            {
+              "name": "Slippery Nipple"
+            },
+            {
+              "name": "Monkey Brain"
+            }
+          ]
+        },
+        {
+          "title": "Soft drink",
+          "items": [
+            {
+              "name": "Soda"
+            },
+            {
+              "name": "Coke"
+            },
+            {
+              "name": "Tonic"
+            },
+            {
+              "name": "Red Bull"
+            },
+            {
+              "name": "Ginger Ale"
+            },
+            {
+              "name": "Sprite"
+            }
+          ]
+        },
+        {
+          "title": "Bar snack",
+          "items": [
+            {
+              "name": "SALTED",
+              "note": "Shredded smoked cheese"
+            },
+            {
+              "name": "STRONG",
+              "note": "Nachos & spicy cheese sauce"
+            },
+            {
+              "name": "SARDONIC",
+              "note": "Nachos & sour cream cheese sauce"
+            }
+          ]
+        }
+      ]
+    },
+    "morning": {
+      "tab": "Morning",
+      "subtitle": "Coffee, tea and everything in between",
+      "text": "The daytime menu: coffee, matcha, choco, yogurt, tea and juice.",
+      "footnote": "",
+      "groups": [
+        {
+          "title": "Café & Coldbrew",
+          "items": [
+            {
+              "name": "Black Coffee"
+            },
+            {
+              "name": "Milk Coffee"
+            },
+            {
+              "name": "Bac Xiu"
+            },
+            {
+              "name": "Fresh Milk Coffee"
+            },
+            {
+              "name": "Salt Coffee"
+            },
+            {
+              "name": "Choco Coffee"
+            },
+            {
+              "name": "Almond Coffee"
+            },
+            {
+              "name": "Soft Cream Coffee"
+            },
+            {
+              "name": "Grass Jelly Coffee"
+            },
+            {
+              "name": "Burnt Egg Coffee"
+            },
+            {
+              "name": "Yuzu Coffee"
+            },
+            {
+              "name": "Original Coldbrew"
+            },
+            {
+              "name": "Lemon Coldbrew"
+            },
+            {
+              "name": "Yuzu Coldbrew"
+            }
+          ]
+        },
+        {
+          "title": "Matcha",
+          "items": [
+            {
+              "name": "Matcha Latte"
+            },
+            {
+              "name": "Matcha Oatmilk"
+            },
+            {
+              "name": "Banana Matcha Latte"
+            },
+            {
+              "name": "Strawberry Matcha Latte"
+            },
+            {
+              "name": "Messy Matcha"
+            },
+            {
+              "name": "Blended Matcha"
+            }
+          ]
+        },
+        {
+          "title": "Choco",
+          "items": [
+            {
+              "name": "Choco Latte"
+            },
+            {
+              "name": "Choco Caramel"
+            },
+            {
+              "name": "Banana Choco"
+            },
+            {
+              "name": "Almond Choco"
+            },
+            {
+              "name": "Burnt Egg Choco"
+            },
+            {
+              "name": "Blended Choco"
+            }
+          ]
+        },
+        {
+          "title": "Yogurt",
+          "items": [
+            {
+              "name": "Iced Yogurt"
+            },
+            {
+              "name": "Matcha Yogurt"
+            },
+            {
+              "name": "Choco Yogurt"
+            },
+            {
+              "name": "Peach Yogurt"
+            },
+            {
+              "name": "Strawberry Yogurt"
+            },
+            {
+              "name": "Banana Yogurt"
+            },
+            {
+              "name": "Passion Fruit Yogurt"
+            }
+          ]
+        },
+        {
+          "title": "Tea & Others",
+          "items": [
+            {
+              "name": "Pearl Milk Tea"
+            },
+            {
+              "name": "Grass Jelly Milk Tea"
+            },
+            {
+              "name": "Oolong Macchiato"
+            },
+            {
+              "name": "Black Tea Macchiato"
+            },
+            {
+              "name": "Caramel Macchiato"
+            },
+            {
+              "name": "Jasmine Tea Macchiato"
+            },
+            {
+              "name": "Lychee Tea"
+            },
+            {
+              "name": "Lychee Rose Tea"
+            },
+            {
+              "name": "Thai Green Milk Tea"
+            },
+            {
+              "name": "Roasted Rice Milk Tea"
+            },
+            {
+              "name": "Strawberry Pink Guava Tea"
+            },
+            {
+              "name": "Peach Orange Lemongrass Tea"
+            },
+            {
+              "name": "Anything Goes"
+            }
+          ]
+        },
+        {
+          "title": "Juice",
+          "items": [
+            {
+              "name": "Orange Juice"
+            },
+            {
+              "name": "Lime Juice"
+            },
+            {
+              "name": "Passion Fruit Juice"
+            }
+          ]
+        },
+        {
+          "title": "Topping",
+          "items": [
+            {
+              "name": "Coconut Cream"
+            },
+            {
+              "name": "Grass Jelly / Pearls"
+            },
+            {
+              "name": "Macchiato Milk Foam"
+            },
+            {
+              "name": "Salt Cream"
+            },
+            {
+              "name": "Soft Cream"
+            },
+            {
+              "name": "Burnt Egg Cream"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "nights": {
+    "heroTitle": [
+      "Calling all",
+      "characters"
+    ],
+    "heroSubtitle": "...the bold, the brilliant, the barely standing",
+    "heroText": "Those who bring passion, nerve and a good story to the nights that keep this room alive.",
+    "heroCta": "Count me in",
+    "marquee": "Nights open for sign-up",
+    "signUp": "Sign me up",
+    "signUpSubject": "Sign-up:",
+    "signUpMessage": "Tell us about yourself",
+    "events": [
+      {
+        "heading": "Bring a record. Leave a legend.",
+        "text": "Every Thursday the decks open to anyone with a story and a seven-inch. Sign up for a fifteen-minute slot, and the crew will pour for whoever clears the floor or fills it.",
+        "notes": [
+          "From 8pm, every Thursday",
+          "Vinyl only, no playlists",
+          "Selectors drink on the house"
+        ]
+      },
+      {
+        "heading": "Think you know your rye from your bourbon?",
+        "text": "Six glasses, no labels and a table of equally overconfident strangers. Our monthly tasting league is open to teams of two, and the winners get their name on the wall until someone takes it down.",
+        "notes": [
+          "First Monday of the month",
+          "Teams of two",
+          "Limited to twelve teams"
+        ]
+      }
+    ]
+  },
+  "press": {
+    "heroTitle": [
+      "Stay up to date",
+      "with everything"
+    ],
+    "heroText": "Curious what we've been up to? A lot, actually. Catch up on all the good stuff happening at Scafe.",
+    "featuredTitle": [
+      "Scafe",
+      "in the press"
+    ],
+    "highlights": [
+      "How One Back-Alley Bar Made Waiting Fashionable",
+      "City Guide Names Scafe a Bar to Watch"
+    ],
+    "articlesTitle": [
+      "What's new at Scafe",
+      "you're asking?"
+    ],
+    "all": "All",
+    "categories": {
+      "behindTheBar": "Behind The Bar",
+      "press": "Press",
+      "drinks": "Drinks"
+    },
+    "pages": "Pages",
+    "back": "Back to press"
+  },
+  "articles": {
+    "the-ice-program": {
+      "title": "Inside Our Obsessive New Ice Program",
+      "body": [
+        "Clear ice is a slow business. Our new freezer works from the bottom up, pushing air and impurities away for three days before we cut a single block by hand.",
+        "The result melts more slowly, looks better in the glass and lets a stirred drink stay itself for longer. It is also, we admit, a little ridiculous. We are keeping it."
+      ]
+    },
+    "last-ember-joins-the-list": {
+      "title": "“Last Ember” Joins the House List",
+      "body": [
+        "After eleven versions and one small incident with the smoke gun, Last Ember has earned its place at the top of the list.",
+        "It is built on our private rye barrel, finished with burnt orange and stirred until the room goes quiet. Come and tell us if we got it right."
+      ]
+    },
+    "six-years-of-red-hour": {
+      "title": "Six Years of Red Hour",
+      "body": [
+        "It started as a way to fill the quiet hour before eight. Six years later, Red Hour is the reason people leave work on time.",
+        "This autumn the aperitivo blend shifts to blood orange. The price, the playlist and the regulars stay exactly the same."
+      ]
+    },
+    "city-guide-names-scafe": {
+      "title": "City Guide Names Scafe a Bar to Watch",
+      "body": [
+        "We try not to read our own reviews, but this one was pinned to the staff room wall before the ink had dried.",
+        "Thanks to everyone who has ever waited patiently for a stirred drink. The compliment belongs to the room as much as the crew."
+      ]
+    },
+    "meet-the-barrel": {
+      "title": "Meet Our First Private Barrel",
+      "body": [
+        "We drove out to Ember & Oak with six samples, two opinions and no intention of agreeing. Five hours later we had picked one barrel.",
+        "It makes up the backbone of the rye drinks this year. When it is gone, it is gone."
+      ]
+    },
+    "a-room-with-low-light": {
+      "title": "A Room With Low Light",
+      "body": [
+        "Nobody ever fell for a bar under fluorescent tubes. A short note on the lamps, the wood and the two years we spent getting the room to feel like nine o'clock."
+      ]
+    }
+  },
+  "privacy": {
+    "title": "Privacy",
+    "cookies": "This site remembers your cookie choice in your own browser and does not run analytics.",
+    "forms": "Forms open your email app with a prefilled message, so anything you send reaches us as ordinary email. To ask about your details, write to"
+  },
+  "notFound": {
+    "title": "Last call",
+    "text": "This page has left the bar.",
+    "cta": "Back to the top"
+  }
+}

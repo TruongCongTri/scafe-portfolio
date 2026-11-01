@@ -1,19 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useI18n } from "@/i18n/I18nProvider";
 import { TransitionLink } from "./TransitionLink";
 import { Arrow } from "@/components/ui/Icons";
 import "./CookieConsent.css";
 
 const STORAGE_KEY = "scafe-cookies";
 
-const categories = [
-  { name: "Essential", text: "Essential cookies enable basic functions and are required for the site to work.", locked: true },
-  { name: "Statistics", text: "Statistics cookies anonymously show us how visitors use the site.", locked: false },
-  { name: "External Media", text: "External media cookies allow embedded content from music and social platforms.", locked: false },
-];
-
 export function CookieConsent() {
+  const { cookies } = useI18n().t;
+  const categories = [
+    { id: "Essential", ...cookies.essential, locked: true },
+    { id: "Statistics", ...cookies.statistics, locked: false },
+    { id: "External Media", ...cookies.media, locked: false },
+  ];
   const [view, setView] = useState<"hidden" | "main" | "prefs">("hidden");
   const [enabled, setEnabled] = useState<Record<string, boolean>>({ Statistics: true, "External Media": true });
 
@@ -44,25 +45,25 @@ export function CookieConsent() {
   if (view === "hidden") return null;
 
   return (
-    <section className="cookies" aria-label="Cookie preferences" data-lenis-prevent>
+    <section className="cookies" aria-label={cookies.title} data-lenis-prevent>
       <header>
         <div className="cookies__title">
-          <h3>Cookie preferences</h3>
+          <h3>{cookies.title}</h3>
           {view === "prefs" && (
-            <button type="button" aria-label="Back" onClick={() => setView("main")}>
+            <button type="button" aria-label={cookies.back} onClick={() => setView("main")}>
               &times;
             </button>
           )}
         </div>
-        <p>We use cookies to improve your experience and understand how the site is used.</p>
+        <p>{cookies.intro}</p>
       </header>
 
       {view === "prefs" && (
         <ul className="cookies__list">
           {categories.map((category) => {
-            const on = category.locked || enabled[category.name];
+            const on = category.locked || enabled[category.id];
             return (
-              <li key={category.name}>
+              <li key={category.id}>
                 <div className="cookies__row">
                   <h4>{category.name}</h4>
                   <button
@@ -72,7 +73,7 @@ export function CookieConsent() {
                     aria-label={category.name}
                     disabled={category.locked}
                     className={`cookies__switch ${on ? "is-on" : ""}`}
-                    onClick={() => setEnabled((value) => ({ ...value, [category.name]: !on }))}
+                    onClick={() => setEnabled((value) => ({ ...value, [category.id]: !on }))}
                   />
                 </div>
                 <p>{category.text}</p>
@@ -84,23 +85,23 @@ export function CookieConsent() {
 
       <div className="cookies__actions">
         <button type="button" className="cookies__bt cookies__bt--primary" onClick={acceptAll}>
-          Accept all
+          {cookies.accept}
         </button>
         <button type="button" className="cookies__bt" onClick={decline}>
-          Decline
+          {cookies.decline}
         </button>
         {view === "main" ? (
           <button type="button" className="cookies__bt cookies__bt--full" onClick={() => setView("prefs")}>
-            Manage preferences
+            {cookies.manage}
           </button>
         ) : (
           <button type="button" className="cookies__bt cookies__bt--full" onClick={() => save(enabled)}>
-            Save
+            {cookies.save}
           </button>
         )}
         {view === "main" && (
           <TransitionLink href="/privacy" className="cookies__more">
-            Learn more <Arrow />
+            {cookies.more} <Arrow />
           </TransitionLink>
         )}
       </div>

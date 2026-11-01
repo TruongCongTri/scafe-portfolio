@@ -1,20 +1,23 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useI18n } from "@/i18n/I18nProvider";
+import { intlLocales } from "@/i18n/config";
 import { site } from "@/lib/content";
 import "./TimezoneBar.css";
 
 export function TimezoneBar({ className = "" }: { className?: string }) {
+  const { locale, t } = useI18n();
   const clock = useRef<HTMLSpanElement>(null);
   const zone = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const time = new Intl.DateTimeFormat("en-US", {
+    const time = new Intl.DateTimeFormat(intlLocales[locale], {
       timeZone: site.timeZone,
       hour: "numeric",
       minute: "2-digit",
     });
-    const offset = new Intl.DateTimeFormat("en-US", {
+    const offset = new Intl.DateTimeFormat(intlLocales[locale], {
       timeZone: site.timeZone,
       timeZoneName: "short",
     });
@@ -29,7 +32,7 @@ export function TimezoneBar({ className = "" }: { className?: string }) {
     tick();
     const id = window.setInterval(tick, 15000);
     return () => window.clearInterval(id);
-  }, []);
+  }, [locale]);
 
   return (
     <div className={`timezone-bar ${className}`} aria-hidden="true">
@@ -38,7 +41,7 @@ export function TimezoneBar({ className = "" }: { className?: string }) {
         <span ref={zone} />
       </div>
       <div className="timezone-bar__location">
-        {site.tagline.map((line) => (
+        {t.site.tagline.map((line) => (
           <span key={line}>{line}</span>
         ))}
       </div>

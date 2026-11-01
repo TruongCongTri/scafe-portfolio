@@ -1,9 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import { brands } from "@/lib/content";
+import { useI18n } from "@/i18n/I18nProvider";
+import { Lines } from "@/components/ui/Lines";
 import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
 import { onSiteReady, prefersReducedMotion } from "@/lib/site";
+import { staggerFrom } from "@/lib/scene";
 import { Stamp } from "@/components/ui/Icons";
 import { RectButton } from "@/components/ui/RectButton";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
@@ -19,6 +21,8 @@ const COVER_START = 4.9;
 const SNAP_THRESHOLD = 0.2;
 
 export function Pours() {
+  const { t, content } = useI18n();
+  const copy = t.home.pours;
   const root = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -79,10 +83,10 @@ export function Pours() {
             // The two edges ease differently, which is what slants the wipe.
             .fromTo(section, { "--x1": "100%" }, { "--x1": "0%", duration: 1 }, 0)
             .fromTo(section, { "--x2": "100%" }, { "--x2": "0%", duration: 1.2, ease: "quart.inOut" }, 0)
-            .from(title.words, { x: width, duration: 1.15, stagger: 0.05 }, 0)
+            .add(staggerFrom(title.words, { x: width, duration: 1.15, ease: "quad.inOut" }, 0.05), 0)
             .from(".home-pours__stamp", { x: width, duration: 1.15 }, 0)
             .from(".home-pours__houses", { x: width, duration: 2 }, 0.5)
-            .from(lines.lines, { x: () => width() * 0.6, duration: 1, stagger: 0.01 }, 1.25)
+            .add(staggerFrom(lines.lines, { x: () => width() * 0.6, duration: 1, ease: "quad.inOut" }, 0.01), 1.25)
             .from(".home-pours__bt", { x: () => width() * 0.75, duration: 1.25 }, 1.25);
 
           scrubStrip(ASSEMBLE_DISTANCE);
@@ -133,27 +137,20 @@ export function Pours() {
           <div className="home-pours__header box">
             <div className="home-pours__title-wrapper">
               <h2 className="home-pours__title display">
-                Serious
-                <br />
-                drinks
-                <br />
-                well-made.
+                <Lines lines={copy.title} />
               </h2>
               <Stamp className="home-pours__stamp" />
             </div>
             <article className="home-pours__texts">
-              <h3 className="serif">We chase the flavours that matter and build them with precision, patience and care.</h3>
-              <p>
-                From first shake to final garnish, we believe a great drink isn&rsquo;t just a recipe. It&rsquo;s a
-                small piece of theatre that changes the mood of a room and keeps you out later than you planned.
-              </p>
-              <RectButton label="See the menu" href="/menu" className="home-pours__bt" />
+              <h3 className="serif">{copy.subtitle}</h3>
+              <p>{copy.text}</p>
+              <RectButton label={copy.cta} href="/menu" className="home-pours__bt" />
             </article>
           </div>
 
           <div className="home-pours__houses">
-            <ul className="home-pours__track" aria-label="Brands behind the bar">
-              {brands.map((brand) => (
+            <ul className="home-pours__track" aria-label={copy.brandsLabel}>
+              {content.brands.map((brand) => (
                 <li key={brand.name} className="home-pours__brand">
                   <span
                     className="home-pours__logo"

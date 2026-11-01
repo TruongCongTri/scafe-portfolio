@@ -1,18 +1,19 @@
 "use client";
 
 import { useRef } from "react";
+import { useI18n } from "@/i18n/I18nProvider";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/site";
-import { forms, useContactForm } from "@/components/shell/ContactForms";
+import { useContactForm, type FormName } from "@/components/shell/ContactForms";
 import { Arrow } from "./Icons";
 import { RectButton } from "./RectButton";
 import { TimezoneBar } from "./TimezoneBar";
 import "./Contact.css";
 
-const rows = [
-  { tone: "red", label: "contact", title: "Get in touch with us", cta: "Contact us", form: forms.contact },
-  { tone: "blue", label: "Book a table", title: "Your seat is waiting", cta: "Book now", form: forms.book },
-  { tone: "orange", label: "Private hire", title: "Want the whole room?", cta: "Rent the bar", form: forms.private },
+const rows: { tone: string; form: FormName }[] = [
+  { tone: "red", form: "contact" },
+  { tone: "blue", form: "book" },
+  { tone: "orange", form: "private" },
 ];
 
 // Scroll distance, in viewport heights, of the reveal. .contact.scene--overlap
@@ -26,6 +27,7 @@ const SNAP_THRESHOLD = 0.35;
 export function Contact({ flow = false }: { flow?: boolean }) {
   const root = useRef<HTMLElement>(null);
   const openForm = useContactForm();
+  const { t } = useI18n();
 
   useGSAP(
     () => {
@@ -98,7 +100,7 @@ export function Contact({ flow = false }: { flow?: boolean }) {
     <section ref={root} className={`contact scene ${flow ? "contact--flow" : "scene--overlap is-locked"}`}>
       <div className="stage contact__stage">
         <div className="contact__rows">
-          {rows.map((row) => (
+          {rows.map((row, index) => (
             <button
               key={row.tone}
               type="button"
@@ -108,10 +110,10 @@ export function Contact({ flow = false }: { flow?: boolean }) {
               <span className="contact__inner">
                 <Arrow className="contact__ic contact__ic--lead" />
                 <span className="contact__copy">
-                  <span className="contact__title display">{row.label}</span>
+                  <span className="contact__title display">{t.contact.rows[index].label}</span>
                   <span className="contact__more">
-                    <span className="contact__title display">{row.title}</span>
-                    <RectButton label={row.cta} decorative className="contact__bt" />
+                    <span className="contact__title display">{t.contact.rows[index].title}</span>
+                    <RectButton label={t.contact.rows[index].cta} decorative className="contact__bt" />
                   </span>
                 </span>
                 <Arrow className="contact__ic contact__ic--tail" />

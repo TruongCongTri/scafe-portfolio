@@ -2,7 +2,8 @@
 
 import { usePathname } from "next/navigation";
 import { useRef } from "react";
-import { nav, site, socials } from "@/lib/content";
+import { useI18n } from "@/i18n/I18nProvider";
+import { site, socials } from "@/lib/content";
 import { useGSAP } from "@/lib/gsap";
 import { revealScene, SHAPES } from "@/lib/scene";
 import { Logo } from "@/components/ui/Icons";
@@ -13,6 +14,7 @@ import "./Footer.css";
 export function Footer() {
   const root = useRef<HTMLElement>(null);
   const pathname = usePathname();
+  const { t, content } = useI18n();
 
   useGSAP(
     () => {
@@ -31,14 +33,14 @@ export function Footer() {
           <Logo className="footer__logo" />
           <div className="footer__columns">
             <div className="footer__group footer__address">
-              <h3>Address</h3>
-              <p>{site.address}</p>
+              <h3>{t.footer.address}</h3>
+              <p>{t.site.address}</p>
             </div>
             <div className="footer__navs">
               <div className="footer__group">
-                <h3>Explore</h3>
-                <nav aria-label="Footer">
-                  {nav.map((item) => (
+                <h3>{t.footer.explore}</h3>
+                <nav aria-label={t.shell.footerNav}>
+                  {content.nav.map((item) => (
                     <TransitionLink key={item.href} href={item.href}>
                       {item.label}
                     </TransitionLink>
@@ -46,8 +48,8 @@ export function Footer() {
                 </nav>
               </div>
               <div className="footer__group">
-                <h3>Follow us</h3>
-                <nav aria-label="Social">
+                <h3>{t.footer.follow}</h3>
+                <nav aria-label={t.shell.socialNav}>
                   {socials.map((social) => (
                     <a key={social.label} href={social.href} target="_blank" rel="noopener">
                       {social.label}
@@ -61,11 +63,13 @@ export function Footer() {
 
         <div className="footer__bottom">
           <div className="footer__legal">
-            <span>Copyright &copy; {site.name} 2026</span>
-            <TransitionLink href="/privacy">Privacy</TransitionLink>
+            <span>
+              {t.footer.copyright} &copy; {site.name} 2026
+            </span>
+            <TransitionLink href="/privacy">{t.footer.privacy}</TransitionLink>
           </div>
           <div className="footer__group footer__mail">
-            <h3>Say hello</h3>
+            <h3>{t.footer.hello}</h3>
             <a href={`mailto:${site.email}`}>{site.email}</a>
           </div>
         </div>

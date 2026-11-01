@@ -1,0 +1,896 @@
+{
+  "meta": {
+    "homeTitle": "Scafe | Quán cocktail",
+    "description": "Scafe là quán cocktail độc lập trong phố cổ, với những ly rượu pha chuẩn chỉnh, ánh đèn dịu và những buổi tối thật dài.",
+    "about": "Giới thiệu",
+    "crew": "Đội ngũ",
+    "menu": "Thực đơn",
+    "nights": "Đêm sự kiện",
+    "press": "Tin tức",
+    "privacy": "Quyền riêng tư"
+  },
+  "site": {
+    "tagline": [
+      "Mở cửa đến khuya",
+      "cả bảy ngày trong tuần"
+    ],
+    "address": "17 Ember Alley, Old Town"
+  },
+  "nav": {
+    "menu": "Thực đơn",
+    "about": "Giới thiệu",
+    "crew": "Đội ngũ",
+    "nights": "Đêm sự kiện",
+    "press": "Tin tức"
+  },
+  "shell": {
+    "preloader": "Đang pha",
+    "scrollTip": "cuộn để xem thêm",
+    "homeLabel": "Trang chủ Scafe",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu",
+    "mainNav": "Điều hướng chính",
+    "socialNav": "Mạng xã hội",
+    "footerNav": "Chân trang",
+    "switchLanguage": "English",
+    "cursor": {
+      "play": "phát",
+      "pause": "dừng",
+      "close": "đóng"
+    }
+  },
+  "footer": {
+    "address": "Địa chỉ",
+    "explore": "Khám phá",
+    "follow": "Theo dõi",
+    "copyright": "Bản quyền",
+    "privacy": "Quyền riêng tư",
+    "hello": "Gửi lời chào"
+  },
+  "forms": {
+    "contact": {
+      "title": "Cảm ơn bạn đã liên hệ",
+      "subject": "Lời chào từ website"
+    },
+    "book": {
+      "title": "Hãy cho chúng tôi biết khi nào. Chỗ của bạn sẽ được giữ sẵn",
+      "subject": "Yêu cầu đặt bàn",
+      "messageLabel": "Ngày, giờ và số người"
+    },
+    "private": {
+      "title": "Rất mong được đón tiếp bạn",
+      "subject": "Thuê trọn quán",
+      "messageLabel": "Kể cho chúng tôi về buổi tối của bạn"
+    },
+    "close": "Đóng",
+    "name": "Tên của bạn",
+    "email": "Email của bạn",
+    "emailPlaceholder": "Email",
+    "message": "Lời nhắn",
+    "messagePlaceholder": "Nhập tại đây",
+    "send": "gửi"
+  },
+  "cookies": {
+    "title": "Tùy chọn cookie",
+    "back": "Quay lại",
+    "intro": "Chúng tôi dùng cookie để cải thiện trải nghiệm của bạn và hiểu cách website được sử dụng.",
+    "statistics": {
+      "name": "Thống kê",
+      "text": "Cookie thống kê cho chúng tôi biết một cách ẩn danh cách khách truy cập sử dụng website."
+    },
+    "media": {
+      "name": "Nội dung bên ngoài",
+      "text": "Cookie nội dung bên ngoài cho phép hiển thị nội dung nhúng từ các nền tảng âm nhạc và mạng xã hội."
+    },
+    "essential": {
+      "name": "Thiết yếu",
+      "text": "Cookie thiết yếu giúp các chức năng cơ bản hoạt động và là bắt buộc để website vận hành."
+    },
+    "accept": "Chấp nhận tất cả",
+    "decline": "Từ chối",
+    "manage": "Quản lý tùy chọn",
+    "save": "Lưu",
+    "more": "Tìm hiểu thêm"
+  },
+  "contact": {
+    "rows": [
+      {
+        "label": "liên hệ",
+        "title": "Kết nối với chúng tôi",
+        "cta": "Liên hệ ngay"
+      },
+      {
+        "label": "Đặt bàn",
+        "title": "Chỗ của bạn đang đợi",
+        "cta": "Đặt ngay"
+      },
+      {
+        "label": "Thuê trọn quán",
+        "title": "Muốn cả căn phòng?",
+        "cta": "Thuê quán"
+      }
+    ]
+  },
+  "home": {
+    "hero": {
+      "title": [
+        "Sẵn sàng",
+        "cho một ly ngon?"
+      ],
+      "copyTitle": "Scafe là nơi những đêm vui gặp những ly rượu ngon.",
+      "copyText": "Từ vòng khuấy đầu tiên đến lượt gọi cuối cùng, chúng tôi rót nên những buổi tối đáng để kể lại.",
+      "open": "Mở thước phim",
+      "play": "Phát thước phim",
+      "pause": "Tạm dừng thước phim",
+      "reelAlts": [
+        "Ly cocktail đỏ đang được rót vào ly coupe",
+        "Whisky với đá trên quầy bar tối màu",
+        "Những chiếc ly treo phía trên các hàng chai",
+        "Quầy bar đầy ắp chai rượu",
+        "Gin tonic trên nền tối",
+        "Ly old fashioned với quả cherry"
+      ]
+    },
+    "pours": {
+      "title": [
+        "Pha chế",
+        "nghiêm túc",
+        "từng ly."
+      ],
+      "subtitle": "Chúng tôi theo đuổi những hương vị đáng giá và tạo nên chúng bằng sự chính xác, kiên nhẫn và tận tâm.",
+      "text": "Từ cú lắc đầu tiên đến nhánh trang trí cuối cùng, chúng tôi tin một ly rượu ngon không chỉ là công thức. Đó là một màn kịch nhỏ làm đổi thay không khí căn phòng và giữ chân bạn lâu hơn dự định.",
+      "cta": "Xem thực đơn",
+      "brandsLabel": "Các thương hiệu tại quầy",
+      "brands": [
+        {
+          "type": "Gin",
+          "origin": "London"
+        },
+        {
+          "type": "Vodka",
+          "origin": "Thụy Điển"
+        },
+        {
+          "type": "Vodka",
+          "origin": "Pháp"
+        },
+        {
+          "type": "Vodka",
+          "origin": "Ba Lan"
+        },
+        {
+          "type": "Rum",
+          "origin": "Caribe"
+        },
+        {
+          "type": "Rum",
+          "origin": "Cuba"
+        },
+        {
+          "type": "Rum dừa",
+          "origin": "Barbados"
+        },
+        {
+          "type": "Tequila",
+          "origin": "Jalisco"
+        },
+        {
+          "type": "Scotch pha trộn",
+          "origin": "Scotland"
+        },
+        {
+          "type": "Single malt",
+          "origin": "Speyside"
+        },
+        {
+          "type": "Single malt",
+          "origin": "Speyside"
+        },
+        {
+          "type": "Bourbon",
+          "origin": "Kentucky"
+        },
+        {
+          "type": "Cognac",
+          "origin": "Pháp"
+        },
+        {
+          "type": "Cognac",
+          "origin": "Pháp"
+        },
+        {
+          "type": "Cognac",
+          "origin": "Pháp"
+        },
+        {
+          "type": "Rượu đắng",
+          "origin": "Ý"
+        },
+        {
+          "type": "Aperitivo",
+          "origin": "Ý"
+        },
+        {
+          "type": "Vermouth",
+          "origin": "Ý"
+        },
+        {
+          "type": "Rượu mùi thảo mộc",
+          "origin": "Đức"
+        },
+        {
+          "type": "Kem Ireland",
+          "origin": "Ireland"
+        },
+        {
+          "type": "Rượu mùi cam",
+          "origin": "Pháp"
+        }
+      ]
+    },
+    "room": {
+      "title": [
+        "Sinh ra",
+        "sau hoàng hôn"
+      ],
+      "subtitle": "Ẩn mình trong con hẻm yên tĩnh cuối cùng của phố cổ, chúng tôi tạo nên những buổi tối khó quên.",
+      "text": "Con hẻm không chỉ là nơi chúng tôi ở, mà còn là cách chúng tôi nghĩ. Bóng tối, sự ấm áp và nét gai góc của nó định hình từng ly rượu: táo bạo, khác biệt và chân thật.",
+      "cta": "Về Scafe",
+      "alt": "Phố cổ và cây cầu đá lên đèn ven sông lúc chạng vạng"
+    },
+    "crew": {
+      "title": [
+        "Ly ngon",
+        "cần những",
+        "đôi tay",
+        "tài hoa"
+      ],
+      "cta": "Gặp đội ngũ"
+    },
+    "news": {
+      "title": [
+        "đêm lớn.",
+        "tiếng vang lớn."
+      ],
+      "subtitle": "Tin mới nhất từ Scafe",
+      "text": "Tin tức, báo chí và những câu chuyện sau quầy bar đáng để kể.",
+      "cta": "Tất cả tin tức"
+    }
+  },
+  "people": {
+    "leads": [
+      "Chủ quán",
+      "Bartender quầy bar",
+      "Pha chế cà phê",
+      "TBD"
+    ]
+  },
+  "about": {
+    "hero": {
+      "title": [
+        "Sẵn sàng",
+        "cho đêm vui?",
+        "Có ngay!"
+      ],
+      "subtitle": "Chúng tôi theo đuổi những hương vị đáng giá và tạo nên chúng bằng sự chính xác, kiên nhẫn và tận tâm.",
+      "text": "Từ cú lắc đầu tiên đến nhánh trang trí cuối cùng, chúng tôi tin một ly rượu ngon không chỉ là công thức. Đó là một màn kịch nhỏ làm đổi thay không khí căn phòng và giữ chân bạn lâu hơn dự định."
+    },
+    "alley": {
+      "alt": "Phố cổ và cây cầu đá lên đèn ven sông lúc chạng vạng",
+      "title": "sinh ra sau hoàng hôn",
+      "subtitle": "Scafe mang đến những buổi tối chậm rãi như thước phim, với chiều sâu như chính con hẻm chúng tôi gọi là nhà."
+    },
+    "pillars": [
+      {
+        "title": [
+          "Đồ uống",
+          "nghiêm túc"
+        ],
+        "subtitle": "Khuấy, lắc, lặp lại",
+        "text": "Scafe dành trọn tâm sức cho những quyết định nhỏ phía sau một ly rượu ngon. Chúng tôi thử từng tỷ lệ, tự cắt đá và xem mỗi ly như ly duy nhất được phục vụ tối nay."
+      },
+      {
+        "title": [
+          "Đón tiếp",
+          "nghiêm túc"
+        ],
+        "subtitle": "Những buổi tối khó quên",
+        "text": "Chúng tôi tin một quán bar chỉ tốt khi nó khiến bạn thấy dễ chịu. Tên bạn được nhớ, món quen của bạn được để ý, và chẳng ai bước vào một mình mà còn lẻ loi được lâu."
+      },
+      {
+        "title": [
+          "Không gian",
+          "nghiêm túc"
+        ],
+        "subtitle": "Một nơi để bạn nán lại",
+        "text": "Gỗ tối màu, đèn ấm và một đĩa nhạc được chọn có chủ đích. Căn phòng được tạo ra để bạn chậm lại, để một ly rượu lặng lẽ trở thành phần đẹp nhất trong tuần."
+      }
+    ],
+    "partners": {
+      "title": [
+        "Đồ uống nghiêm túc.",
+        "Đối tác nghiêm túc."
+      ],
+      "cta": "Hợp tác cùng chúng tôi",
+      "subtitle": "Cùng những người trồng trọt, thợ thủ công và nghệ sĩ có chung niềm say mê, chúng tôi tạo nên những buổi tối đầy thú vị.",
+      "list": [
+        "Dòng rye mẻ nhỏ làm theo yêu cầu riêng, ủ trong những thùng do chính chúng tôi chọn và chỉ có tại đây.",
+        "Thảo mộc ven biển và cam chanh từ một trang trại gia đình, đúng mùa và giao ngay trong buổi sáng thu hoạch.",
+        "Những selector thường trú lấp đầy góc nghe nhạc bằng đĩa than hiếm vào mỗi tối thứ Năm và Chủ nhật.",
+        "Hạt cà phê đơn nguồn làm nên The Night Shift, rang cách đây vài con phố và xay theo từng ly."
+      ],
+      "photoAlt": "Quầy bar đông khách",
+      "photoTitle": [
+        "Ly ngon cần",
+        "những đôi tay tài hoa"
+      ],
+      "photoCta": "Gặp đội ngũ"
+    }
+  },
+  "crewPage": {
+    "title": [
+      "Gặp gỡ",
+      "đội ngũ"
+    ],
+    "subtitle": "Những con người biến ca làm dài thành những đêm khó quên.",
+    "text": "Từ người tạc đá đến kẻ săn đĩa than, đội ngũ của chúng tôi cũng sôi động như chính căn phòng này. Đây là những người tỉ mỉ với từng lần rót, từng khoảnh khắc, để mỗi vị khách đều được chăm sóc chu đáo."
+  },
+  "menu": {
+    "heroAlt": "Quầy bar đầy ắp chai rượu",
+    "heroTitle": [
+      "Sẵn sàng cho",
+      "một đêm khó quên?"
+    ],
+    "seat": "Giữ chỗ cho tôi",
+    "signatures": [
+      {
+        "tag": "Signature / 250",
+        "text": "Ly quen thuộc của tôi mỗi lần ghé nơi này. Không chỉ vì vị đắng, vị cay hay độ rượu, mà còn vì câu chuyện em đã kể cho tôi nghe. Tôi bắt đầu yêu em từ lúc nào không hay, và đó là lý do tôi cứ quay lại: để cảm nhận sự chăm chút mà em gửi vào từng ly, để nghe giọng em, và hơn hết là để được gặp em nhiều hơn."
+      },
+      {
+        "tag": "Thử nghiệm mới",
+        "text": "Thử nghiệm mới nhất của em. Mở đầu là vị cam thật đậm, kết thúc bằng hậu vị đắng, khiến tôi tự hỏi về câu chuyện đời em. Nó không còn cay nữa, đã có chút ngọt, nhưng sao vẫn thấy buồn."
+      },
+      {
+        "tag": "Shooter / 99",
+        "text": "Một ly shooter nhiều tầng trong danh sách classic, đốt lửa ngay tại quầy và uống cạn một hơi."
+      }
+    ],
+    "collectionTitle": "Thực đơn Scafe",
+    "credits": "Ảnh đồ uống chỉ mang tính minh họa. Nguồn ảnh",
+    "evening": {
+      "tab": "Buổi tối",
+      "subtitle": "Cocktail, shooter và đồ ăn nhẹ",
+      "text": "Thực đơn có cồn, từ signature đến classic.",
+      "footnote": "Giá chưa bao gồm 5% phí dịch vụ.",
+      "groups": [
+        {
+          "title": "Signature",
+          "items": [
+            {
+              "name": "SWEEET",
+              "note": "Chivas Regal 12YO ngâm bánh quy mặn, Kahlua, siro mật ong, nước táo"
+            },
+            {
+              "name": "SOURRR",
+              "note": "Bumbu Original Rum, Aperol, nước tắc, bọt lòng trắng trứng"
+            },
+            {
+              "name": "SSSPICY",
+              "note": "Bumbu Original Rum ngâm tabasco, quế & tiêu, Captain Morgan Spiced Rum, Cointreau"
+            },
+            {
+              "name": "BESPOKE",
+              "note": "Pha theo công thức của riêng bạn"
+            },
+            {
+              "name": "ALTOS MARGARITA",
+              "note": "Altos Plata Tequila, Cointreau, nước cốt chanh, muối"
+            },
+            {
+              "name": "JAMESON GINGER & LIME",
+              "note": "Jameson Irish Whiskey, ginger ale, chanh"
+            }
+          ]
+        },
+        {
+          "title": "Whisky",
+          "items": [
+            {
+              "name": "Godfather"
+            },
+            {
+              "name": "Boulevardier"
+            },
+            {
+              "name": "Old Fashioned"
+            },
+            {
+              "name": "Whisky Sour"
+            }
+          ]
+        },
+        {
+          "title": "Gin",
+          "items": [
+            {
+              "name": "Aviation"
+            },
+            {
+              "name": "Negroni"
+            },
+            {
+              "name": "Clover Club"
+            },
+            {
+              "name": "Gin Fizz"
+            }
+          ]
+        },
+        {
+          "title": "Tequila",
+          "items": [
+            {
+              "name": "Margarita"
+            },
+            {
+              "name": "Paloma"
+            },
+            {
+              "name": "Brave Bull"
+            },
+            {
+              "name": "Tequila Sunrise"
+            }
+          ]
+        },
+        {
+          "title": "Rum",
+          "items": [
+            {
+              "name": "Mojito"
+            },
+            {
+              "name": "Hemingway Daiquiri"
+            },
+            {
+              "name": "Piña Colada"
+            },
+            {
+              "name": "Mai Tai"
+            },
+            {
+              "name": "Kingston Negroni"
+            }
+          ]
+        },
+        {
+          "title": "Vodka",
+          "items": [
+            {
+              "name": "Coffee Martini"
+            },
+            {
+              "name": "Pornstar Martini"
+            },
+            {
+              "name": "Wet Pussy"
+            },
+            {
+              "name": "The Kamikaze"
+            }
+          ]
+        },
+        {
+          "title": "Brandy",
+          "items": [
+            {
+              "name": "Sidecar"
+            },
+            {
+              "name": "French Connection"
+            }
+          ]
+        },
+        {
+          "title": "Khác",
+          "items": [
+            {
+              "name": "Midori Sour"
+            },
+            {
+              "name": "Toblerone"
+            },
+            {
+              "name": "Mimosa"
+            },
+            {
+              "name": "Japanese Slipper"
+            },
+            {
+              "name": "Aperol Spritz"
+            }
+          ]
+        },
+        {
+          "title": "Shooter",
+          "items": [
+            {
+              "name": "B52"
+            },
+            {
+              "name": "BJ"
+            },
+            {
+              "name": "Slippery Nipple"
+            },
+            {
+              "name": "Monkey Brain"
+            }
+          ]
+        },
+        {
+          "title": "Nước ngọt",
+          "items": [
+            {
+              "name": "Soda"
+            },
+            {
+              "name": "Coke"
+            },
+            {
+              "name": "Tonic"
+            },
+            {
+              "name": "Red Bull"
+            },
+            {
+              "name": "Ginger Ale"
+            },
+            {
+              "name": "Sprite"
+            }
+          ]
+        },
+        {
+          "title": "Đồ ăn nhẹ",
+          "items": [
+            {
+              "name": "SALTED",
+              "note": "Phô mai hun khói xé sợi"
+            },
+            {
+              "name": "STRONG",
+              "note": "Nachos & sốt phô mai cay"
+            },
+            {
+              "name": "SARDONIC",
+              "note": "Nachos & sốt phô mai kem chua"
+            }
+          ]
+        }
+      ]
+    },
+    "morning": {
+      "tab": "Buổi sáng",
+      "subtitle": "Cà phê, trà và nhiều hơn thế",
+      "text": "Thực đơn ban ngày: cà phê, matcha, choco, yogurt, trà và nước ép.",
+      "footnote": "",
+      "groups": [
+        {
+          "title": "Café & Coldbrew",
+          "items": [
+            {
+              "name": "Café Đen"
+            },
+            {
+              "name": "Café Sữa"
+            },
+            {
+              "name": "Bạc Xỉu"
+            },
+            {
+              "name": "Café Sữa Tươi"
+            },
+            {
+              "name": "Café Muối"
+            },
+            {
+              "name": "Café Choco"
+            },
+            {
+              "name": "Café Hạnh Nhân"
+            },
+            {
+              "name": "Café Kem Dẻo"
+            },
+            {
+              "name": "Café Sương Sáo"
+            },
+            {
+              "name": "Café Trứng Cháy"
+            },
+            {
+              "name": "Café Yuzu"
+            },
+            {
+              "name": "Coldbrew Nguyên Bản"
+            },
+            {
+              "name": "Coldbrew Chanh Vàng"
+            },
+            {
+              "name": "Coldbrew Yuzu"
+            }
+          ]
+        },
+        {
+          "title": "Matcha",
+          "items": [
+            {
+              "name": "Matcha Latte"
+            },
+            {
+              "name": "Matcha Oatmilk"
+            },
+            {
+              "name": "Matcha Latte Chuối"
+            },
+            {
+              "name": "Matcha Latte Dâu"
+            },
+            {
+              "name": "Matcha Lộn Xộn"
+            },
+            {
+              "name": "Matcha Đá Xay"
+            }
+          ]
+        },
+        {
+          "title": "Choco",
+          "items": [
+            {
+              "name": "Choco Latte"
+            },
+            {
+              "name": "Choco Caramel"
+            },
+            {
+              "name": "Choco Chuối"
+            },
+            {
+              "name": "Choco Hạnh Nhân"
+            },
+            {
+              "name": "Choco Trứng Cháy"
+            },
+            {
+              "name": "Choco Đá Xay"
+            }
+          ]
+        },
+        {
+          "title": "Yogurt",
+          "items": [
+            {
+              "name": "Yogurt Đá"
+            },
+            {
+              "name": "Yogurt Matcha"
+            },
+            {
+              "name": "Yogurt Choco"
+            },
+            {
+              "name": "Yogurt Đào"
+            },
+            {
+              "name": "Yogurt Dâu"
+            },
+            {
+              "name": "Yogurt Chuối"
+            },
+            {
+              "name": "Yogurt Chanh Dây"
+            }
+          ]
+        },
+        {
+          "title": "Trà & Khác",
+          "items": [
+            {
+              "name": "Trà Sữa Trân Châu"
+            },
+            {
+              "name": "Trà Sữa Sương Sáo"
+            },
+            {
+              "name": "Oolong Macchiato"
+            },
+            {
+              "name": "Trà Đen Macchiato"
+            },
+            {
+              "name": "Caramel Macchiato"
+            },
+            {
+              "name": "Trà Lài Macchiato"
+            },
+            {
+              "name": "Trà Vải Thiều"
+            },
+            {
+              "name": "Trà Vải Hoa Hồng"
+            },
+            {
+              "name": "Trà Sữa Thái Xanh"
+            },
+            {
+              "name": "Trà Sữa Gạo Rang"
+            },
+            {
+              "name": "Trà Dâu Ổi Hồng"
+            },
+            {
+              "name": "Trà Đào Cam Sả"
+            },
+            {
+              "name": "Gì Cũng Được"
+            }
+          ]
+        },
+        {
+          "title": "Nước ép",
+          "items": [
+            {
+              "name": "Nước Cam"
+            },
+            {
+              "name": "Nước Chanh"
+            },
+            {
+              "name": "Nước Chanh Dây"
+            }
+          ]
+        },
+        {
+          "title": "Topping",
+          "items": [
+            {
+              "name": "Cốt Dừa"
+            },
+            {
+              "name": "Sương Sáo / Trân Châu"
+            },
+            {
+              "name": "Kem Sữa Macchiato"
+            },
+            {
+              "name": "Kem Muối"
+            },
+            {
+              "name": "Kem Dẻo"
+            },
+            {
+              "name": "Kem Trứng Cháy"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "nights": {
+    "heroTitle": [
+      "Gọi tất cả",
+      "những cá tính"
+    ],
+    "heroSubtitle": "...người táo bạo, người tài hoa, người sắp gục",
+    "heroText": "Những ai mang đến đam mê, sự liều lĩnh và một câu chuyện hay cho những đêm giữ căn phòng này luôn sống động.",
+    "heroCta": "Cho tôi tham gia",
+    "marquee": "Đang mở đăng ký đêm sự kiện",
+    "signUp": "Đăng ký cho tôi",
+    "signUpSubject": "Đăng ký:",
+    "signUpMessage": "Kể cho chúng tôi về bạn",
+    "events": [
+      {
+        "heading": "Mang theo đĩa nhạc. Để lại huyền thoại.",
+        "text": "Mỗi thứ Năm, bàn đĩa mở cho bất kỳ ai có một câu chuyện và một đĩa than. Đăng ký một lượt mười lăm phút, đội ngũ sẽ rót mời dù bạn làm sàn nhảy trống trơn hay chật kín.",
+        "notes": [
+          "Từ 20:00, mỗi thứ Năm",
+          "Chỉ đĩa than, không playlist",
+          "Selector được uống miễn phí"
+        ]
+      },
+      {
+        "heading": "Nghĩ mình phân biệt được rye và bourbon?",
+        "text": "Sáu ly, không nhãn, và một bàn những người lạ tự tin thái quá như nhau. Giải nếm rượu hằng tháng dành cho các đội hai người, và tên đội thắng sẽ ở trên tường cho đến khi có người giành lại.",
+        "notes": [
+          "Thứ Hai đầu tiên của tháng",
+          "Đội hai người",
+          "Tối đa mười hai đội"
+        ]
+      }
+    ]
+  },
+  "press": {
+    "heroTitle": [
+      "Cập nhật",
+      "mọi điều mới"
+    ],
+    "heroText": "Tò mò dạo này chúng tôi làm gì? Khá nhiều đấy. Hãy xem tất cả những điều thú vị đang diễn ra tại Scafe.",
+    "featuredTitle": [
+      "Scafe",
+      "trên báo chí"
+    ],
+    "highlights": [
+      "Cách một quán bar trong hẻm biến việc chờ đợi thành thời thượng",
+      "Cẩm nang thành phố gọi tên Scafe là quán bar đáng chú ý"
+    ],
+    "articlesTitle": [
+      "Scafe có gì mới",
+      "phải không?"
+    ],
+    "all": "Tất cả",
+    "categories": {
+      "behindTheBar": "Sau quầy bar",
+      "press": "Báo chí",
+      "drinks": "Đồ uống"
+    },
+    "pages": "Trang",
+    "back": "Quay lại tin tức"
+  },
+  "articles": {
+    "the-ice-program": {
+      "title": "Bên trong chương trình đá mới đầy ám ảnh của chúng tôi",
+      "body": [
+        "Đá trong là công việc chậm rãi. Tủ đông mới của chúng tôi làm lạnh từ dưới lên, đẩy không khí và tạp chất đi suốt ba ngày trước khi từng khối được cắt bằng tay.",
+        "Kết quả là đá tan chậm hơn, đẹp hơn trong ly và giữ ly rượu khuấy đúng vị lâu hơn. Chúng tôi thừa nhận chuyện này hơi lố. Nhưng vẫn sẽ tiếp tục."
+      ]
+    },
+    "last-ember-joins-the-list": {
+      "title": "“Last Ember” gia nhập thực đơn của quán",
+      "body": [
+        "Sau mười một phiên bản và một sự cố nhỏ với súng hun khói, Last Ember đã giành được vị trí đầu thực đơn.",
+        "Ly rượu dựa trên thùng rye riêng của quán, kết thúc bằng cam cháy và được khuấy đến khi cả phòng lặng đi. Hãy đến và cho chúng tôi biết mình đã làm đúng chưa."
+      ]
+    },
+    "six-years-of-red-hour": {
+      "title": "Sáu năm của Red Hour",
+      "body": [
+        "Nó bắt đầu như một cách lấp đầy khoảng lặng trước tám giờ. Sáu năm sau, Red Hour là lý do người ta tan làm đúng giờ.",
+        "Mùa thu này, công thức aperitivo chuyển sang cam đỏ. Giá, danh sách nhạc và những vị khách quen vẫn giữ nguyên."
+      ]
+    },
+    "city-guide-names-scafe": {
+      "title": "Cẩm nang thành phố gọi tên Scafe là quán bar đáng chú ý",
+      "body": [
+        "Chúng tôi cố không đọc các bài đánh giá về mình, nhưng bài này đã được ghim lên tường phòng nhân viên trước khi mực kịp khô.",
+        "Cảm ơn tất cả những ai từng kiên nhẫn đợi một ly rượu khuấy. Lời khen này thuộc về căn phòng cũng như đội ngũ."
+      ]
+    },
+    "meet-the-barrel": {
+      "title": "Làm quen với thùng rượu riêng đầu tiên",
+      "body": [
+        "Chúng tôi đến Ember & Oak với sáu mẫu thử, hai ý kiến và không hề định đồng ý với nhau. Năm tiếng sau, một thùng rượu đã được chọn.",
+        "Nó là xương sống của các ly rye trong năm nay. Hết là hết."
+      ]
+    },
+    "a-room-with-low-light": {
+      "title": "Một căn phòng ánh sáng dịu",
+      "body": [
+        "Chẳng ai phải lòng một quán bar dưới ánh đèn huỳnh quang. Đôi dòng về những ngọn đèn, thớ gỗ và hai năm chúng tôi dành ra để căn phòng lúc nào cũng như chín giờ tối."
+      ]
+    }
+  },
+  "privacy": {
+    "title": "Quyền riêng tư",
+    "cookies": "Website này ghi nhớ lựa chọn cookie ngay trên trình duyệt của bạn và không chạy công cụ phân tích.",
+    "forms": "Các biểu mẫu sẽ mở ứng dụng email với nội dung điền sẵn, nên mọi thứ bạn gửi đến chúng tôi như email thông thường. Để hỏi về thông tin của bạn, hãy viết đến"
+  },
+  "notFound": {
+    "title": "Lượt gọi cuối",
+    "text": "Trang này đã rời quán.",
+    "cta": "Về đầu trang"
+  }
+}

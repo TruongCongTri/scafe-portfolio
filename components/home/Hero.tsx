@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { heroReel } from "@/lib/content";
+import { useI18n } from "@/i18n/I18nProvider";
+import { Lines } from "@/components/ui/Lines";
 import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
 import { getLenis, onSiteReady, prefersReducedMotion } from "@/lib/site";
+import { staggerFrom } from "@/lib/scene";
 import { Arrow } from "@/components/ui/Icons";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
 import { VectorGrid } from "@/components/ui/VectorGrid";
@@ -17,16 +19,19 @@ const COVER_START = 2;
 const POINTER_LERP = 0.05;
 
 const Title = ({ decorative }: { decorative?: boolean }) => {
+  const { title } = useI18n().t.home.hero;
   const Tag = decorative ? "div" : "h1";
   return (
     <Tag className="home-hero__title display" aria-hidden={decorative}>
-      Ready for
-      <br />a proper pour?
+      <Lines lines={title} />
     </Tag>
   );
 };
 
 export function Hero() {
+  const { t, content } = useI18n();
+  const { heroReel } = content;
+  const copy = t.home.hero;
   const root = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -40,7 +45,7 @@ export function Hero() {
       setActive((index) => (index + 1) % heroReel.length);
     }, 1400);
     return () => window.clearInterval(id);
-  }, [paused]);
+  }, [paused, heroReel.length]);
 
   useGSAP(
     (_context, contextSafe) => {
@@ -69,7 +74,7 @@ export function Hero() {
           .from(".home-hero__zone", { x: () => window.innerWidth * 0.2, autoAlpha: 0, duration: 0.75 }, 0.85)
           .from(titles.words, { yPercent: 100, duration: 0.85 }, 1.05)
           .fromTo(".home-hero__arrow .arrow", { xPercent: -100 }, { xPercent: 0, duration: 0.75 }, 1.15)
-          .from(lines.lines, { yPercent: 100, opacity: 0, duration: 0.65, stagger: 0.035 }, 1.2)
+          .add(staggerFrom(lines.lines, { yPercent: 100, opacity: 0, duration: 0.65, ease: "quart.out" }, 0.035), 1.2)
           .fromTo(".home-hero__play", { scale: 0 }, { scale: 1, duration: 0.5 }, 0.9);
       });
 
@@ -188,7 +193,7 @@ export function Hero() {
   };
 
   const playing = opened && !paused;
-  const label = !opened ? "Open the reel" : paused ? "Play the reel" : "Pause the reel";
+  const label = !opened ? copy.open : paused ? copy.play : copy.pause;
 
   return (
     <section ref={root} className="home-hero scene">
@@ -228,8 +233,8 @@ export function Hero() {
           <Title decorative />
           <article className="home-hero__copy">
             <div className="home-hero__copy-inner">
-              <h2 className="serif">Scafe is where good nights meet great drinks.</h2>
-              <p>From first stir to last call, we pour evenings worth retelling.</p>
+              <h2 className="serif">{copy.copyTitle}</h2>
+              <p>{copy.copyText}</p>
             </div>
           </article>
         </div>

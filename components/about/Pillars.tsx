@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { pillars } from "@/lib/content";
+import { useI18n } from "@/i18n/I18nProvider";
 import { useGSAP } from "@/lib/gsap";
 import { revealScene, sceneTimeline, SHAPES } from "@/lib/scene";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
@@ -11,6 +11,7 @@ import "./Pillars.css";
 
 export function Pillars() {
   const root = useRef<HTMLElement>(null);
+  const { pillars } = useI18n().content;
 
   useGSAP(
     () => {

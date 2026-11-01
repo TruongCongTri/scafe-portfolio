@@ -1,4 +1,0 @@
-/* Scene length lives with the page so all pacing can be tuned in one place. */
-.crew-rest {
-  --scene: 545vh;
-}

@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { leads } from "@/lib/content";
+import { useI18n } from "@/i18n/I18nProvider";
+import { Lines } from "@/components/ui/Lines";
 import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
 import { getLenis, onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { RectButton } from "@/components/ui/RectButton";
@@ -51,7 +52,7 @@ function resetFigure(figure: HTMLElement) {
 }
 
 const Row = ({ index, hidden }: { index: number; hidden?: boolean }) => {
-  const lead = leads[index];
+  const lead = useI18n().content.leads[index];
   return (
     <>
       <span className="home-crew__num">{index + 1}</span>
@@ -64,6 +65,8 @@ const Row = ({ index, hidden }: { index: number; hidden?: boolean }) => {
 };
 
 export function Crew() {
+  const { t, content } = useI18n();
+  const { leads } = content;
   const root = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -240,20 +243,12 @@ export function Crew() {
     <section ref={root} className="home-crew scene scene--overlap">
       <div className="stage home-crew__stage">
         <h2 className="home-crew__title display">
-          Great
-          <br />
-          drinks
-          <br />
-          require
-          <br />
-          great
-          <br />
-          hands
+          <Lines lines={t.home.crew.title} />
         </h2>
 
         <div className="home-crew__images" aria-hidden="true">
           {leads.map((lead) => (
-            <figure key={lead.name}>
+            <figure key={lead.image}>
               <Image src={lead.image} alt="" fill sizes="(max-width: 1024px) 40vw, 24vw" className="cover" />
             </figure>
           ))}
@@ -261,7 +256,7 @@ export function Crew() {
 
         <ul className="home-crew__list">
           {leads.map((lead, index) => (
-            <li key={lead.name}>
+            <li key={lead.image}>
               <button type="button" onClick={() => goToRow(index)}>
                 <Row index={index} />
               </button>
@@ -273,7 +268,7 @@ export function Crew() {
         <div className="home-crew__band" aria-hidden="true">
           <ul className="home-crew__band-list">
             {leads.map((lead, index) => (
-              <li key={lead.name}>
+              <li key={lead.image}>
                 <span className="home-crew__row">
                   <Row index={index} hidden />
                 </span>
@@ -282,7 +277,7 @@ export function Crew() {
           </ul>
         </div>
 
-        <RectButton label="Meet the crew" href="/crew" className="home-crew__bt" />
+        <RectButton label={t.home.crew.cta} href="/crew" className="home-crew__bt" />
         <TimezoneBar />
       </div>
     </section>

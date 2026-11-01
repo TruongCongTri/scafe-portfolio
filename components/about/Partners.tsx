@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { partners } from "@/lib/content";
+import { useI18n } from "@/i18n/I18nProvider";
+import { Lines } from "@/components/ui/Lines";
 import { useGSAP } from "@/lib/gsap";
-import { revealScene, sceneTimeline, SHAPES } from "@/lib/scene";
-import { forms, useContactForm } from "@/components/shell/ContactForms";
+import { revealScene, sceneTimeline, SHAPES, staggerFrom } from "@/lib/scene";
+import { useContactForm } from "@/components/shell/ContactForms";
 import { RectButton } from "@/components/ui/RectButton";
 import { Stamp } from "@/components/ui/Icons";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
@@ -14,6 +15,8 @@ import "./Partners.css";
 export function Partners() {
   const root = useRef<HTMLElement>(null);
   const openForm = useContactForm();
+  const { t, content } = useI18n();
+  const copy = t.about.partners;
 
   useGSAP(
     () => {
@@ -23,7 +26,7 @@ export function Partners() {
         ".partners__photo",
         { clipPath: "polygon(50% 0%, 50% 0%, 50% 50%, 50% 100%, 50% 100%)" },
         { clipPath: "polygon(0% 0%, 100% 0%, 100% 50%, 100% 100%, 0% 100%)", duration: 0.7 }
-      ).from(".partners__overlay > *", { autoAlpha: 0, y: 40, stagger: 0.08, duration: 0.2 }, 0.65);
+      ).add(staggerFrom(".partners__overlay > *", { autoAlpha: 0, y: 40, duration: 0.2, ease: "none" }, 0.08), 0.65);
     },
     { scope: root }
   );
@@ -33,18 +36,14 @@ export function Partners() {
       <div className="stage partners__stage box">
         <div className="partners__left">
           <h2 className="partners__title display">
-            Serious drinks.
-            <br />
-            Serious partners.
+            <Lines lines={copy.title} />
           </h2>
-          <RectButton label="Partner with us" onClick={() => openForm(forms.contact)} />
+          <RectButton label={copy.cta} onClick={() => openForm("contact")} />
         </div>
         <div className="partners__right">
-          <h3 className="partners__subtitle serif">
-            Together with growers, makers and musicians who share our obsession, we build evenings that delight.
-          </h3>
+          <h3 className="partners__subtitle serif">{copy.subtitle}</h3>
           <ul>
-            {partners.map((partner) => (
+            {content.partners.map((partner) => (
               <li key={partner.name}>
                 <Stamp />
                 <div>
@@ -57,14 +56,12 @@ export function Partners() {
         </div>
 
         <div className="partners__photo">
-          <Image src="/images/taps-room.webp" alt="A busy back bar" fill sizes="100vw" className="cover" />
+          <Image src="/images/taps-room.webp" alt={copy.photoAlt} fill sizes="100vw" className="cover" />
           <div className="partners__overlay">
             <h2 className="display">
-              Great drinks require
-              <br />
-              great hands
+              <Lines lines={copy.photoTitle} />
             </h2>
-            <RectButton label="Meet the crew" href="/crew" />
+            <RectButton label={copy.photoCta} href="/crew" />
           </div>
         </div>
         <TimezoneBar />

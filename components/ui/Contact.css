@@ -166,3 +166,9 @@
     flex-grow: 1.35;
   }
 }
+
+@media (max-width: 1024px) {
+  html[lang="vi"] .contact__title {
+    font-size: 3rem;
+  }
+}

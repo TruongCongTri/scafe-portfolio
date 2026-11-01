@@ -2,23 +2,28 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { articles } from "@/lib/content";
+import { useI18n } from "@/i18n/I18nProvider";
+import { Lines } from "@/components/ui/Lines";
+import { categories as articleCategories } from "@/lib/content";
 import { ScrollTrigger } from "@/lib/gsap";
 import { TransitionLink } from "@/components/shell/TransitionLink";
 import { Arrow } from "@/components/ui/Icons";
 import "./Articles.css";
 
 const PAGE_SIZE = 4;
-const categories = ["All", "Behind The Bar", "Press", "Drinks"];
+const ALL = "all" as const;
+const categories = [ALL, ...articleCategories] as const;
 
-const countFor = (category: string) =>
-  category === "All" ? articles.length : articles.filter((article) => article.category === category).length;
+type Filter = (typeof categories)[number];
 
 export function Articles() {
-  const [category, setCategory] = useState("All");
+  const { t, content } = useI18n();
+  const { articles } = content;
+  const [category, setCategory] = useState<Filter>(ALL);
   const [page, setPage] = useState(0);
 
-  const filtered = articles.filter((article) => category === "All" || article.category === category);
+  const inCategory = (item: Filter) => articles.filter((article) => item === ALL || article.category === item);
+  const filtered = inCategory(category);
   const pages = Math.ceil(filtered.length / PAGE_SIZE);
   const visible = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
 
@@ -29,9 +34,7 @@ export function Articles() {
     <section className="articles flow">
       <div className="articles__box box">
         <h2 className="articles__title display">
-          What&rsquo;s new at Scafe
-          <br />
-          you&rsquo;re asking?
+          <Lines lines={t.press.articlesTitle} />
         </h2>
         <div className="articles__content">
           <ul className="articles__categories">
@@ -48,8 +51,8 @@ export function Articles() {
                   }}
                 >
                   <Arrow />
-                  {item}
-                  <sup>{countFor(item)}</sup>
+                  {item === ALL ? t.press.all : t.press.categories[item]}
+                  <sup>{inCategory(item).length}</sup>
                 </button>
               </li>
             ))}
@@ -68,7 +71,7 @@ export function Articles() {
               ))}
             </div>
             {pages > 1 && (
-              <nav className="articles__paging" aria-label="Pages">
+              <nav className="articles__paging" aria-label={t.press.pages}>
                 {Array.from({ length: pages }, (_, index) => (
                   <button
                     key={index}

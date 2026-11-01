@@ -212,3 +212,9 @@
     font-size: 1rem;
   }
 }
+
+@media (max-width: 1024px) {
+  html[lang="vi"] .home-hero__title {
+    font-size: 3.3rem;
+  }
+}

@@ -107,3 +107,11 @@
     font-size: 1rem;
   }
 }
+
+/* Vietnamese lines run taller, so the type drops to keep the scene on screen. */
+@media (min-width: 1025px) {
+  html[lang="vi"] .pillars__title {
+    font-size: 5.75rem;
+    white-space: nowrap;
+  }
+}

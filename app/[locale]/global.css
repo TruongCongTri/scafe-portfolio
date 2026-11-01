@@ -1,0 +1,203 @@
+:root {
+  /* The two logo colours, then shades of the maroon for depth. */
+  --maroon: #6b2324;
+  --cream: #e1d4c3;
+  --maroon-deep: #4c1718;
+  --maroon-bright: #8a3031;
+  --ink: #1a0809;
+  --font-display: var(--font-anton), Impact, sans-serif;
+  --font-sans: var(--font-hanken), Helvetica, Arial, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --ease: cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 4.2666666667vw;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-width: none;
+  overscroll-behavior-y: none;
+}
+
+html.is-loading {
+  overflow: hidden;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  html {
+    font-size: 2.0833333333vw;
+  }
+}
+
+@media (min-width: 1025px) {
+  html {
+    font-size: min(0.8333333333vw, calc(0.8333333333vh * 2.3));
+  }
+}
+
+body {
+  --rail: 0rem;
+  --gutter: 0.75rem;
+  --box: 1.25rem;
+  margin: 0;
+  min-height: 100vh;
+  background: var(--maroon);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 1025px) {
+  body {
+    --rail: 7rem;
+    --gutter: 1.25rem;
+    --box: 3rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+ul {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: 400;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Scene system: see lib/scene.ts */
+.scene {
+  position: relative;
+  height: var(--scene, 300vh);
+  /* Scenes overlap, so only the visible stage may catch the pointer. */
+  pointer-events: none;
+}
+
+.scene--overlap {
+  margin-top: -200vh;
+}
+
+.stage {
+  pointer-events: auto;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  will-change: clip-path;
+}
+
+.box {
+  padding: var(--box) calc(var(--box) + 1.75rem) var(--box) calc(var(--rail) + var(--box));
+}
+
+@media (max-width: 1024px) {
+  .stage {
+    height: 100svh;
+  }
+
+  .box {
+    padding: 4.75rem var(--box) var(--box);
+  }
+}
+
+.display {
+  font-family: var(--font-display);
+  line-height: 1.02;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+}
+
+/* Stacked Vietnamese marks sit far above Anton's caps and need the extra room. */
+html[lang="vi"] .display,
+html[lang="vi"] .display * {
+  line-height: 1.34;
+}
+
+.serif {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.cover {
+  object-fit: cover;
+}
+
+/* Normal-flow section covering a pinned scene, with a torn top edge. */
+.flow {
+  position: relative;
+  z-index: 1;
+  margin-top: -100vh;
+  clip-path: polygon(0 3rem, 25% 0, 60% 2.25rem, 100% 0.5rem, 100% 100%, 0 100%);
+}

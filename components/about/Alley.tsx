@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { useI18n } from "@/i18n/I18nProvider";
 import { useGSAP } from "@/lib/gsap";
 import { revealScene, sceneTimeline, SHAPES } from "@/lib/scene";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
@@ -9,6 +10,7 @@ import "./Alley.css";
 
 export function Alley() {
   const root = useRef<HTMLElement>(null);
+  const { alley } = useI18n().t.about;
 
   useGSAP(
     () => {
@@ -31,12 +33,10 @@ export function Alley() {
     <section ref={root} className="alley scene scene--overlap">
       <div className="stage alley__stage">
         <figure className="alley__bg">
-          <Image src="/images/room/base.webp" alt="An old town and its stone bridge, lit up along the river at dusk" fill sizes="100vw" className="cover" />
+          <Image src="/images/room/base.webp" alt={alley.alt} fill sizes="100vw" className="cover" />
         </figure>
-        <h2 className="alley__title display">born after dark</h2>
-        <p className="alley__subtitle serif">
-          Scafe brings slow, cinematic evenings to life, with a perspective as deep as the alley it calls home.
-        </p>
+        <h2 className="alley__title display">{alley.title}</h2>
+        <p className="alley__subtitle serif">{alley.subtitle}</p>
         <TimezoneBar />
       </div>
     </section>

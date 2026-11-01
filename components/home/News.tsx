@@ -3,9 +3,10 @@
 import Image from "next/image";
 import { Suspense, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { articles } from "@/lib/content";
+import { useI18n } from "@/i18n/I18nProvider";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { onSiteReady, prefersReducedMotion } from "@/lib/site";
+import { staggerFrom } from "@/lib/scene";
 import { TransitionLink } from "@/components/shell/TransitionLink";
 import { Olive } from "@/components/ui/Icons";
 import { RectButton } from "@/components/ui/RectButton";
@@ -20,6 +21,8 @@ const COVER_START = 2.2;
 const SNAP_THRESHOLD = 0.3;
 
 export function News() {
+  const { t, content } = useI18n();
+  const copy = t.home.news;
   const root = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -75,9 +78,12 @@ export function News() {
             .from(".home-news__article", { y: () => height() * 0.6, duration: 1.5 }, 0.65)
             .from(".home-news__bt", { y: () => height() * 0.6, duration: 1 }, 1.15)
             // Drops in with a tilt, back to front: the olive, then each line.
-            .from(
-              [".home-news__title span", ".home-news__olive"],
-              { y: () => -0.65 * (title?.offsetHeight ?? 0), rotation: -5, duration: 1.25, stagger: -0.15 },
+            .add(
+              staggerFrom(
+                [...gsap.utils.toArray<HTMLElement>(".home-news__title span"), ...gsap.utils.toArray<HTMLElement>(".home-news__olive")],
+                { y: () => -0.65 * (title?.offsetHeight ?? 0), rotation: -5, duration: 1.25, ease: "quad.out" },
+                -0.15
+              ),
               0.6
             );
 
@@ -132,8 +138,8 @@ export function News() {
           <div className="home-news__top">
             <div className="home-news__title-wrapper">
               <h2 className="home-news__title display">
-                <span>big nights.</span>
-                <span>big buzz.</span>
+                <span>{copy.title[0]}</span>
+                <span>{copy.title[1]}</span>
               </h2>
               <Olive className="home-news__olive" />
             </div>
@@ -142,16 +148,16 @@ export function News() {
           <div className="home-news__bottom">
             <div className="home-news__left">
               <article className="home-news__article">
-                <h3 className="serif">The latest from Scafe</h3>
-                <p>News, press and behind-the-bar stories worth talking about.</p>
+                <h3 className="serif">{copy.subtitle}</h3>
+                <p>{copy.text}</p>
               </article>
-              <RectButton label="All the news" href="/press" className="home-news__bt" />
+              <RectButton label={copy.cta} href="/press" className="home-news__bt" />
             </div>
 
             <div className="home-news__right" data-cursor="drag">
               <Suspense fallback={null}>
                 <Swiper slidesPerView="auto" spaceBetween={36} grabCursor>
-                  {articles.slice(0, 4).map((article) => (
+                  {content.articles.slice(0, 4).map((article) => (
                     <SwiperSlide key={article.slug} className="home-news__slide">
                       <TransitionLink href={`/press/${article.slug}`} className="home-news__card">
                         <figure>

@@ -246,3 +246,23 @@
     font-size: 0.9rem;
   }
 }
+
+/* Vietnamese lines run taller, so the type drops to keep the scene on screen. */
+@media (min-width: 1025px) {
+  html[lang="vi"] .home-news__title-wrapper {
+    font-size: min(9.5rem, 15vh);
+  }
+}
+
+@media (max-width: 1024px) {
+  html[lang="vi"] .home-news__title-wrapper {
+    font-size: 2.9rem;
+  }
+}
+
+/* The longer second line needs the icon's space on phones. */
+@media (max-width: 1024px) {
+  html[lang="vi"] .home-news__olive {
+    display: none;
+  }
+}

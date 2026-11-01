@@ -15,6 +15,11 @@
   border-right: 1px solid rgba(225, 212, 195, 0.4);
 }
 
+/* Names carry Vietnamese marks in either language, which Anton's tight default clips. */
+.leads__name.display {
+  line-height: 1.34;
+}
+
 .leads__name {
   padding: 2.5rem 3rem 2.5rem calc(var(--rail) + var(--box));
   font-size: 13rem;
@@ -43,17 +48,6 @@
   overflow: hidden;
 }
 
-.leads__right figcaption {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 0.75rem;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
-  color: var(--cream);
-  font-size: 1rem;
-}
-
 @media (max-width: 1024px) {
   .leads__row {
     grid-template-columns: 1fr;
@@ -65,7 +59,7 @@
 
   .leads__name {
     padding: 1.5rem var(--box) 0;
-    font-size: 5.5rem;
+    font-size: 4.75rem;
   }
 
   .leads__grid {

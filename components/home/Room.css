@@ -219,3 +219,10 @@
     width: 4rem;
   }
 }
+
+/* Vietnamese lines run taller, so the type drops to keep the scene on screen. */
+@media (min-width: 1025px) {
+  html[lang="vi"] .home-room__title {
+    font-size: min(10.5rem, 16.5vh);
+  }
+}

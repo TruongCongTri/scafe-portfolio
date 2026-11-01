@@ -1,6 +1,7 @@
 "use client";
 
-import { forms, useContactForm } from "@/components/shell/ContactForms";
+import { useI18n } from "@/i18n/I18nProvider";
+import { useContactForm } from "@/components/shell/ContactForms";
 import { Arrow } from "@/components/ui/Icons";
 import { RectButton } from "@/components/ui/RectButton";
 import { SplitLines } from "@/components/ui/SplitLines";
@@ -10,6 +11,7 @@ import "./NightsHero.css";
 
 export function NightsHero() {
   const openForm = useContactForm();
+  const { nights } = useI18n().t;
 
   return (
     <section className="nights-hero scene">
@@ -17,18 +19,18 @@ export function NightsHero() {
         <VectorGrid color="rgba(225, 212, 195, 0.14)" />
         <div className="nights-hero__header">
           <SplitLines as="h1" className="nights-hero__title display">
-            <span>Calling all</span>
+            <span>{nights.heroTitle[0]}</span>
             <br />
-            <span className="nights-hero__indent">characters</span>
+            <span className="nights-hero__indent">{nights.heroTitle[1]}</span>
           </SplitLines>
           <div className="nights-hero__sub">
             <Arrow className="nights-hero__arrow" />
-            <h2 className="serif">...the bold, the brilliant, the barely standing</h2>
+            <h2 className="serif">{nights.heroSubtitle}</h2>
           </div>
         </div>
         <div className="nights-hero__footer">
-          <p>Those who bring passion, nerve and a good story to the nights that keep this room alive.</p>
-          <RectButton label="Count me in" onClick={() => openForm(forms.contact)} />
+          <p>{nights.heroText}</p>
+          <RectButton label={nights.heroCta} onClick={() => openForm("contact")} />
         </div>
         <TimezoneBar />
       </div>

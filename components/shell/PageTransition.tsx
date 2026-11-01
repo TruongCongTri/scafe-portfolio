@@ -43,7 +43,10 @@ const revealLayer = (layer: HTMLElement, logo: HTMLElement) =>
     )
     .fromTo(logo, { "--logo-x": "0rem" }, { "--logo-x": "15rem", duration: 1.85, ease: "quad.in" }, 0.15);
 
-type TransitionContextValue = { navigate: (href: string) => void };
+// `reload` swaps the root layout, which a language change needs.
+type NavigateOptions = { reload?: boolean };
+
+type TransitionContextValue = { navigate: (href: string, options?: NavigateOptions) => void };
 
 const TransitionContext = createContext<TransitionContextValue>({ navigate: () => {} });
 
@@ -80,27 +83,28 @@ export function PageTransition({ children }: { children: ReactNode }) {
   }, []);
 
   const navigate = useCallback(
-    (href: string) => {
+    (href: string, { reload = false }: NavigateOptions = {}) => {
       if (pending.current) return;
+      const go = () => (reload ? window.location.assign(href) : router.push(href));
       if (href === pathname) {
         getLenis()?.scrollTo(0);
         return;
       }
       if (prefersReducedMotion()) {
         pending.current = true;
-        router.push(href);
+        go();
         return;
       }
 
       pending.current = true;
       getLenis()?.stop();
-      router.prefetch(href);
+      if (!reload) router.prefetch(href);
 
       const { element, bg, wrapper, logo } = parts();
       gsap.set([bg, wrapper], { "--x1": "0%", "--x4": "0%" });
       gsap.set(element, { display: "block" });
       gsap
-        .timeline({ onComplete: () => router.push(href) })
+        .timeline({ onComplete: go })
         .fromTo(coverLayer(bg, logo), { progress: 0 }, { progress: 1, duration: COVER_DURATION, ease: "none" }, 0)
         .fromTo(coverLayer(wrapper, logo), { progress: 0 }, { progress: 1, duration: COVER_DURATION, ease: "none" }, LAYER_OFFSET);
     },

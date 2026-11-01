@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useI18n } from "@/i18n/I18nProvider";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { Arrow } from "@/components/ui/Icons";
 import "./Cursor.css";
@@ -8,6 +9,7 @@ import "./Cursor.css";
 // Contextual follower: elements opt in with data-cursor="play", "pause", "drag" or "close".
 export function Cursor() {
   const root = useRef<HTMLDivElement>(null);
+  const { cursor } = useI18n().t.shell;
 
   useGSAP(
     () => {
@@ -67,9 +69,9 @@ export function Cursor() {
         <span className="cursor__ic cursor__ic--drag" />
         <span className="cursor__ic cursor__ic--close" />
       </div>
-      <span className="cursor__label cursor__label--play display">play</span>
-      <span className="cursor__label cursor__label--pause display">pause</span>
-      <span className="cursor__label cursor__label--close display">close</span>
+      <span className="cursor__label cursor__label--play display">{cursor.play}</span>
+      <span className="cursor__label cursor__label--pause display">{cursor.pause}</span>
+      <span className="cursor__label cursor__label--close display">{cursor.close}</span>
     </div>
   );
 }

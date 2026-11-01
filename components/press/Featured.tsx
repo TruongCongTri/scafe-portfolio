@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { pressHighlights } from "@/lib/content";
+import { useI18n } from "@/i18n/I18nProvider";
+import { Lines } from "@/components/ui/Lines";
 import { useGSAP } from "@/lib/gsap";
 import { revealScene, SHAPES } from "@/lib/scene";
 import { TransitionLink } from "@/components/shell/TransitionLink";
@@ -11,6 +12,7 @@ import "./Featured.css";
 
 export function Featured() {
   const root = useRef<HTMLElement>(null);
+  const { t, content } = useI18n();
 
   useGSAP(
     () => {
@@ -23,12 +25,10 @@ export function Featured() {
     <section ref={root} className="featured scene scene--overlap">
       <div className="stage featured__stage box">
         <h2 className="featured__title display">
-          Scafe
-          <br />
-          in the press
+          <Lines lines={t.press.featuredTitle} />
         </h2>
         <div className="featured__cards">
-          {pressHighlights.map((item) => (
+          {content.pressHighlights.map((item) => (
             <TransitionLink key={item.href} href={item.href} className="featured__card">
               <figure>
                 <Image src={item.image} alt="" fill sizes="(max-width: 1024px) 100vw, 30vw" className="cover" />

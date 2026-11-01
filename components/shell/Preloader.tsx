@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useI18n } from "@/i18n/I18nProvider";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { getLenis, markSiteReady, prefersReducedMotion } from "@/lib/site";
 import { Logo } from "@/components/ui/Icons";
@@ -14,6 +15,7 @@ const WAVES = [
 ];
 
 export function Preloader() {
+  const { t } = useI18n();
   const root = useRef<HTMLDivElement>(null);
   const progress = useRef<HTMLDivElement>(null);
 
@@ -79,7 +81,7 @@ export function Preloader() {
         <VectorGrid />
       </div>
       <div className="preloader__content">
-        <div className="preloader__text">Pouring</div>
+        <div className="preloader__text">{t.shell.preloader}</div>
         <Logo className="preloader__logo" />
         <div ref={progress} className="preloader__text">
           0%

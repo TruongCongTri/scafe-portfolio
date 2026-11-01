@@ -45,7 +45,9 @@
       "play": "phát",
       "pause": "dừng",
       "close": "đóng"
-    }
+    },
+    "audioPlay": "Phát nhạc",
+    "audioPause": "Tạm dừng nhạc"
   },
   "footer": {
     "address": "Địa chỉ",
@@ -859,7 +861,10 @@
           "Chủ Nhật: Tặng thêm 1 ly Bespoke dành riêng cho phái Nữ"
         ]
       }
-    ]
+    ],
+    "details": "Xem chi tiết",
+    "back": "Về danh sách sự kiện",
+    "weekly": "Hằng tuần"
   },
   "press": {
     "heroTitle": [
@@ -872,8 +877,8 @@
       "lên báo"
     ],
     "highlights": [
-      "Quán bar trong hẻm đã biến chuyện xếp hàng thành mốt như thế nào",
-      "Cẩm nang thành phố điểm tên Scafe trong danh sách quán đáng thử"
+      "Grand opening: khách tràn cả hẻm",
+      "Bí kíp “bào” deal khi ghé Sờ"
     ],
     "articlesTitle": [
       "Scafe dạo này",
@@ -883,12 +888,47 @@
     "categories": {
       "behindTheBar": "Hậu trường",
       "press": "Báo chí",
-      "drinks": "Đồ uống"
+      "drinks": "Đồ uống",
+      "news": "Tin quán"
     },
     "pages": "Trang",
     "back": "Về trang tin tức"
   },
   "articles": {
+    "how-to-find-scafe": {
+      "title": "Đường đến Sờ",
+      "body": [
+        "Sờ ở 60/69 Lý Chính Thắng, Xuân Hoà, TP.HCM, trong một con hẻm nhỏ thông từ ngã ba Huỳnh Tịnh Của - Lý Chính Thắng ra bờ kè Hoàng Sa.",
+        "Hẻm nhỏ nhưng xe hơi vô được, nên cứ thoải mái book xe nhé.",
+        "Cà phê bán từ 9 giờ sáng đến 5 giờ chiều, cocktail từ 5 giờ chiều đến khuya."
+      ]
+    },
+    "soft-opening": {
+      "title": "Soft opening: từ quán tối thui đến quầy bar đầu tiên",
+      "body": [
+        "Ngày đầu mở cửa, tụi mình vừa sợ khách vô vừa không biết chỗ bật đèn, nên quán tối thui. Chuyện thật đó.",
+        "Đúng một tuần sau, tụi mình quyết định độ lại mặt tiền cho vintage. Nhờ có anh em bạn bè qua phụ, mặt tiền xong trong hai ngày.",
+        "Thêm một tuần nữa thì quầy bar hoàn thành. Setup xong xuôi, Sờ mở soft opening."
+      ]
+    },
+    "grand-opening": {
+      "title": "Grand opening: khách tràn cả hẻm",
+      "body": [
+        "Grand opening là buổi tụi mình nhớ mãi: khách ngồi kín quán, tràn luôn ra hẻm.",
+        "Đông vui quá trời, kiểu đông mà ngày thường hiếm khi có được.",
+        "Cảm ơn mọi người đã ghé. Từ sau hôm đó, Sờ có thêm những buổi guestshift và Movie Night lúc 7 giờ tối mỗi thứ Sáu."
+      ]
+    },
+    "weekly-deals": {
+      "title": "Bí kíp “bào” deal khi ghé Sờ",
+      "body": [
+        "Lưu ngay 4 cột mốc này để mỗi lần tới Sờ là một lần hời. Áp dụng từ ngày 17/08/2026.",
+        "Thứ 2: Giảm 10% menu sáng, áp dụng bill từ 2 ly.",
+        "17h - 20h, thứ 2 đến thứ 5: Giảm 10%.",
+        "Thứ 5: Tặng 1 snack cho nhóm từ 3 người.",
+        "Chủ Nhật: Tặng thêm 1 ly Bespoke dành riêng cho phái Nữ."
+      ]
+    },
     "the-ice-program": {
       "title": "Chuyện làm đá của tụi mình, kỹ đến mức hơi quá",
       "body": [
@@ -947,5 +987,90 @@
     "cta": "Xem sự kiện",
     "close": "Đóng",
     "hide": "Không hiện lại hôm nay"
+  },
+  "manage": {
+    "title": "Quản lý Scafe",
+    "toastRegion": "Thông báo",
+    "close": "Đóng",
+    "retry": "Thử lại",
+    "cancel": "Hủy",
+    "remove": "Xóa",
+    "publish": "Đăng",
+    "publishing": "Đang đăng...",
+    "published": "Đã lên website",
+    "publishFailed": "Đăng không thành công",
+    "removeFailed": "Xóa không thành công",
+    "removed": "Đã xóa",
+    "addedDrink": "Đã đăng món",
+    "addedEvent": "Đã đăng sự kiện",
+    "drinkOn": "đã mở bán",
+    "drinkOff": "đã ẩn khỏi thực đơn",
+    "eventOn": "đã hiển thị",
+    "eventOff": "đã ẩn khỏi website",
+    "loginTitle": "Đăng nhập quản lý",
+    "loginText": "Nhập số điện thoại của quản lý.",
+    "phone": "Số điện thoại",
+    "login": "Đăng nhập",
+    "loginBusy": "Đang đăng nhập...",
+    "loginWrong": "Số điện thoại này không có quyền truy cập.",
+    "loginFailed": "Không đăng nhập được",
+    "signedIn": "Đã đăng nhập",
+    "signedOut": "Đã đăng xuất",
+    "logoutFailed": "Không đăng xuất được",
+    "logout": "Đăng xuất",
+    "viewSite": "Xem web",
+    "tabDrinks": "Thực đơn",
+    "tabEvents": "Sự kiện",
+    "searchDrinks": "Tìm món",
+    "filters": {
+      "all": "Tất cả",
+      "on": "Đang bán",
+      "off": "Đã ẩn"
+    },
+    "noDrinks": "Không có món nào phù hợp.",
+    "noEvents": "Chưa có sự kiện nào.",
+    "statusOn": "Đang bán",
+    "statusOff": "Đã ẩn",
+    "eventStatusOn": "Đang hiển thị",
+    "eventStatusOff": "Đã ẩn",
+    "weekly": "Hằng tuần",
+    "addDrink": "Thêm món",
+    "addEvent": "Thêm sự kiện",
+    "confirmRemove": "Xóa mục này?",
+    "removeHint": "Không thể hoàn tác. Nếu muốn dùng lại sau này, hãy ẩn thay vì xóa.",
+    "group": "Nhóm",
+    "name": "Tên món",
+    "price": "Giá",
+    "priceHint": "Tính bằng nghìn đồng: 179",
+    "note": "Mô tả",
+    "photoOptional": "Ảnh (không bắt buộc)",
+    "poster": "Poster",
+    "pickPhoto": "Chạm để chọn ảnh",
+    "photoRequired": "Cần có poster để đăng sự kiện.",
+    "english": "Bản tiếng Anh (không bắt buộc)",
+    "eventTitle": "Tên sự kiện",
+    "date": "Ngày",
+    "time": "Giờ",
+    "heading": "Dòng giới thiệu ngắn",
+    "description": "Mô tả",
+    "notes": "Thông tin chi tiết",
+    "notesHint": "Mỗi ý một dòng",
+    "errors": {
+      "session": "Phiên đăng nhập đã hết. Vui lòng đăng nhập lại.",
+      "invalid": "Vui lòng kiểm tra lại thông tin rồi thử lại.",
+      "image": "Không dùng được ảnh này. Hãy thử JPG hoặc PNG dưới 6MB.",
+      "write": "Máy chủ chưa lưu được, nội dung chưa thay đổi.",
+      "network": "Mất kết nối. Hãy kiểm tra mạng rồi thử lại."
+    }
+  },
+  "offers": {
+    "label": "Ưu đãi hôm nay",
+    "close": "Đóng ưu đãi",
+    "items": {
+      "morning": "Thứ 2: Giảm 10% menu sáng cho bill từ 2 ly",
+      "earlyEvening": "17h - 20h hôm nay: Giảm 10%",
+      "snack": "Thứ 5: Tặng 1 snack cho nhóm từ 3 người",
+      "bespoke": "Chủ Nhật: Tặng thêm 1 ly Bespoke dành riêng cho phái Nữ"
+    }
   }
 }

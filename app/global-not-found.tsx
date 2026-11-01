@@ -4,7 +4,7 @@ import { defaultLocale } from "@/i18n/config";
 import en from "@/i18n/en.json";
 import vi from "@/i18n/vi.json";
 import "./[locale]/global.css";
-import "./[locale]/not-found.css";
+import "./[locale]/(site)/not-found.css";
 
 const anton = Anton({ variable: "--font-anton", weight: "400", subsets: ["latin", "vietnamese"] });
 const hanken = Hanken_Grotesk({ variable: "--font-hanken", subsets: ["latin", "vietnamese"] });

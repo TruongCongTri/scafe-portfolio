@@ -91,9 +91,10 @@ export function PromoPopup() {
   };
 
   const seeNights = () => {
+    const single = view?.events.length === 1 ? `/${view.events[0].id}` : "";
     setView(null);
     getLenis()?.start();
-    navigate(withLocale(locale, "/nights"));
+    navigate(withLocale(locale, `/nights${single}`));
   };
 
   const formatDate = (date: string) =>
@@ -117,7 +118,7 @@ export function PromoPopup() {
               <p className="promo__label display">{view.upcoming ? t.promo.upcoming : t.promo.latest}</p>
               <ul className="promo__events">
                 {view.events.map((event) => (
-                  <li key={event.title}>
+                  <li key={event.id}>
                     <time dateTime={event.date}>
                       {formatDate(event.date)}
                       {event.time && ` · ${event.time}`}

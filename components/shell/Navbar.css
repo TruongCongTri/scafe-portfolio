@@ -250,6 +250,10 @@
     clip-path: polygon(0 3%, 100% 0, 99% 40%, 100% 97%, 42% 100%, 0 96%);
   }
 
+  .navbar__home {
+    order: -2;
+  }
+
   .navbar__progress {
     transform: scaleX(calc(0.1 + var(--progress) * 0.9));
     transform-origin: left;

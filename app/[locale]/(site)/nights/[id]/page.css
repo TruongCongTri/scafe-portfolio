@@ -1,0 +1,107 @@
+.event {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.event__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  min-height: 100vh;
+  padding-bottom: calc(var(--box) + var(--ticker, 0px));
+}
+
+.event__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  font-size: 1.375rem;
+}
+
+.event__title.display {
+  font-size: 8rem;
+  line-height: 1.25;
+}
+
+.event__heading {
+  font-size: 3.25rem;
+}
+
+.event__text {
+  font-size: 1.375rem;
+}
+
+.event__notes li {
+  padding-left: 1rem;
+  font-size: 1.375rem;
+  text-indent: -1rem;
+}
+
+.event__notes li::before {
+  content: "- ";
+}
+
+.event__content .rect-bt {
+  --bt-bg: var(--maroon);
+  --bt-fg: var(--cream);
+}
+
+.event__back {
+  color: var(--maroon);
+  font-size: 1.75rem;
+}
+
+/* Posters carry their own dates and titles, so they show whole and stay in view. */
+.event__poster {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  background: var(--ink);
+}
+
+.event__poster img {
+  object-fit: contain;
+}
+
+@media (max-width: 1024px) {
+  .event {
+    grid-template-columns: 1fr;
+  }
+
+  .event__poster {
+    position: relative;
+    order: -1;
+    height: 62svh;
+    margin-top: calc(var(--gutter) * 2 + 3.25rem);
+  }
+
+  .event__content {
+    gap: 1rem;
+    min-height: 0;
+    padding-top: 1.5rem;
+    padding-bottom: calc(3rem + var(--ticker, 0px));
+  }
+
+  .event__meta,
+  .event__text,
+  .event__notes li {
+    font-size: 1rem;
+  }
+
+  .event__title.display {
+    font-size: 3.5rem;
+  }
+
+  .event__heading {
+    font-size: 1.85rem;
+  }
+
+  .event__back {
+    font-size: 1.4rem;
+  }
+}

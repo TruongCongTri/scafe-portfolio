@@ -1,0 +1,103 @@
+/* The site scales rem with the viewport for its big type. A tool needs steady sizes,
+   and 16px inputs, so iPhones don't zoom in when a field is focused. */
+html.is-loading:has(.manage) {
+  overflow: auto;
+}
+
+.manage {
+  min-height: 100dvh;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.manage button:focus-visible,
+.manage a:focus-visible,
+.manage input:focus-visible,
+.manage select:focus-visible,
+.manage textarea:focus-visible,
+.manage label:focus-within > .switch__track {
+  outline: 3px solid var(--maroon-bright);
+  outline-offset: 2px;
+}
+
+.manage-bt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid var(--maroon);
+  border-radius: 10px;
+  color: var(--maroon);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.manage-bt--primary {
+  background: var(--maroon);
+  color: var(--cream);
+}
+
+.manage-bt--danger {
+  border-color: #a3261f;
+  background: #a3261f;
+  color: #fff;
+}
+
+.manage-bt--full {
+  width: 100%;
+}
+
+.manage-bt:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field > span {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.field > small {
+  color: rgba(26, 8, 9, 0.65);
+  font-size: 13px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid rgba(26, 8, 9, 0.35);
+  border-radius: 10px;
+  background: #f6efe6;
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+}
+
+.field textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.field input[aria-invalid="true"] {
+  border-color: #a3261f;
+}
+
+.field__error {
+  color: #a3261f;
+  font-size: 14px;
+  font-style: normal;
+}

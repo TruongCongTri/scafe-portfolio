@@ -45,7 +45,9 @@
       "play": "play",
       "pause": "pause",
       "close": "close"
-    }
+    },
+    "audioPlay": "Play music",
+    "audioPause": "Pause music"
   },
   "footer": {
     "address": "Address",
@@ -860,7 +862,10 @@
           "Sunday: 1 free Bespoke for women"
         ]
       }
-    ]
+    ],
+    "details": "View details",
+    "back": "Back to all nights",
+    "weekly": "Every week"
   },
   "press": {
     "heroTitle": [
@@ -873,8 +878,8 @@
       "in the press"
     ],
     "highlights": [
-      "How One Back-Alley Bar Made Waiting Fashionable",
-      "City Guide Names Scafe a Bar to Watch"
+      "Grand opening: guests all the way down the alley",
+      "Our weekly deals"
     ],
     "articlesTitle": [
       "What's new at Scafe",
@@ -884,12 +889,47 @@
     "categories": {
       "behindTheBar": "Behind The Bar",
       "press": "Press",
-      "drinks": "Drinks"
+      "drinks": "Drinks",
+      "news": "News"
     },
     "pages": "Pages",
     "back": "Back to press"
   },
   "articles": {
+    "how-to-find-scafe": {
+      "title": "How to find Scafe",
+      "body": [
+        "We're at 60/69 Lý Chính Thắng, Xuân Hoà, Ho Chi Minh City, in a small alley running from the Huỳnh Tịnh Của - Lý Chính Thắng junction through to the Hoàng Sa embankment.",
+        "The alley is small, but cars can get in, so book a ride without worrying.",
+        "Coffee runs from 9am to 5pm, and cocktails from 5pm until late."
+      ]
+    },
+    "soft-opening": {
+      "title": "Soft opening: from a dark room to our first bar",
+      "body": [
+        "On our first day we were nervous about guests walking in, and we couldn't find the light switch, so the place stayed dark. That really happened.",
+        "A week later we decided to rebuild the shopfront with a vintage look. Thanks to friends who came to help, it was done in two days.",
+        "A week after that the bar was finished. Once everything was set up, we held our soft opening."
+      ]
+    },
+    "grand-opening": {
+      "title": "Grand opening: guests all the way down the alley",
+      "body": [
+        "Grand opening is the night we'll always remember: every seat taken, and guests spilling out into the alley.",
+        "It was the kind of busy we rarely get on a normal day.",
+        "Thank you to everyone who came. Since then we've added guest shifts and Movie Night, at 7pm every Friday."
+      ]
+    },
+    "weekly-deals": {
+      "title": "Our weekly deals",
+      "body": [
+        "Four times worth saving, so every visit is a good deal. Running from 17/08/2026.",
+        "Monday: 10% off the morning menu, on bills of 2 drinks or more.",
+        "17:00 - 20:00, Monday to Thursday: 10% off.",
+        "Thursday: a free snack for groups of 3 or more.",
+        "Sunday: 1 free Bespoke for women."
+      ]
+    },
     "the-ice-program": {
       "title": "Inside Our Obsessive New Ice Program",
       "body": [
@@ -948,5 +988,90 @@
     "cta": "See the nights",
     "close": "Close",
     "hide": "Don't show again today"
+  },
+  "manage": {
+    "title": "Manage Scafe",
+    "toastRegion": "Notifications",
+    "close": "Close",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "remove": "Remove",
+    "publish": "Publish",
+    "publishing": "Publishing...",
+    "published": "Live on the website now",
+    "publishFailed": "Couldn't publish",
+    "removeFailed": "Couldn't remove",
+    "removed": "Removed",
+    "addedDrink": "Drink published",
+    "addedEvent": "Event published",
+    "drinkOn": "now on the menu",
+    "drinkOff": "hidden from the menu",
+    "eventOn": "now showing",
+    "eventOff": "hidden from the website",
+    "loginTitle": "Sign in to manage",
+    "loginText": "Enter the manager's phone number.",
+    "phone": "Phone number",
+    "login": "Sign in",
+    "loginBusy": "Signing in...",
+    "loginWrong": "That phone number doesn't have access.",
+    "loginFailed": "Couldn't sign in",
+    "signedIn": "Signed in",
+    "signedOut": "Signed out",
+    "logoutFailed": "Couldn't sign out",
+    "logout": "Sign out",
+    "viewSite": "View site",
+    "tabDrinks": "Menu",
+    "tabEvents": "Events",
+    "searchDrinks": "Search drinks",
+    "filters": {
+      "all": "All",
+      "on": "On sale",
+      "off": "Hidden"
+    },
+    "noDrinks": "No drinks match.",
+    "noEvents": "No events yet.",
+    "statusOn": "On sale",
+    "statusOff": "Hidden",
+    "eventStatusOn": "Showing",
+    "eventStatusOff": "Hidden",
+    "weekly": "Weekly",
+    "addDrink": "Add drink",
+    "addEvent": "Add event",
+    "confirmRemove": "Remove this?",
+    "removeHint": "This can't be undone. To bring it back later, hide it instead.",
+    "group": "Category",
+    "name": "Name",
+    "price": "Price",
+    "priceHint": "In thousands: 179",
+    "note": "Description",
+    "photoOptional": "Photo (optional)",
+    "poster": "Poster",
+    "pickPhoto": "Tap to choose a photo",
+    "photoRequired": "Add a poster to publish this event.",
+    "english": "English version (optional)",
+    "eventTitle": "Event name",
+    "date": "Date",
+    "time": "Time",
+    "heading": "Short line",
+    "description": "Description",
+    "notes": "Details",
+    "notesHint": "One per line",
+    "errors": {
+      "session": "Your sign-in has ended. Please sign in again.",
+      "invalid": "Please check the fields and try again.",
+      "image": "That photo couldn't be used. Try a JPG or PNG under 6MB.",
+      "write": "The server couldn't save this. Nothing has changed.",
+      "network": "No connection. Check your internet and try again."
+    }
+  },
+  "offers": {
+    "label": "Today's offer",
+    "close": "Close offer",
+    "items": {
+      "morning": "Monday: 10% off the morning menu on bills of 2 drinks or more",
+      "earlyEvening": "17:00 - 20:00 today: 10% off",
+      "snack": "Thursday: a free snack for groups of 3 or more",
+      "bespoke": "Sunday: 1 free Bespoke for women"
+    }
   }
 }

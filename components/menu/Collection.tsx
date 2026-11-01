@@ -64,7 +64,7 @@ export function Collection() {
               <h3 className="collection__group-title display">{group.title}</h3>
               <ul className={pictured ? "collection__cards" : "collection__rows"}>
                 {group.items.map((item) => (
-                  <li key={item.name} className="collection__item">
+                  <li key={item.id} className="collection__item">
                     {item.image && (
                       <figure>
                         <Image src={item.image} alt={item.name} fill sizes="(max-width: 1024px) 50vw, 22vw" className="cover" />

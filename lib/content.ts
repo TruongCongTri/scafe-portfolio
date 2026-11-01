@@ -2,7 +2,9 @@
 // All wording lives in i18n/en.json and i18n/vi.json. List entries there follow
 // the same order as the lists here. Scafe, its people, address and press are
 // placeholders: replace them with the real bar's details.
+import type { Locale } from "@/i18n/config";
 import type en from "@/i18n/en.json";
+import type { Catalog, MenuName } from "./catalog";
 
 type Dictionary = typeof en;
 
@@ -135,11 +137,62 @@ const morningDetails: MenuDetail[][] = [
   [{ price: "7" }, { price: "10" }, { price: "10" }, { price: "15" }, { price: "15" }, { price: "15" }],
 ];
 
-const joinMenu = (groups: MenuGroup[], details: MenuDetail[][]) =>
-  groups.map((group, groupIndex) => ({
-    title: group.title,
-    items: group.items.map((item, itemIndex) => ({ ...item, ...details[groupIndex][itemIndex] })),
-  }));
+export type MenuItem = MenuDetail & { id: string; name: string; note?: string; active: boolean; added: boolean };
+
+// Every drink with its status: built-in ones first, then the manager's additions.
+const joinMenu = (menu: MenuName, groups: MenuGroup[], details: MenuDetail[][], locale: Locale, catalog: Catalog) =>
+  groups.map((group, groupIndex) => {
+    const builtIn = group.items.map((item, itemIndex): MenuItem => {
+      const id = `${menu}-${groupIndex}-${itemIndex}`;
+      return { ...item, ...details[groupIndex][itemIndex], id, active: !catalog.inactiveDrinks.includes(id), added: false };
+    });
+    const added = catalog.addedDrinks
+      .filter((drink) => drink.menu === menu && drink.group === groupIndex)
+      .map((drink): MenuItem => ({
+        ...drink[locale],
+        id: drink.id,
+        price: drink.price,
+        image: drink.image,
+        active: !catalog.inactiveDrinks.includes(drink.id),
+        added: true,
+      }));
+    return { title: group.title, items: [...builtIn, ...added] };
+  });
+
+export type NightEvent = {
+  id: string;
+  image: string;
+  date?: string;
+  time?: string;
+  title: string;
+  heading: string;
+  text: string;
+  notes: string[];
+  active: boolean;
+  added: boolean;
+};
+
+// Newest first, with undated events like the weekly deals after them.
+const joinEvents = (t: Dictionary, locale: Locale, catalog: Catalog) =>
+  [
+    ...nightEntries.map((night, index): NightEvent => ({
+      ...t.nights.events[index],
+      ...night,
+      active: !catalog.inactiveEvents.includes(night.id),
+      added: false,
+    })),
+    ...catalog.addedEvents.map((event): NightEvent => ({
+      ...event[locale],
+      id: event.id,
+      image: event.image,
+      date: event.date,
+      time: event.time,
+      active: !catalog.inactiveEvents.includes(event.id),
+      added: true,
+    })),
+  ]
+    .filter((event) => !catalog.removedEvents.includes(event.id))
+    .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
 
 const pillarImages = ["/images/shaker.webp", "/images/back-bar.webp", "/images/snug.webp"];
 
@@ -152,15 +205,15 @@ const partnerNames = [
 
 // Posters and details come from the bar's own Instagram posts, newest first.
 // A date (YYYY-MM-DD) makes a night eligible for the promo popup.
-const nightEntries: { image: string; date?: string }[] = [
-  { image: "/images/events/jam.webp", date: "2026-10-31" },
-  { image: "/images/events/coraline.webp", date: "2026-10-30" },
-  { image: "/images/events/mood.webp", date: "2026-10-23" },
-  { image: "/images/events/howl.webp", date: "2026-10-16" },
-  { image: "/images/events/slay.webp" },
+const nightEntries: { id: string; image: string; date?: string }[] = [
+  { id: "jam", image: "/images/events/jam.webp", date: "2026-10-31" },
+  { id: "coraline", image: "/images/events/coraline.webp", date: "2026-10-30" },
+  { id: "mood", image: "/images/events/mood.webp", date: "2026-10-23" },
+  { id: "howl", image: "/images/events/howl.webp", date: "2026-10-16" },
+  { id: "slay", image: "/images/events/slay.webp" },
 ];
 
-export const categories = ["behindTheBar", "press", "drinks"] as const;
+export const categories = ["news", "behindTheBar", "press", "drinks"] as const;
 
 type Category = (typeof categories)[number];
 
@@ -170,24 +223,55 @@ const articleEntries: {
   author: string;
   category: Category;
   image: string;
+  // Placeholder stories: kept out of search until real ones replace them.
+  sample?: boolean;
 }[] = [
-  { slug: "the-ice-program", date: "07.10.2026", author: site.name, category: "behindTheBar", image: "/images/glass-stack.webp" },
-  { slug: "last-ember-joins-the-list", date: "02.09.2026", author: site.name, category: "drinks", image: "/images/whisky.webp" },
-  { slug: "six-years-of-red-hour", date: "01.09.2026", author: site.name, category: "drinks", image: "/images/pour.webp" },
-  { slug: "city-guide-names-scafe", date: "28.08.2026", author: site.name, category: "press", image: "/images/taps-room.webp" },
-  { slug: "meet-the-barrel", date: "31.05.2026", author: site.name, category: "behindTheBar", image: "/images/old-taps.webp" },
-  { slug: "a-room-with-low-light", date: "20.07.2025", author: site.name, category: "press", image: "/images/snug.webp" },
+  { slug: "how-to-find-scafe", date: "13.10.2026", author: site.name, category: "news", image: "/images/press/how-to-find.webp" },
+  { slug: "grand-opening", date: "13.10.2026", author: site.name, category: "behindTheBar", image: "/images/press/grand-opening.webp" },
+  { slug: "soft-opening", date: "13.10.2026", author: site.name, category: "behindTheBar", image: "/images/press/soft-opening.webp" },
+  { slug: "weekly-deals", date: "17.08.2026", author: site.name, category: "news", image: "/images/events/slay.webp" },
+  { slug: "the-ice-program", date: "07.10.2026", author: site.name, category: "behindTheBar", image: "/images/glass-stack.webp", sample: true },
+  { slug: "last-ember-joins-the-list", date: "02.09.2026", author: site.name, category: "drinks", image: "/images/whisky.webp", sample: true },
+  { slug: "six-years-of-red-hour", date: "01.09.2026", author: site.name, category: "drinks", image: "/images/pour.webp", sample: true },
+  { slug: "city-guide-names-scafe", date: "28.08.2026", author: site.name, category: "press", image: "/images/taps-room.webp", sample: true },
+  { slug: "meet-the-barrel", date: "31.05.2026", author: site.name, category: "behindTheBar", image: "/images/old-taps.webp", sample: true },
+  { slug: "a-room-with-low-light", date: "20.07.2025", author: site.name, category: "press", image: "/images/snug.webp", sample: true },
 ];
 
+export const nightIds = nightEntries.map((night) => night.id);
+
 export const articleSlugs = articleEntries.map((article) => article.slug);
+export const realArticleSlugs = articleEntries.filter((article) => !article.sample).map((article) => article.slug);
 
 const highlightEntries = [
-  { date: "09.08.2026", author: site.name, image: "/images/snug.webp", href: "/press/a-room-with-low-light" },
-  { date: "14.07.2026", author: site.name, image: "/images/back-bar.webp", href: "/press/city-guide-names-scafe" },
+  { date: "13.10.2026", author: site.name, image: "/images/press/grand-opening.webp", href: "/press/grand-opening" },
+  { date: "17.08.2026", author: site.name, image: "/images/events/slay.webp", href: "/press/weekly-deals" },
 ];
 
 // Joins the neutral data above with one language's wording.
-export const buildContent = (t: Dictionary) => ({
+const allMenus = (t: Dictionary, locale: Locale, catalog: Catalog) => ({
+  evening: joinMenu("evening", t.menu.evening.groups, eveningDetails, locale, catalog),
+  morning: joinMenu("morning", t.menu.morning.groups, morningDetails, locale, catalog),
+});
+
+const publicGroups = (groups: ReturnType<typeof joinMenu>) =>
+  groups
+    .map((group) => ({ ...group, items: group.items.filter((item) => item.active) }))
+    .filter((group) => group.items.length);
+
+// The manager sees everything, including what's hidden from the public.
+export const buildManageData = (t: Dictionary, locale: Locale, catalog: Catalog) => ({
+  menus: allMenus(t, locale, catalog),
+  events: joinEvents(t, locale, catalog),
+});
+
+export type ManageData = ReturnType<typeof buildManageData>;
+
+export const buildContent = (t: Dictionary, locale: Locale, catalog: Catalog) => {
+  const menus = allMenus(t, locale, catalog);
+  const hiddenDrinks = menus.evening.flatMap((group) => group.items.filter((item) => !item.active).map((item) => item.name));
+
+  return {
   nav: navLinks.map((item) => ({ href: item.href, label: t.nav[item.key] })),
   heroReel: heroImages.map((src, index) => ({ src, alt: t.home.hero.reelAlts[index] })),
   brands: brandLogos.map((brand, index) => ({ ...brand, ...t.home.pours.brands[index] })),
@@ -200,16 +284,16 @@ export const buildContent = (t: Dictionary) => ({
     role: t.people.support,
     image: supportImages[index % supportImages.length],
   })),
-  signatures: signatureDrinks.map((drink, index) => ({ ...drink, ...t.menu.signatures[index] })),
-  menus: {
-    evening: joinMenu(t.menu.evening.groups, eveningDetails),
-    morning: joinMenu(t.menu.morning.groups, morningDetails),
-  },
+  signatures: signatureDrinks
+    .map((drink, index) => ({ ...drink, ...t.menu.signatures[index] }))
+    .filter((drink) => !hiddenDrinks.includes(drink.title)),
+  menus: { evening: publicGroups(menus.evening), morning: publicGroups(menus.morning) },
   pillars: pillarImages.map((image, index) => ({ image, ...t.about.pillars[index] })),
   partners: partnerNames.map((name, index) => ({ name, text: t.about.partners.list[index] })),
-  nights: nightEntries.map((night, index) => ({ ...night, ...t.nights.events[index] })),
+  nights: joinEvents(t, locale, catalog).filter((event) => event.active),
   articles: articleEntries.map((article) => ({ ...article, ...t.articles[article.slug] })),
   pressHighlights: highlightEntries.map((item, index) => ({ ...item, title: t.press.highlights[index] })),
-});
+  };
+};
 
 export type Content = ReturnType<typeof buildContent>;

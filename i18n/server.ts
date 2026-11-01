@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { locale as rootLocale } from "next/root-params";
+import { getCatalog } from "@/lib/catalogStore";
 import { buildContent, site } from "@/lib/content";
 import { defaultLocale, hasLocale, locales, withLocale, type Locale } from "./config";
 import en from "./en.json";
@@ -14,7 +15,8 @@ export const getI18n = async () => {
   const locale = await rootLocale();
   if (!hasLocale(locale)) notFound();
   const t = dictionaries[locale];
-  return { locale, t, content: buildContent(t) };
+  const catalog = await getCatalog();
+  return { locale, t, catalog, content: buildContent(t, locale, catalog) };
 };
 
 export const ogImage = { url: "/images/og.jpg", width: 1200, height: 630 };

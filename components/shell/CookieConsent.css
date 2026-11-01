@@ -1,7 +1,7 @@
 .cookies {
   position: fixed;
   right: var(--gutter);
-  bottom: var(--gutter);
+  bottom: calc(var(--gutter) + var(--ticker, 0px));
   z-index: 55;
   display: grid;
   gap: 1.25rem;

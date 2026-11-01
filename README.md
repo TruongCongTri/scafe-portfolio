@@ -23,3 +23,9 @@ Use `await getI18n()` in Server Components and `useI18n()` in Client Components.
 ## Before launch
 
 Set `NEXT_PUBLIC_SITE_URL` to the live domain. Canonical links, language alternates, the sitemap, share cards and structured data all use it.
+
+## Manager
+
+Sign in at `/vi/manage` to hide or add drinks and events. Changes are stored in `data/` (or `DATA_DIR`) on top of the built-in content, so that folder needs a persistent disk: on a serverless host, replace `lib/catalogStore.ts` with a database.
+
+Set `MANAGER_PHONE` and `SESSION_SECRET` in production. Phone sign-in has no code check yet, so anyone who knows the number can sign in: add an SMS code before going live.

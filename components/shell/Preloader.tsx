@@ -3,7 +3,8 @@
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { getLenis, markSiteReady, prefersReducedMotion } from "@/lib/site";
+import { prepareAudio, startAudio } from "@/lib/audio";
+import { getLenis, markSiteReady, onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { Logo } from "@/components/ui/Icons";
 import { VectorGrid } from "@/components/ui/VectorGrid";
 import "./Preloader.css";
@@ -33,6 +34,8 @@ export function Preloader() {
         getLenis()?.start();
       };
 
+      onSiteReady(() => void startAudio());
+
       let seen = false;
       try {
         seen = window.sessionStorage.getItem(SEEN_KEY) === "1";
@@ -47,10 +50,16 @@ export function Preloader() {
         return;
       }
 
+      // The count can't pass what has really loaded of today's track.
       const count = { value: 0 };
+      let audioShare = 0;
       const render = () => {
-        if (progress.current) progress.current.textContent = `${Math.round(count.value)}%`;
+        if (progress.current) progress.current.textContent = `${Math.round(Math.min(count.value, audioShare * 100))}%`;
       };
+      const audioReady = prepareAudio((share) => {
+        audioShare = share;
+        render();
+      });
 
       const leave = () => {
         // The homepage hero opens from the same cream, so hand over with no wipe.
@@ -81,7 +90,7 @@ export function Preloader() {
         .to(count, { value: 100, duration: 0.7, ease: "power1.inOut", onUpdate: render }, 0.05)
         .to(".preloader__bg", { clipPath: WAVES[2], duration: 0.35, ease: "power2.inOut" }, 0.4);
 
-      Promise.all([document.fonts.ready, fill.then()]).then(leave);
+      Promise.all([document.fonts.ready, fill.then(), audioReady]).then(leave);
     },
     { scope: root }
   );

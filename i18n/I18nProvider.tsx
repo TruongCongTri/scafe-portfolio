@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useMemo, type ReactNode } from "react";
+import type { Catalog } from "@/lib/catalog";
 import { buildContent, type Content } from "@/lib/content";
 import type { Locale } from "./config";
 import type en from "./en.json";
@@ -18,12 +19,14 @@ export const useI18n = () => {
 export function I18nProvider({
   locale,
   t,
+  catalog,
   children,
 }: {
   locale: Locale;
   t: typeof en;
+  catalog: Catalog;
   children: ReactNode;
 }) {
-  const value = useMemo(() => ({ locale, t, content: buildContent(t) }), [locale, t]);
+  const value = useMemo(() => ({ locale, t, content: buildContent(t, locale, catalog) }), [locale, t, catalog]);
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }

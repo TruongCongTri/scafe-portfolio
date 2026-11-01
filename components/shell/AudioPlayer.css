@@ -1,0 +1,142 @@
+.audio-player {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--cream);
+  transition: opacity 0.25s;
+}
+
+.audio-player__icon {
+  position: relative;
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--cream);
+}
+
+/* A triangle when stopped, and two bars while playing. */
+.audio-player__icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  width: 0.8rem;
+  height: 0.9rem;
+  background: var(--maroon);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  translate: -50% -50%;
+}
+
+.audio-player.is-playing .audio-player__icon::before {
+  left: 50%;
+  width: 0.8rem;
+  clip-path: polygon(0 0, 35% 0, 35% 100%, 0 100%, 0 0, 65% 0, 100% 0, 100% 100%, 65% 100%, 65% 0);
+}
+
+/* Flat when paused, and bouncing out of step while music plays. */
+.audio-player__bars {
+  display: flex;
+  flex: none;
+  align-items: flex-end;
+  gap: 0.14rem;
+  height: 1rem;
+}
+
+.audio-player__bars span {
+  width: 0.2rem;
+  height: 100%;
+  background: currentcolor;
+  transform: scaleY(0.2);
+  transform-origin: bottom;
+  transition: transform 0.3s ease-out;
+}
+
+.audio-player.is-playing .audio-player__bars span {
+  animation: audio-bar 0.9s ease-in-out infinite alternate;
+}
+
+.audio-player.is-playing .audio-player__bars span:nth-child(2) {
+  animation-duration: 0.6s;
+  animation-delay: -0.2s;
+}
+
+.audio-player.is-playing .audio-player__bars span:nth-child(3) {
+  animation-duration: 0.75s;
+  animation-delay: -0.45s;
+}
+
+.audio-player.is-playing .audio-player__bars span:nth-child(4) {
+  animation-duration: 0.5s;
+  animation-delay: -0.1s;
+}
+
+@keyframes audio-bar {
+  from {
+    transform: scaleY(0.25);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* Still shows that music is on, without the movement. */
+@media (prefers-reduced-motion: reduce) {
+  .audio-player.is-playing .audio-player__bars span {
+    animation: none;
+    transform: scaleY(0.7);
+  }
+}
+
+.audio-player__name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+}
+
+@media (hover: hover) {
+  .audio-player:hover {
+    opacity: 0.7;
+  }
+}
+
+/* Comes straight after the logo in the phone's top bar. */
+@media (max-width: 1024px) {
+  .audio-player {
+    order: -1;
+    flex-direction: row;
+    gap: 0.3rem;
+    min-width: 0;
+    min-height: 2.75rem;
+  }
+
+  .audio-player__icon {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+
+  .audio-player__icon::before {
+    width: 0.62rem;
+    height: 0.7rem;
+  }
+
+  .audio-player.is-playing .audio-player__icon::before {
+    width: 0.62rem;
+  }
+
+  .audio-player__name {
+    overflow: hidden;
+    max-width: 5.5rem;
+    font-size: 0.78rem;
+    text-overflow: ellipsis;
+    writing-mode: horizontal-tb;
+    rotate: none;
+  }
+}

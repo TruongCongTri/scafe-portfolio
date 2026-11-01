@@ -4,6 +4,7 @@
 }
 
 .footer__stage {
+  padding-bottom: calc(var(--box) + var(--ticker, 0px));
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -133,5 +134,30 @@
 @media (max-width: 1024px) and (max-height: 760px) {
   .footer__map {
     display: none;
+  }
+}
+
+/* The offer bar takes space from the pinned screen, so the map gives some back. */
+@media (max-width: 1024px) {
+  html.has-ticker .footer__logo {
+    width: 6.5rem;
+  }
+
+  html.has-ticker .footer__top,
+  html.has-ticker .footer__bottom {
+    gap: 0.75rem;
+  }
+
+  html.has-ticker .footer__columns {
+    gap: 0.75rem;
+  }
+
+  html.has-ticker .footer__map {
+    height: 4.5rem;
+    margin-top: 0.5rem;
+  }
+
+  html.has-ticker .footer__stage {
+    padding-top: 4.25rem;
   }
 }

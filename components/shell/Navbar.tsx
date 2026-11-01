@@ -10,6 +10,7 @@ import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { getLenis } from "@/lib/site";
 import { Arrow, Logo } from "@/components/ui/Icons";
 import { VectorGrid } from "@/components/ui/VectorGrid";
+import { AudioPlayer } from "./AudioPlayer";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { TransitionLink } from "./TransitionLink";
 import "./Navbar.css";
@@ -194,6 +195,7 @@ export function Navbar() {
           </span>
         </button>
         <LanguageSwitch />
+        <AudioPlayer />
         <div className="navbar__tip" aria-hidden="true">
           <span>{t.shell.scrollTip}</span>
         </div>

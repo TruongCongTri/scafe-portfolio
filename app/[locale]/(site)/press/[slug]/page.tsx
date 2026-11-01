@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { content } = await getI18n();
   const article = content.articles.find((item) => item.slug === slug);
   if (!article) return {};
-  // Sample stories stay out of search until real ones replace them.
-  return { ...(await pageMetadata(`/press/${slug}`, article.title, article.body[0])), robots: { index: false, follow: true } };
+  const metadata = await pageMetadata(`/press/${slug}`, article.title, article.body[0]);
+  return article.sample ? { ...metadata, robots: { index: false, follow: true } } : metadata;
 }
 
 export default function ArticlePage({ params }: PageProps) {

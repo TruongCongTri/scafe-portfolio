@@ -1,0 +1,87 @@
+html.has-ticker {
+  --ticker: 2.5rem;
+}
+
+@media (min-width: 1025px) {
+  html.has-ticker {
+    --ticker: 3rem;
+  }
+}
+
+/* Under the side rail and top bar, above everything that scrolls. */
+.ticker {
+  position: fixed;
+  z-index: 58;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  height: var(--ticker, 2.5rem);
+  background: var(--cream);
+  box-shadow: 0 -1px 0 rgba(26, 8, 9, 0.2);
+  color: var(--maroon);
+}
+
+.ticker__link {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.ticker__track {
+  display: inline-flex;
+  font-size: 1.15rem;
+  line-height: 1.34;
+  white-space: nowrap;
+  animation: ticker-run 40s linear infinite;
+}
+
+.ticker__track span {
+  padding-right: 4rem;
+  white-space: pre;
+}
+
+.ticker__close {
+  flex: none;
+  width: 2.75rem;
+  height: 100%;
+  background: var(--cream);
+  box-shadow: -1px 0 0 rgba(26, 8, 9, 0.15);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+@keyframes ticker-run {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (hover: hover) {
+  .ticker:hover .ticker__track {
+    animation-play-state: paused;
+  }
+}
+
+/* Keeps the deal readable without any movement. */
+@media (prefers-reduced-motion: reduce) {
+  .ticker__track {
+    animation: none;
+  }
+
+  .ticker__track span:not(:first-child) {
+    display: none;
+  }
+
+  .ticker__track span {
+    padding-left: 1.25rem;
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 1025px) {
+  .ticker__track {
+    font-size: 1.5rem;
+  }
+}

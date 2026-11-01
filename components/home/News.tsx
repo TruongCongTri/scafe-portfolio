@@ -159,8 +159,8 @@ export function News() {
               <Suspense fallback={null}>
                 <Swiper slidesPerView="auto" spaceBetween={36} grabCursor>
                   {content.nights.map((night) => (
-                    <SwiperSlide key={night.title} className="home-news__slide">
-                      <TransitionLink href="/nights" className="home-news__card">
+                    <SwiperSlide key={night.id} className="home-news__slide">
+                      <TransitionLink href={`/nights/${night.id}`} className="home-news__card">
                         <figure>
                           <Image src={night.image} alt={night.title} fill sizes="(max-width: 1024px) 70vw, 30vw" className="cover" />
                         </figure>

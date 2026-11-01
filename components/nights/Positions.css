@@ -63,8 +63,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 3rem;
-  padding: 5rem 7rem 3rem 3rem;
+  gap: 2rem;
+  padding: 3.5rem 7rem calc(3rem + var(--ticker, 0px)) 3rem;
   font-size: 1.375rem;
 }
 
@@ -80,6 +80,19 @@
 
 .positions__content h3 {
   font-size: 3.25rem;
+}
+
+.positions__actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.positions__details {
+  color: var(--maroon);
+  font-size: 1.5rem;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 .positions__content li {
@@ -102,7 +115,7 @@
   .positions__item {
     display: flex;
     flex-direction: column;
-    height: calc(100svh - var(--gutter) * 2 - 3.25rem);
+    height: calc(100svh - var(--gutter) * 2 - 3.25rem - var(--ticker, 0px));
     min-height: 0;
     border-bottom: 1px solid rgba(26, 8, 9, 0.3);
   }
@@ -136,7 +149,12 @@
     font-size: 1.3rem;
   }
 
-  .positions__content .rect-bt {
+  .positions__actions {
+    gap: 1rem;
     margin-top: 0.25rem;
+  }
+
+  .positions__details {
+    font-size: 1.1rem;
   }
 }

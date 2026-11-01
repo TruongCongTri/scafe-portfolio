@@ -5,13 +5,12 @@ import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { onSiteReady, prefersReducedMotion } from "@/lib/site";
-import { useContactForm } from "@/components/shell/ContactForms";
-import { RectButton } from "@/components/ui/RectButton";
+import { TransitionLink } from "@/components/shell/TransitionLink";
+import { EventAsk } from "./EventAsk";
 import "./Positions.css";
 
 export function Positions() {
   const root = useRef<HTMLElement>(null);
-  const openForm = useContactForm();
   const { t, content } = useI18n();
   const marquee = `${t.nights.marquee} - `.repeat(6);
 
@@ -53,13 +52,17 @@ export function Positions() {
       <div className="positions__box">
         <div className="positions__list">
           {content.nights.map((night) => (
-            <article key={night.title} className="positions__item">
+            <article key={night.id} className="positions__item">
               <figure>
-                <Image src={night.image} alt={night.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="cover" />
+                <TransitionLink href={`/nights/${night.id}`} aria-label={`${t.nights.details}: ${night.title}`}>
+                  <Image src={night.image} alt={night.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="cover" />
+                </TransitionLink>
               </figure>
               <div className="positions__content">
                 <header>
-                  <h2 className="display">{night.title}</h2>
+                  <h2 className="display">
+                    <TransitionLink href={`/nights/${night.id}`}>{night.title}</TransitionLink>
+                  </h2>
                   <h3 className="serif">{night.heading}</h3>
                 </header>
                 <p>{night.text}</p>
@@ -68,18 +71,12 @@ export function Positions() {
                     <li key={note}>{note}</li>
                   ))}
                 </ul>
-                <RectButton
-                  label={t.nights.signUp}
-                  onClick={() =>
-                    openForm({
-                      tone: "orange",
-                      title: night.title,
-                      text: night.heading,
-                      subject: `${t.nights.signUpSubject} ${night.title}`,
-                      messageLabel: t.nights.signUpMessage,
-                    })
-                  }
-                />
+                <div className="positions__actions">
+                  <EventAsk title={night.title} heading={night.heading} />
+                  <TransitionLink href={`/nights/${night.id}`} className="positions__details display">
+                    {t.nights.details}
+                  </TransitionLink>
+                </div>
               </div>
             </article>
           ))}

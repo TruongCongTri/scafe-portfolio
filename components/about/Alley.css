@@ -1,55 +1,102 @@
-.alley__stage {
-  background: var(--ink);
+.alley {
+  position: relative;
   color: var(--cream);
 }
 
 .alley__bg {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.alley__bg-wrapper {
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  height: 100vh;
+  background: var(--ink);
+}
+
+.alley__figure {
+  position: absolute;
   inset: 0;
 }
 
-.alley__bg::after {
+.alley__figure::after {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(26, 8, 9, 0.4);
 }
 
+.alley__box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  min-height: 100vh;
+}
+
 .alley__title {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  font-size: 13rem;
+  font-size: 15rem;
   line-height: 1;
   white-space: nowrap;
   writing-mode: vertical-rl;
-  translate: -50% 0;
 }
 
 .alley__subtitle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   width: 46rem;
   max-width: calc(100vw - 2.5rem);
+  padding-bottom: 3rem;
   font-size: 3.25rem;
   text-align: center;
-  translate: -50% -50%;
+}
+
+@media (min-width: 1025px) {
+  .alley {
+    margin-top: -75vh;
+    padding-top: 175vh;
+  }
+
+  /* Outlasts the section, so the landscape stays behind the rising Pillars. */
+  .alley__bg {
+    height: calc(100% + 225vh);
+  }
+
+  .alley__bg-wrapper {
+    clip-path: polygon(
+      0 var(--y1, 100%),
+      var(--x2, 27.7%) var(--y2, 100%),
+      var(--x3, 92.7%) var(--y3, 100%),
+      100% var(--y4, 100%),
+      100% 100%,
+      0 100%
+    );
+  }
+
+  /* Taller than the stage, with room for its slow drift upward. */
+  .alley__figure {
+    bottom: -25%;
+  }
 }
 
 @media (max-width: 1024px) {
+  .alley__box {
+    min-height: 100svh;
+    padding: 5rem var(--box) 3rem;
+  }
+
   .alley__title {
     font-size: 6.5rem;
   }
 
   .alley__subtitle {
+    width: auto;
+    padding-bottom: 0;
     font-size: 2.25rem;
-  }
-}
-
-/* Vietnamese lines run taller, so the type drops to keep the scene on screen. */
-@media (min-width: 1025px) {
-  html[lang="vi"] .alley__title {
-    font-size: 9.5rem;
   }
 }

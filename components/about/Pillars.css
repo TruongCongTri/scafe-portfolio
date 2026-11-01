@@ -1,28 +1,31 @@
-.pillars__stage {
+.pillars {
+  position: relative;
+  pointer-events: none;
+}
+
+.pillars__box {
+  position: relative;
   background: var(--ink);
   color: var(--cream);
+  pointer-events: auto;
+}
+
+.pillars__grid {
+  position: absolute;
+  inset: 0;
 }
 
 .pillars__images {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 36%;
-  width: 29%;
-}
-
-.pillars__images figure {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
+  display: none;
 }
 
 .pillars__item {
-  position: absolute;
-  inset: 0;
+  position: relative;
+}
+
+.pillars__inner {
   display: flex;
   justify-content: space-between;
-  pointer-events: none;
 }
 
 .pillars__left,
@@ -30,7 +33,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 24%;
 }
 
 .pillars__left {
@@ -38,12 +40,12 @@
 }
 
 .pillars__right {
-  width: 22rem;
   align-items: flex-end;
+  width: 22rem;
 }
 
 .pillars__text {
-  font-size: 1.2rem;
+  font-size: 1.375rem;
 }
 
 .pillars__title {
@@ -58,60 +60,143 @@
 
 .pillars__subtitle {
   align-self: flex-start;
-  font-size: 2.75rem;
+  font-size: 3.25rem;
 }
 
-@media (max-width: 1024px) {
+.pillars__photo {
+  display: none;
+}
+
+@media (min-width: 1025px) {
+  .pillars {
+    margin-top: -20vh;
+    padding-top: 100vh;
+  }
+
+  .pillars__box {
+    clip-path: polygon(
+      0 calc(var(--end, 100vh) - 100vh * var(--y1, 0)),
+      25% calc(var(--end, 100vh) - 100vh * var(--y2, 0)),
+      60% calc(var(--end, 100vh) - 100vh * var(--y3, 0)),
+      75% calc(var(--end, 100vh) - 100vh * var(--y4, 0)),
+      100% calc(var(--end, 100vh) - 100vh * var(--y5, 0)),
+      100% 100%,
+      0 100%
+    );
+  }
+
+  .pillars__grid {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    margin-bottom: -100vh;
+  }
+
+  /* The centre column stays pinned while the words scroll past it. */
   .pillars__images {
-    top: 4.75rem;
-    right: var(--box);
-    bottom: auto;
-    left: auto;
-    width: 45%;
-    height: 38%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    display: block;
+    width: 33vw;
+    translate: -50% 0;
+  }
+
+  .pillars__images-wrapper {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+
+  .pillars__figure {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .pillars__figure:not(:first-child) {
+    clip-path: polygon(
+      0 calc(100% - 100% * var(--y1, 0)),
+      25% calc(100% - 100% * var(--y2, 0)),
+      60% calc(100% - 100% * var(--y3, 0)),
+      75% calc(100% - 100% * var(--y4, 0)),
+      100% calc(100% - 100% * var(--y5, 0)),
+      100% 100%,
+      0 100%
+    );
   }
 
   .pillars__item {
+    height: 100vh;
+    pointer-events: none;
+  }
+
+  .pillars__inner {
+    height: 100vh;
+  }
+
+  /* The last pillar holds while Partners wipes down over it. */
+  .pillars__item:last-of-type {
+    height: 300vh;
+  }
+
+  .pillars__item:last-of-type .pillars__inner {
+    position: sticky;
+    top: 0;
+  }
+
+  html[lang="vi"] .pillars__title {
+    font-size: 5.75rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 1024px) {
+  .pillars__inner {
     flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .pillars__left,
+  .pillars__right {
+    width: auto;
   }
 
   .pillars__left {
-    order: 2;
-    width: auto;
-    gap: 1rem;
-    flex-direction: column-reverse;
+    gap: 1.5rem;
   }
 
   .pillars__right {
-    flex: 1;
-    width: 45%;
-    align-items: flex-start;
-    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
     gap: 1rem;
   }
 
-  .pillars__num {
-    font-size: 7rem;
-    writing-mode: horizontal-tb;
-  }
-
-  .pillars__subtitle {
-    font-size: 1.75rem;
+  .pillars__text {
+    font-size: 1rem;
   }
 
   .pillars__title {
     font-size: 5rem;
   }
 
-  .pillars__text {
-    font-size: 1rem;
+  .pillars__num {
+    font-size: 5rem;
+    writing-mode: horizontal-tb;
   }
-}
 
-/* Vietnamese lines run taller, so the type drops to keep the scene on screen. */
-@media (min-width: 1025px) {
-  html[lang="vi"] .pillars__title {
-    font-size: 5.75rem;
-    white-space: nowrap;
+  .pillars__subtitle {
+    align-self: center;
+    font-size: 2rem;
+  }
+
+  .pillars__photo {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 1.2;
   }
 }

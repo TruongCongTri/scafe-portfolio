@@ -1,9 +1,27 @@
-.about-hero__stage {
+.about-hero {
+  position: relative;
+  height: 100vh;
+  color: var(--cream);
+}
+
+.about-hero__bg {
+  position: absolute;
+  inset: 0;
+  background: var(--maroon);
+}
+
+.about-hero__grid {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.about-hero__box {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(--maroon);
-  color: var(--cream);
+  height: 100%;
 }
 
 .about-hero__header {
@@ -20,12 +38,10 @@
   padding-left: 34rem;
 }
 
-.about-hero__arrow {
+.about-hero__header .about-hero__arrow {
   position: absolute;
   bottom: 1.5rem;
   left: 40rem;
-  width: 10rem;
-  transform: rotate(90deg);
 }
 
 .about-hero__footer {
@@ -43,10 +59,32 @@
 
 .about-hero__footer p {
   width: 32rem;
-  font-size: 1.2rem;
+  font-size: 1.375rem;
+}
+
+@media (min-width: 1025px) {
+  /* Outlasts the hero, so the grid stays behind the rising landscape. */
+  .about-hero__bg {
+    bottom: auto;
+    height: 275vh;
+  }
+
+  html[lang="vi"] .about-hero__title {
+    font-size: 10.5rem;
+  }
 }
 
 @media (max-width: 1024px) {
+  .about-hero {
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .about-hero__box {
+    gap: 2rem;
+    min-height: 100svh;
+  }
+
   .about-hero__title {
     font-size: 5.25rem;
     white-space: normal;
@@ -56,12 +94,11 @@
     padding-left: 0;
   }
 
-  .about-hero__arrow {
+  .about-hero__header .about-hero__arrow {
     position: relative;
     bottom: auto;
     left: auto;
-    width: 4.5rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
   }
 
   .about-hero__footer {
@@ -76,22 +113,13 @@
   }
 
   .about-hero__footer h2 {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 
   .about-hero__footer p {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
-}
 
-/* Vietnamese lines run taller, so the type drops to keep the scene on screen. */
-@media (min-width: 1025px) {
-  html[lang="vi"] .about-hero__title {
-    font-size: 10.5rem;
-  }
-}
-
-@media (max-width: 1024px) {
   html[lang="vi"] .about-hero__title {
     font-size: 3.9rem;
   }

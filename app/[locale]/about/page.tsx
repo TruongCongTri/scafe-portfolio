@@ -1,5 +1,6 @@
 import { getI18n } from "@/i18n/server";
 import { AboutHero } from "@/components/about/AboutHero";
+import { AboutTeam } from "@/components/about/AboutTeam";
 import { Alley } from "@/components/about/Alley";
 import { Partners } from "@/components/about/Partners";
 import { Pillars } from "@/components/about/Pillars";
@@ -18,6 +19,7 @@ export default function AboutPage() {
       <Alley />
       <Pillars />
       <Partners />
+      <AboutTeam />
       <Contact />
     </>
   );

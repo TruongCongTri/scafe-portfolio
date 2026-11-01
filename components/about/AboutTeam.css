@@ -1,0 +1,88 @@
+.about-team {
+  position: relative;
+  color: var(--cream);
+  pointer-events: none;
+}
+
+.about-team__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 125vh);
+}
+
+.about-team__bg-wrapper {
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  height: 100vh;
+  pointer-events: auto;
+}
+
+.about-team__figure {
+  position: absolute;
+  inset: 0;
+}
+
+.about-team__figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.about-team__box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  padding-top: 200vh;
+  padding-bottom: 30vh;
+  text-align: center;
+}
+
+.about-team__box .rect-bt {
+  pointer-events: auto;
+}
+
+.about-team__title {
+  font-size: 10rem;
+}
+
+@media (min-width: 1025px) {
+  /* Level with the end of Partners, which holds still underneath the split. */
+  .about-team {
+    margin-top: -225vh;
+  }
+
+  .about-team__bg-wrapper {
+    clip-path: polygon(
+      var(--x1, 50%) 0,
+      var(--x2, 50%) 100%,
+      var(--x3, 50%) 100%,
+      var(--x4, 50%) 40%,
+      var(--x5, 50%) 0
+    );
+  }
+
+  html[lang="vi"] .about-team__title {
+    font-size: 7.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-team__box {
+    gap: 2rem;
+    padding-top: 60vh;
+  }
+
+  .about-team__title {
+    font-size: 4.5rem;
+  }
+
+  html[lang="vi"] .about-team__title {
+    font-size: 3.2rem;
+  }
+}

@@ -1,15 +1,4 @@
-.about-hero {
-  --scene: 300vh;
-}
-
-.alley {
-  --scene: 520vh;
-}
-
-.pillars {
-  --scene: 640vh;
-}
-
-.partners {
-  --scene: 645vh;
+/* The team photo stays pinned through the 125vh contact reveal. */
+.about-team + .contact.scene--overlap {
+  margin-top: -50vh;
 }

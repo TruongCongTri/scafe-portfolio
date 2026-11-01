@@ -68,12 +68,16 @@ export function staggerFrom(targets: gsap.DOMTarget, vars: gsap.TweenVars, each:
 // A section that scrolls normally but rises on a wavy edge held to the viewport
 // bottom: --end tracks that bottom in the section's own coordinates. Once risen, the
 // clip comes off so nothing in the section can be cut.
-export function riseSection(section: HTMLElement, wrapper: HTMLElement) {
+export function trackViewportEnd(element: HTMLElement) {
   const setEnd = () => {
-    section.style.setProperty("--end", `${window.innerHeight - section.getBoundingClientRect().top}px`);
+    element.style.setProperty("--end", `${window.innerHeight - element.getBoundingClientRect().top}px`);
   };
   setEnd();
-  ScrollTrigger.create({ trigger: section, start: "top bottom", end: "bottom top", onUpdate: setEnd, onRefresh: setEnd });
+  ScrollTrigger.create({ trigger: element, start: "top bottom", end: "bottom top", onUpdate: setEnd, onRefresh: setEnd });
+}
+
+export function riseSection(section: HTMLElement, wrapper: HTMLElement) {
+  trackViewportEnd(section);
 
   const clip = (value: string) => () => {
     wrapper.style.clipPath = value;

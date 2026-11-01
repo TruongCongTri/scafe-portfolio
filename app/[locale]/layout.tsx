@@ -38,7 +38,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[locale]">)
     <html lang={locale} className={`is-loading ${anton.variable} ${hanken.variable} ${newsreader.variable}`}>
       <body>
         <noscript>
-          <style>{`.preloader{display:none}html.is-loading{overflow:auto}.home-hero{--start:0;--orange-start:1}.home-pours{--x1:0%;--x2:0%}.contact{--y1:0%}.contact.is-locked .contact__stage{pointer-events:auto}.home-room__stage,.home-crew__stage,.home-news__stage{clip-path:none}.home-crew{--start:0}.featured__wrapper,.articles__wrapper,.signature__stage,.crew-close__stage,.leads__inner figure{clip-path:none}.home-crew__band,.home-crew__images{display:none}.home-hero__title,.home-hero__copy,.home-hero__arrow{visibility:visible}`}</style>
+          <style>{`.preloader{display:none}html.is-loading{overflow:auto}.home-hero{--start:0;--orange-start:1}.home-pours{--x1:0%;--x2:0%}.contact{--y1:0%}.contact.is-locked .contact__stage{pointer-events:auto}.home-room__stage,.home-crew__stage,.home-news__stage{clip-path:none}.home-crew{--start:0}.alley__bg-wrapper,.pillars__box,.partners__wrapper,.about-team__bg-wrapper,.featured__wrapper,.articles__wrapper,.signature__stage,.crew-close__stage,.leads__inner figure{clip-path:none}.home-crew__band,.home-crew__images{display:none}.home-hero__title,.home-hero__copy,.home-hero__arrow{visibility:visible}`}</style>
         </noscript>
         <I18nProvider locale={locale} t={t}>
           <SmoothScroll />

@@ -14,7 +14,7 @@
       "Mở cửa đến khuya",
       "cả bảy ngày trong tuần"
     ],
-    "address": "17 Ember Alley, Old Town"
+    "address": "60/69 Lý Chính Thắng, Xuân Hòa, Hồ Chí Minh, Việt Nam"
   },
   "nav": {
     "menu": "Thực đơn",
@@ -45,7 +45,8 @@
     "follow": "Theo dõi",
     "copyright": "Bản quyền",
     "privacy": "Quyền riêng tư",
-    "hello": "Gửi lời chào"
+    "hello": "Gửi lời chào",
+    "map": "Scafe trên Google Maps"
   },
   "forms": {
     "contact": {
@@ -263,7 +264,8 @@
       "Bartender quầy bar",
       "Pha chế cà phê",
       "TBD"
-    ]
+    ],
+    "support": "Đội ngũ hỗ trợ"
   },
   "about": {
     "hero": {
@@ -333,7 +335,12 @@
       "đội ngũ"
     ],
     "subtitle": "Những con người biến ca làm dài thành những đêm khó quên.",
-    "text": "Từ người tạc đá đến kẻ săn đĩa than, đội ngũ của chúng tôi cũng sôi động như chính căn phòng này. Đây là những người tỉ mỉ với từng lần rót, từng khoảnh khắc, để mỗi vị khách đều được chăm sóc chu đáo."
+    "text": "Từ người tạc đá đến kẻ săn đĩa than, đội ngũ của chúng tôi cũng sôi động như chính căn phòng này. Đây là những người tỉ mỉ với từng lần rót, từng khoảnh khắc, để mỗi vị khách đều được chăm sóc chu đáo.",
+    "closeTitle": [
+      "Gặp gỡ",
+      "những người",
+      "còn lại"
+    ]
   },
   "menu": {
     "heroAlt": "Quầy bar đầy ắp chai rượu",

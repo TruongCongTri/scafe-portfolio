@@ -9,7 +9,9 @@ type Dictionary = typeof en;
 export const site = {
   name: "Scafe",
   email: "hello@scafe.example",
-  timeZone: "America/New_York",
+  timeZone: "Asia/Ho_Chi_Minh",
+  mapEmbed:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1647.8465154263454!2d106.68438769438231!3d10.791264980143445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752916755d6ef9%3A0xbb800b91d5b8f89f!2zU-KApiBDYWZlIEJhcg!5e0!3m2!1sen!2s!4v1793515406090!5m2!1sen!2s",
 };
 
 const navLinks = [
@@ -21,9 +23,9 @@ const navLinks = [
 ] as const;
 
 export const socials = [
-  { label: "instagram", href: "https://www.instagram.com/" },
-  { label: "tiktok", href: "https://www.tiktok.com/" },
-  { label: "spotify", href: "https://open.spotify.com/" },
+  { label: "facebook", href: "https://www.facebook.com/profile.php?id=61591109050358" },
+  { label: "instagram", href: "https://www.instagram.com/scafe.bar/" },
+  { label: "threads", href: "https://www.threads.com/@scafe.bar" },
 ];
 
 const heroImages = [
@@ -68,6 +70,34 @@ const leadPeople: { name?: string; image: string }[] = [
 ];
 
 // `focus` keeps each portrait photo's glass in frame on a wide stage.
+// Supporting crew, in list order. The page shows up to MAX_SUPPORT of them.
+const supportNames = [...Array<string>(18).fill("TBD"), "Công Trí"];
+
+const MAX_SUPPORT = 19;
+
+// One drink per row, repeating if the list ever outgrows it.
+const supportImages = [
+  "/images/drinks/ssspicy.jpg",
+  "/images/drinks/tbd.jpg",
+  "/images/drinks/b52.jpg",
+  "/images/menu-drinks/negroni.webp",
+  "/images/menu-drinks/mojito.webp",
+  "/images/menu-drinks/aperol-spritz.webp",
+  "/images/menu-drinks/margarita.webp",
+  "/images/menu-drinks/paloma.webp",
+  "/images/menu-drinks/mai-tai.webp",
+  "/images/menu-drinks/whisky-sour.webp",
+  "/images/menu-drinks/gin-fizz.webp",
+  "/images/menu-drinks/aviation.webp",
+  "/images/menu-drinks/clover-club.webp",
+  "/images/menu-drinks/midori-sour.webp",
+  "/images/menu-drinks/sidecar.webp",
+  "/images/menu-drinks/pina-colada.webp",
+  "/images/menu-drinks/tequila-sunrise.webp",
+  "/images/menu-drinks/godfather.webp",
+  "/images/menu-drinks/mimosa.webp",
+];
+
 const signatureDrinks = [
   { title: "SSSPICY", image: "/images/drinks/ssspicy.jpg", focus: "50% 62%" },
   { title: "TBD", image: "/images/drinks/tbd.jpg", focus: "50% 38%" },
@@ -158,6 +188,11 @@ export const buildContent = (t: Dictionary) => ({
     const role = t.people.leads[index];
     return { image: lead.image, name: lead.name ?? role, role: lead.name && role };
   }),
+  support: supportNames.slice(0, MAX_SUPPORT).map((name, index) => ({
+    name,
+    role: t.people.support,
+    image: supportImages[index % supportImages.length],
+  })),
   signatures: signatureDrinks.map((drink, index) => ({ ...drink, ...t.menu.signatures[index] })),
   menus: {
     evening: joinMenu(t.menu.evening.groups, eveningDetails),

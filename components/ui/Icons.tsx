@@ -17,6 +17,15 @@ export function Arrow({ className = "" }: { className?: string }) {
   );
 }
 
+// Points down the page from inside a mask, so it can drop into view.
+export function DropArrow({ className = "" }: { className?: string }) {
+  return (
+    <span className={`drop-arrow ${className}`}>
+      <Arrow />
+    </span>
+  );
+}
+
 // The house stamp: a coaster ring around the initial.
 export function Stamp({ className = "" }: { className?: string }) {
   return (

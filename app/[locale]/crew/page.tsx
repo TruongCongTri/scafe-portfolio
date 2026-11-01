@@ -1,7 +1,9 @@
 import { getI18n } from "@/i18n/server";
+import { CrewClose } from "@/components/crew/CrewClose";
 import { CrewHero } from "@/components/crew/CrewHero";
 import { Leads } from "@/components/crew/Leads";
 import { Contact } from "@/components/ui/Contact";
+import "./page.css";
 
 export async function generateMetadata() {
   const { t } = await getI18n();
@@ -13,7 +15,8 @@ export default function CrewPage() {
     <>
       <CrewHero />
       <Leads />
-      <Contact flow />
+      <CrewClose />
+      <Contact />
     </>
   );
 }

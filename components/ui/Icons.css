@@ -9,3 +9,31 @@
 .arrow {
   aspect-ratio: 120 / 100;
 }
+
+/* The mask is sized for the arrow after its quarter turn. */
+.drop-arrow {
+  --size: 9rem;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: calc(var(--size) * 0.84);
+  height: var(--size);
+  flex-shrink: 0;
+}
+
+.drop-arrow .arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: var(--size);
+  max-width: none;
+  translate: -50% -50%;
+  rotate: 90deg;
+}
+
+@media (max-width: 1024px) {
+  .drop-arrow {
+    --size: 4.5rem;
+  }
+}

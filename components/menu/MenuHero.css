@@ -22,8 +22,13 @@
 
 .menu-hero__box {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
   width: 100%;
   transform-origin: 50% 100%;
+  color: var(--cream);
 }
 
 .menu-hero__title {

@@ -2,7 +2,7 @@
   position: relative;
   display: grid;
   grid-template-columns: 60% 40%;
-  height: 100vh;
+  min-height: 100vh;
   background: var(--maroon);
   color: var(--cream);
 }
@@ -12,7 +12,6 @@
   flex-direction: column;
   justify-content: space-between;
   padding-right: 3rem;
-  border-right: 1px solid rgba(225, 212, 195, 0.4);
 }
 
 .crew-hero__title {
@@ -25,14 +24,43 @@
   font-size: 2.75rem;
 }
 
-.crew-hero__arrow {
-  width: 9rem;
-  transform: rotate(90deg);
+.crew-hero__right {
+  --p: 1;
+  position: relative;
+  font-size: 1.375rem;
 }
 
-.crew-hero__right {
-  padding: 3rem 7rem 3rem 3rem;
-  font-size: 1.2rem;
+/* The divider grows down the page on load. */
+.crew-hero__right::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: calc(100% * var(--p));
+  background: rgba(225, 212, 195, 0.4);
+}
+
+.crew-hero__inner {
+  padding: 5rem 7rem 3rem 3rem;
+}
+
+@media (min-width: 1025px) {
+  /* The row is fixed: the taller pinned column must not stretch it. */
+  .crew-hero {
+    height: 100vh;
+    grid-template-rows: 100vh;
+  }
+
+  .crew-hero__right {
+    align-self: start;
+    height: 190vh;
+  }
+
+  .crew-hero__inner {
+    position: sticky;
+    top: 0;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -45,7 +73,6 @@
   .crew-hero__left {
     gap: 2rem;
     padding-right: var(--box);
-    border-right: 0;
   }
 
   .crew-hero__title {
@@ -57,12 +84,15 @@
     font-size: 2rem;
   }
 
-  .crew-hero__arrow {
-    width: 4.5rem;
+  .crew-hero__right {
+    font-size: 1rem;
   }
 
-  .crew-hero__right {
+  .crew-hero__right::after {
+    display: none;
+  }
+
+  .crew-hero__inner {
     padding: 0 var(--box) var(--box);
-    font-size: 1rem;
   }
 }

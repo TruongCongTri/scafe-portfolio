@@ -14,7 +14,7 @@
       "Pouring late",
       "seven nights a week"
     ],
-    "address": "17 Ember Alley, Old Town"
+    "address": "60/69 Lý Chính Thắng, Xuân Hòa, Hồ Chí Minh, Vietnam"
   },
   "nav": {
     "menu": "Menu",
@@ -45,7 +45,8 @@
     "follow": "Follow us",
     "copyright": "Copyright",
     "privacy": "Privacy",
-    "hello": "Say hello"
+    "hello": "Say hello",
+    "map": "Scafe on Google Maps"
   },
   "forms": {
     "contact": {
@@ -264,7 +265,8 @@
       "Bar Bartender",
       "Cafe Bartender",
       "TBD"
-    ]
+    ],
+    "support": "Supporting Crew"
   },
   "about": {
     "hero": {
@@ -334,7 +336,12 @@
       "crew"
     ],
     "subtitle": "The people turning long shifts into unforgettable nights.",
-    "text": "From ice carvers to record diggers, our crew is as lively as the room itself. This is the team that obsesses over every pour and every moment, making sure each guest is looked after properly."
+    "text": "From ice carvers to record diggers, our crew is as lively as the room itself. This is the team that obsesses over every pour and every moment, making sure each guest is looked after properly.",
+    "closeTitle": [
+      "Meet the",
+      "rest of",
+      "the crew"
+    ]
   },
   "menu": {
     "heroAlt": "A crowded back bar lined with bottles",

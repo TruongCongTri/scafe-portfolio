@@ -1,0 +1,199 @@
+.crew-close__track {
+  position: absolute;
+  inset: 0;
+}
+
+.crew-close__stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream);
+  color: var(--maroon);
+}
+
+.crew-close__title {
+  font-size: 13rem;
+  text-align: center;
+}
+
+/* Scrolls over the pinned title, from below it to the contact rows above. */
+.crew-close__list-wrapper {
+  position: relative;
+  padding: 300vh 7rem 275vh calc(var(--rail) + var(--box));
+  color: var(--ink);
+}
+
+.crew-close__list-box {
+  position: relative;
+}
+
+.crew-close__list {
+  pointer-events: auto;
+}
+
+.crew-close__row {
+  --opacity: 0.4;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgb(26 8 9 / calc(var(--opacity) * 100%));
+  transition: border-color 0.5s ease-in-out;
+}
+
+.crew-close__row:first-child {
+  border-top: 1px solid rgb(26 8 9 / 40%);
+}
+
+.crew-close__content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  opacity: var(--opacity);
+  transition: opacity 0.5s ease-in-out;
+}
+
+.crew-close__image {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: 6.8125rem;
+  height: 8.8125rem;
+}
+
+/* A flat line at the bottom until the top and bottom edges are driven apart. */
+.crew-close__images {
+  display: none;
+}
+
+.crew-close__row.is-active {
+  --opacity: 1;
+}
+
+.crew-close__num {
+  width: 12.5%;
+  font-size: 2.25rem;
+}
+
+/* Tight enough for 19 rows on one screen. Nothing masks these names, so marks stay whole. */
+.crew-close__row .crew-close__num.display,
+.crew-close__row .crew-close__name.display {
+  line-height: 1;
+}
+
+.crew-close__name {
+  flex: 1;
+  font-size: 2.25rem;
+}
+
+.crew-close__role {
+  flex: 1;
+  font-size: 1.375rem;
+  text-align: right;
+}
+
+@media (min-width: 1025px) {
+  /* Rows hold the sources; only copies in the floating frame are ever seen. */
+  .crew-close__row .crew-close__image {
+    display: none;
+  }
+
+  .crew-close__images {
+    position: absolute;
+    top: 0;
+    left: 53%;
+    display: flex;
+    pointer-events: none;
+  }
+
+  .crew-close__images .crew-close__image {
+    /* Resets the crack's variables of the same names, inherited from .crew-close. */
+    --y1: 100%;
+    --y2: 100%;
+    --y3: 100%;
+    --y4: 100%;
+    --y5: 100%;
+    --y6: 100%;
+    --y7: 100%;
+    --y8: 100%;
+    position: absolute;
+    width: 13.5rem;
+    height: 17.5rem;
+    translate: -50% -50%;
+    clip-path: polygon(
+      0 var(--y1, 100%),
+      27.7% var(--y2, 100%),
+      65% var(--y25, 100%),
+      92.7% var(--y3, 100%),
+      100% var(--y4, 100%),
+      100% var(--y5, 100%),
+      92.7% var(--y6, 100%),
+      65% var(--y65, 100%),
+      27.7% var(--y7, 100%),
+      0 var(--y8, 100%)
+    );
+  }
+}
+
+@media (hover: hover) {
+  .crew-close__row:hover {
+    --opacity: 1;
+  }
+}
+
+/* The crack opens from the column divider: each point travels out to its own edge. */
+@media (min-width: 1025px) {
+  .crew-close {
+    --right-x: 60%;
+  }
+
+  .crew-close__stage {
+    clip-path: polygon(
+      calc(var(--right-x) - var(--right-x) * var(--x1, 0)) 0,
+      calc(var(--right-x) - var(--right-x) * var(--x2, 0)) var(--y2, 33%),
+      calc(var(--right-x) - var(--right-x) * var(--x3, 0)) var(--y3, 66%),
+      calc(var(--right-x) - var(--right-x) * var(--x4, 0)) 100%,
+      calc(var(--right-x) + (100% - var(--right-x)) * var(--x5, 0)) 100%,
+      calc(var(--right-x) + (100% - var(--right-x)) * var(--x6, 0)) var(--y6, 66%),
+      calc(var(--right-x) + (100% - var(--right-x)) * var(--x7, 0)) var(--y7, 33%),
+      calc(var(--right-x) + (100% - var(--right-x)) * var(--x8, 0)) 0
+    );
+  }
+}
+
+@media (max-width: 1024px) {
+  .crew-close__title {
+    font-size: 4.5rem;
+  }
+
+  .crew-close__list-wrapper {
+    padding: 130vh var(--box) 200vh;
+  }
+
+  .crew-close__content {
+    flex-wrap: wrap;
+  }
+
+  .crew-close__num {
+    width: 2.5rem;
+    font-size: 1.5rem;
+  }
+
+  .crew-close__name {
+    font-size: 1.5rem;
+  }
+
+  .crew-close__role {
+    flex-basis: 100%;
+    padding-left: 2.5rem;
+    font-size: 0.9rem;
+    text-align: left;
+  }
+}
+
+@media (max-width: 1024px) {
+  html[lang="vi"] .crew-close__title {
+    font-size: 3.4rem;
+  }
+}

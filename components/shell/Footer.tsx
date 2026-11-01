@@ -35,6 +35,14 @@ export function Footer() {
             <div className="footer__group footer__address">
               <h3>{t.footer.address}</h3>
               <p>{t.site.address}</p>
+              <iframe
+                className="footer__map"
+                src={site.mapEmbed}
+                title={t.footer.map}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
             </div>
             <div className="footer__navs">
               <div className="footer__group">

@@ -1,18 +1,23 @@
 .leads {
+  /* Keeps the last row's negative margin from collapsing into the next section's. */
+  display: flow-root;
   background: var(--maroon);
   color: var(--cream);
 }
 
 .leads__row {
+  position: relative;
+}
+
+.leads__wrapper {
   display: grid;
   grid-template-columns: 60% 40%;
-  border-top: 1px solid rgba(225, 212, 195, 0.4);
+  background: var(--maroon);
 }
 
 .leads__left {
   display: flex;
   flex-direction: column;
-  border-right: 1px solid rgba(225, 212, 195, 0.4);
 }
 
 /* Names carry Vietnamese marks in either language, which Anton's tight default clips. */
@@ -33,28 +38,114 @@
 }
 
 .leads__right {
-  padding: 2.5rem 7rem 3rem 3rem;
-}
-
-.leads__right h3 {
-  margin-bottom: 2rem;
-  font-size: 2.75rem;
-}
-
-.leads__right figure {
   position: relative;
-  width: 24rem;
-  aspect-ratio: 4 / 5;
+}
+
+.leads__right::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(225, 212, 195, 0.4);
+}
+
+.leads__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.leads__inner h3 {
+  font-size: 3.25rem;
+}
+
+.leads__inner figure {
+  position: relative;
   overflow: hidden;
+  width: 100%;
+  height: min(36.25rem, 44.5vh);
+  margin-top: auto;
+}
+
+.leads__inner img {
+  object-position: 50% 25%;
+}
+
+@media (min-width: 1025px) {
+  .leads__row {
+    height: 100vh;
+  }
+
+  .leads__wrapper {
+    height: 100vh;
+  }
+
+  /* The hairline stops at the divider, so the pinned column looks unbroken. */
+  .leads__row::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 1px;
+    background: rgba(225, 212, 195, 0.4);
+  }
+
+  /* Columns overlap by 90vh, so each person is pinned as the last one lets go. */
+  .leads__right {
+    height: 280vh;
+    margin-top: -90vh;
+  }
+
+  .leads__inner {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 5rem 7rem 5rem 3rem;
+  }
+
+  .leads__inner figure {
+    clip-path: polygon(
+      0 var(--y1, 100%),
+      var(--x2, 27.7%) var(--y2, 100%),
+      55% var(--y5, 100%),
+      var(--x3, 92.7%) var(--y3, 100%),
+      100% var(--y4, 100%),
+      100% 100%,
+      0 100%
+    );
+  }
+
+  /* The last person holds still while the closing section cracks open over them. */
+  .leads__row--last {
+    height: 300vh;
+    margin-bottom: -210vh;
+    /* The columns slide apart past the viewport edges during the crack. */
+    overflow-x: clip;
+  }
+
+  .leads__row--last .leads__wrapper {
+    position: sticky;
+    top: 0;
+  }
+
+  .leads__row--last .leads__right {
+    height: 190vh;
+  }
 }
 
 @media (max-width: 1024px) {
-  .leads__row {
+  .leads__wrapper {
     grid-template-columns: 1fr;
+    border-top: 1px solid rgba(225, 212, 195, 0.4);
   }
 
-  .leads__left {
-    border-right: 0;
+  .leads__right::after {
+    display: none;
   }
 
   .leads__name {
@@ -66,17 +157,17 @@
     display: none;
   }
 
-  .leads__right {
+  .leads__inner {
+    gap: 1rem;
     padding: 1rem var(--box) 2rem;
   }
 
-  .leads__right h3 {
-    margin-bottom: 1rem;
+  .leads__inner h3 {
     font-size: 1.75rem;
   }
 
-  .leads__right figure {
-    width: 100%;
+  .leads__inner figure {
+    height: auto;
     aspect-ratio: 1.3;
   }
 }

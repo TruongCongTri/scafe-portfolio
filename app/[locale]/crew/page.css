@@ -1,0 +1,22 @@
+/* The closing scene is as tall as its list: see .crew-close__list-wrapper. */
+.crew-close {
+  --scene: auto;
+}
+
+@media (min-width: 1025px) {
+  /* Starts level with the last person, who holds still underneath the crack. */
+  .crew-close {
+    margin-top: -90vh;
+  }
+
+  /* The closing title stays pinned through the 125vh contact reveal. */
+  .crew-close + .contact.scene--overlap {
+    margin-top: -275vh;
+  }
+}
+
+@media (max-width: 1024px) {
+  .crew-close + .contact.scene--overlap {
+    margin-top: -200vh;
+  }
+}

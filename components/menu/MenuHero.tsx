@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { onSiteReady } from "@/lib/site";
+import { DropArrow } from "@/components/ui/Icons";
 import { Lines } from "@/components/ui/Lines";
 import { SplitLines } from "@/components/ui/SplitLines";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
@@ -26,6 +27,7 @@ export function MenuHero() {
 
       const build = contextSafe!(() => {
         gsap.fromTo(".menu-hero__bg", { "--p": 1 }, { "--p": 0, duration: 1.1, ease: "quart.out" });
+        gsap.fromTo(".drop-arrow .arrow", { yPercent: -125 }, { yPercent: 0, duration: 0.85, delay: 0.1, ease: "quart.out" });
 
         gsap.matchMedia().add("(min-width: 1025px)", () => {
           gsap
@@ -58,6 +60,7 @@ export function MenuHero() {
           <Image src="/images/shelf.webp" alt={t.menu.heroAlt} fill sizes="100vw" preload className="cover" />
         </figure>
         <div className="menu-hero__box box">
+          <DropArrow />
           <SplitLines as="h1" className="menu-hero__title display">
             <Lines lines={t.menu.heroTitle} />
           </SplitLines>

@@ -1,0 +1,117 @@
+.footer {
+  --scene: 200vh;
+  z-index: 2;
+}
+
+.footer__stage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.footer__top,
+.footer__bottom {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.footer__bottom {
+  align-items: flex-end;
+}
+
+.footer__logo {
+  width: 36rem;
+  max-width: 58%;
+}
+
+.footer__columns {
+  flex: none;
+  display: grid;
+  gap: 5rem;
+  width: 42rem;
+}
+
+.footer__group h3 {
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+}
+
+.footer__address p {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.footer__navs {
+  display: flex;
+  gap: 6rem;
+}
+
+.footer__group nav {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.footer__legal {
+  display: flex;
+  gap: 5rem;
+  font-size: 0.9rem;
+}
+
+.footer__mail {
+  text-align: left;
+}
+
+.footer__mail a {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+@media (hover: hover) {
+  .footer a:hover {
+    color: var(--cream);
+  }
+}
+
+@media (max-width: 1024px) {
+  .footer__top,
+  .footer__bottom {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .footer__bottom {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  .footer__logo {
+    width: 15rem;
+    max-width: none;
+  }
+
+  .footer__columns {
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .footer__navs {
+    gap: 3rem;
+  }
+
+  .footer__mail a {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,28 @@
+/* Scene lengths for the homepage: each one must exceed the next scene's
+   start by 200vh, so the scene below stays pinned during the reveal. */
+.home-hero {
+  --scene: 400vh;
+}
+
+.home-pours {
+  --scene: 690vh;
+}
+
+.home-room {
+  --scene: 585vh;
+}
+
+/* Room stays pinned through the 162.5vh Crew reveal, not the usual 100vh. */
+.home-crew.scene--overlap {
+  --scene: 727vh;
+  margin-top: -265vh;
+}
+
+/* Same for Crew under the 187vh News reveal. */
+.home-news.scene--overlap {
+  margin-top: -287vh;
+}
+
+.home-news {
+  --scene: 445vh;
+}

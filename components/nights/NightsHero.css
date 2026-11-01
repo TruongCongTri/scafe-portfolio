@@ -1,0 +1,84 @@
+.nights-hero__stage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--maroon);
+  color: var(--cream);
+}
+
+.nights-hero__header,
+.nights-hero__footer {
+  position: relative;
+}
+
+.nights-hero__title {
+  font-size: 13.4rem;
+}
+
+.nights-hero__indent {
+  display: inline-block;
+  padding-left: 7rem;
+}
+
+.nights-hero__sub {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin: 2rem 0 0 7rem;
+}
+
+.nights-hero__sub h2 {
+  font-size: 3.25rem;
+}
+
+.nights-hero__arrow {
+  width: 9rem;
+  transform: rotate(90deg);
+}
+
+.nights-hero__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.nights-hero__footer p {
+  width: 32rem;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 1024px) {
+  .nights-hero__title {
+    font-size: 4.7rem;
+  }
+
+  .nights-hero__indent {
+    padding-left: 0;
+  }
+
+  .nights-hero__sub {
+    gap: 1rem;
+    margin-left: 0;
+  }
+
+  .nights-hero__sub h2 {
+    font-size: 1.75rem;
+  }
+
+  .nights-hero__arrow {
+    flex: none;
+    width: 4rem;
+  }
+
+  .nights-hero__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .nights-hero__footer p {
+    width: auto;
+    font-size: 1rem;
+  }
+}

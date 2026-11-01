@@ -1,0 +1,205 @@
+.home-pours {
+  --x1: 100%;
+  --x2: 100%;
+}
+
+.home-pours__stage {
+  background: var(--maroon);
+  color: var(--cream);
+  clip-path: polygon(var(--x1) 0, 100% 0, 100% 100%, var(--x2) 100%);
+}
+
+.home-pours__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transform-origin: 50% 100%;
+}
+
+.home-pours__header {
+  flex: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  padding-bottom: 0;
+}
+
+.home-pours__title-wrapper {
+  position: relative;
+  flex: none;
+}
+
+.home-pours__title {
+  font-size: min(15rem, 25vh);
+  line-height: 1.02;
+}
+
+.home-pours__stamp {
+  position: absolute;
+  top: 1.2rem;
+  left: 3.15em;
+  width: 9rem;
+  font-size: min(15rem, 25vh);
+}
+
+.home-pours__texts {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 36rem;
+  font-size: 1.375rem;
+}
+
+.home-pours__texts h3 {
+  font-size: 3.25rem;
+}
+
+.home-pours__texts p {
+  max-width: 30rem;
+}
+
+.home-pours__bt {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.home-pours__houses {
+  flex: 1;
+  min-height: 0;
+  margin-top: 1.5rem;
+  overflow: hidden;
+}
+
+.home-pours__track {
+  display: inline-flex;
+  height: 100%;
+  will-change: transform;
+}
+
+.home-pours__brand {
+  position: relative;
+  flex: none;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  width: 20rem;
+  height: 100%;
+  overflow: hidden;
+  padding: 1.25rem 2rem;
+  transition: color 0.3s var(--ease);
+}
+
+/* A rough-topped panel pours up behind the hovered brand. */
+.home-pours__brand::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--cream);
+  clip-path: polygon(0 112%, 26% 104%, 65% 110%, 100% 102%, 100% 100%, 0 100%);
+  transition: clip-path 0.45s cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+.home-pours__logo {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  background: currentColor;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  transition: translate 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), scale 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.home-pours__name {
+  position: relative;
+  margin-top: 0.75rem;
+  font-size: 1.125rem;
+  transition: translate 0.35s var(--ease);
+}
+
+.home-pours__note {
+  position: absolute;
+  right: 0;
+  bottom: 0.65rem;
+  left: 0;
+  font-size: 1rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+@media (hover: hover) {
+  .home-pours__brand:hover {
+    color: var(--maroon);
+  }
+
+  .home-pours__brand:hover::before {
+    clip-path: polygon(0 4%, 26% 0, 65% 5%, 100% 1%, 100% 100%, 0 100%);
+  }
+
+  .home-pours__brand:hover .home-pours__logo {
+    scale: 1.06;
+    translate: 0 -0.6rem;
+  }
+
+  .home-pours__brand:hover .home-pours__name {
+    translate: 0 -1.1rem;
+  }
+
+  .home-pours__brand:hover .home-pours__note {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .home-pours__header {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .home-pours__title {
+    font-size: 4.5rem;
+  }
+
+  .home-pours__stamp {
+    top: 0.25rem;
+    right: 0;
+    left: auto;
+    width: 4.5rem;
+  }
+
+  .home-pours__texts {
+    width: auto;
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .home-pours__texts h3 {
+    font-size: 1.75rem;
+  }
+
+  .home-pours__texts p {
+    max-width: none;
+  }
+
+  .home-pours__bt {
+    position: static;
+    align-self: flex-start;
+  }
+
+  .home-pours__houses {
+    margin-top: 0.75rem;
+  }
+
+  .home-pours__brand {
+    width: 12rem;
+    padding: 0.5rem 1.25rem 0.75rem;
+  }
+
+  .home-pours__name {
+    margin-top: 0.35rem;
+    font-size: 0.95rem;
+  }
+}

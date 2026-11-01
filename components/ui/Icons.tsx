@@ -1,0 +1,41 @@
+import { INITIAL, LOGO } from "./logoPaths";
+import "./Icons.css";
+
+export function Logo({ className = "" }: { className?: string }) {
+  return (
+    <svg className={`logo ${className}`} viewBox={`0 0 ${LOGO.width} ${LOGO.height}`} role="img" aria-label="Scafe">
+      <path d={LOGO.path} fill="currentColor" fillRule="evenodd" />
+    </svg>
+  );
+}
+
+export function Arrow({ className = "" }: { className?: string }) {
+  return (
+    <svg className={`arrow ${className}`} viewBox="0 0 120 100" aria-hidden="true">
+      <path d="M3 41 70 37 43 9 60 1 118 51 60 99 45 85 71 63 5 61Z" fill="currentColor" />
+    </svg>
+  );
+}
+
+// The house stamp: a coaster ring around the initial.
+export function Stamp({ className = "" }: { className?: string }) {
+  return (
+    <svg className={`stamp ${className}`} viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="43" fill="none" stroke="currentColor" strokeWidth="9" />
+      <svg x="31" y="23" width="38" height="54" viewBox={`0 0 ${INITIAL.width} ${INITIAL.height}`}>
+        <path d={INITIAL.path} fill="currentColor" fillRule="evenodd" />
+      </svg>
+    </svg>
+  );
+}
+
+export function Olive({ className = "" }: { className?: string }) {
+  return (
+    <svg className={`olive ${className}`} viewBox="0 0 330 188" aria-hidden="true">
+      <path d="M0 94H66M264 94H330" stroke="currentColor" strokeWidth="10" />
+      <path d="M312 94l18-13v26Z" fill="currentColor" />
+      <ellipse cx="165" cy="94" rx="118" ry="78" fill="none" stroke="currentColor" strokeWidth="24" />
+      <circle cx="165" cy="94" r="36" fill="currentColor" />
+    </svg>
+  );
+}

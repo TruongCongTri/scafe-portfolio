@@ -1,0 +1,29 @@
+.menu-hero__stage {
+  display: flex;
+  align-items: flex-end;
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.menu-hero__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.menu-hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 35%, rgba(0, 0, 0, 0.55));
+}
+
+.menu-hero__title {
+  position: relative;
+  font-size: 11.5rem;
+}
+
+@media (max-width: 1024px) {
+  .menu-hero__title {
+    font-size: 3.7rem;
+  }
+}

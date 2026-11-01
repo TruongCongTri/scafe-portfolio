@@ -1,0 +1,105 @@
+.cursor {
+  --size: 6.25rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  pointer-events: none;
+}
+
+.cursor[data-mode="drag"] {
+  --size: 4rem;
+}
+
+@media (hover: none) {
+  .cursor {
+    display: none;
+  }
+}
+
+.cursor__circle {
+  position: absolute;
+  top: calc(var(--size) / -2);
+  left: calc(var(--size) / -2);
+  display: grid;
+  width: var(--size);
+  height: var(--size);
+  place-items: center;
+  background: var(--cream);
+  color: var(--ink);
+  /* Hand-cut edge, tightened slightly while the button is held. */
+  clip-path: polygon(27% 3%, 69% 0, 100% 29%, 97% 72%, 72% 100%, 30% 97%, 2% 72%, 0 30%);
+  scale: 0;
+  transition: scale 0.25s cubic-bezier(0.11, 0, 0.5, 0), clip-path 0.25s cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+.cursor.is-pressing .cursor__circle {
+  clip-path: polygon(30% 9%, 66% 7%, 93% 32%, 91% 68%, 68% 93%, 33% 91%, 9% 68%, 7% 33%);
+}
+
+.cursor[data-mode="play"] .cursor__circle,
+.cursor[data-mode="pause"] .cursor__circle,
+.cursor[data-mode="drag"] .cursor__circle,
+.cursor[data-mode="close"] .cursor__circle {
+  scale: 1;
+  /* Overshoots on arrival, then settles. */
+  transition: scale 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), clip-path 0.25s cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+.cursor__ic {
+  grid-area: 1 / 1;
+  scale: 0;
+  transition: scale 0.25s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.cursor__ic--play {
+  width: 1.5rem;
+}
+
+.cursor__ic--pause {
+  width: 1.15rem;
+  height: 1.5rem;
+  border-inline: 0.42rem solid currentColor;
+}
+
+.cursor__ic--drag {
+  width: 2.75rem;
+  height: 0.9rem;
+  background: currentColor;
+  /* Two arrowheads joined by a zero-width bridge. */
+  clip-path: polygon(0 50%, 16% 0, 16% 100%, 0 50%, 100% 50%, 84% 100%, 84% 0, 100% 50%);
+}
+
+.cursor__ic--close {
+  width: 1.6rem;
+  height: 1.6rem;
+  background:
+    linear-gradient(45deg, transparent 44%, currentColor 44% 56%, transparent 56%),
+    linear-gradient(-45deg, transparent 44%, currentColor 44% 56%, transparent 56%);
+}
+
+.cursor[data-mode="play"] .cursor__ic--play,
+.cursor[data-mode="pause"] .cursor__ic--pause,
+.cursor[data-mode="drag"] .cursor__ic--drag,
+.cursor[data-mode="close"] .cursor__ic--close {
+  scale: 1;
+  transition-duration: 0.35s;
+}
+
+.cursor__label {
+  position: absolute;
+  top: 3.875rem;
+  left: 0;
+  color: var(--cream);
+  font-size: 2.25rem;
+  opacity: 0;
+  translate: -50% 0;
+  transition: opacity 0.2s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.cursor[data-mode="play"] .cursor__label--play,
+.cursor[data-mode="pause"] .cursor__label--pause,
+.cursor[data-mode="close"] .cursor__label--close {
+  opacity: 1;
+  transition-duration: 0.35s;
+}

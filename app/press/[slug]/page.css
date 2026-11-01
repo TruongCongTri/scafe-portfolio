@@ -1,0 +1,60 @@
+.post {
+  background: var(--maroon);
+  color: var(--cream);
+}
+
+.post__header {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.post__meta {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.1rem;
+}
+
+.post__title {
+  max-width: 100rem;
+  font-size: 11rem;
+}
+
+.post__figure {
+  position: relative;
+  height: 90vh;
+}
+
+.post__body {
+  display: grid;
+  gap: 2.5rem;
+  max-width: 96rem;
+  padding-top: 6rem;
+  padding-bottom: 7rem;
+  color: var(--cream);
+}
+
+.post__body p {
+  font-size: 3rem;
+}
+
+.post__back {
+  color: var(--cream);
+  font-size: 1.75rem;
+}
+
+@media (max-width: 1024px) {
+  .post__title {
+    font-size: 4.5rem;
+  }
+
+  .post__figure {
+    height: 50vh;
+  }
+
+  .post__body p {
+    font-size: 1.85rem;
+  }
+}

@@ -1,0 +1,97 @@
+/* Registered so the shared hover progress can be transitioned. */
+@property --h {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.rect-bt {
+  --bt-bg: var(--cream);
+  --bt-fg: var(--maroon);
+  --pad: 1.5rem;
+  --h: 0;
+  display: inline-flex;
+  overflow: clip;
+  color: var(--bt-fg);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: --h 0.3s var(--ease);
+}
+
+.rect-bt__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.4375rem var(--pad);
+  background: var(--bt-bg);
+  clip-path: polygon(0 0, 25.5% 0, 64.9% 0, 100% 0, 100% 31.9%, 100% 100%, 31.3% 100%, 0 100%, 0 66.7%);
+  transition: clip-path 0.3s cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+.rect-bt__ic {
+  flex: none;
+  width: 1.3125rem;
+}
+
+/* The incoming arrow waits off the left edge; the resting one leaves to the right. */
+.rect-bt__ic--in {
+  position: absolute;
+  left: var(--pad);
+  translate: calc((-100% - var(--pad)) * (1 - var(--h))) 0;
+}
+
+.rect-bt__ic--out {
+  translate: calc((100% + var(--pad)) * var(--h)) 0;
+}
+
+/* Slides from the left of the content box to its right. */
+.rect-bt__label {
+  position: relative;
+  left: calc(100% * var(--h));
+  translate: calc(-100% * var(--h)) 0;
+}
+
+@media (hover: hover) {
+  :is(a, button):hover .rect-bt,
+  a.rect-bt:hover,
+  button.rect-bt:hover {
+    --h: 1;
+  }
+
+  :is(a, button):hover .rect-bt__wrapper,
+  .rect-bt:hover .rect-bt__wrapper {
+    clip-path: polygon(
+      0 0,
+      25.5% 2.8%,
+      64.9% 5.6%,
+      100% 0,
+      99.1% 31.9%,
+      100% 100%,
+      31.3% 97.2%,
+      0 100%,
+      0.9% 66.7%
+    );
+  }
+}
+
+@media (max-width: 1024px) {
+  .rect-bt {
+    --pad: 1.25rem;
+    font-size: 1.125rem;
+  }
+
+  .rect-bt__wrapper {
+    gap: 1rem;
+    padding: 1.25rem var(--pad);
+  }
+
+  .rect-bt__ic {
+    width: 0.95rem;
+  }
+}

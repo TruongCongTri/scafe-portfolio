@@ -1,0 +1,48 @@
+.alley__stage {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.alley__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.alley__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 8, 9, 0.4);
+}
+
+.alley__title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-size: 13rem;
+  line-height: 1;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  translate: -50% 0;
+}
+
+.alley__subtitle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 46rem;
+  max-width: calc(100vw - 2.5rem);
+  font-size: 3.25rem;
+  text-align: center;
+  translate: -50% -50%;
+}
+
+@media (max-width: 1024px) {
+  .alley__title {
+    font-size: 6.5rem;
+  }
+
+  .alley__subtitle {
+    font-size: 2.25rem;
+  }
+}

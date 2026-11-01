@@ -1,0 +1,214 @@
+.home-hero {
+  /* Intro: both panels start closed over the photo. */
+  --start: 1;
+  --orange-start: 0;
+  /* Scroll: the panels shrink away. */
+  --red: 1;
+  --orange: 0;
+  /* Pointer lean, faded out by --p as the panels leave. */
+  --p: 1;
+  --px: 0;
+  --py: 0;
+  z-index: 0;
+}
+
+.home-hero__stage {
+  background: var(--ink);
+}
+
+.home-hero__reel {
+  position: absolute;
+  inset: 0;
+}
+
+.home-hero__reel img {
+  opacity: 0;
+  transform: scale(1.06);
+}
+
+.home-hero__reel img.is-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: transform 1.6s linear;
+}
+
+.home-hero__hit {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.home-hero__hit:focus-visible {
+  outline-offset: -0.5rem;
+}
+
+.home-hero__layer {
+  position: absolute;
+  inset: 0;
+}
+
+.home-hero__title {
+  position: relative;
+  visibility: hidden;
+  font-size: 13.4rem;
+  white-space: nowrap;
+}
+
+.home-hero__layer--cream {
+  color: var(--cream);
+  pointer-events: none;
+}
+
+.home-hero__layer--red {
+  background: var(--maroon);
+  color: var(--cream);
+  clip-path: polygon(
+    0 0,
+    calc(35% * var(--red) + 65% * var(--start) - var(--p) * 7.5% * var(--px)) 0,
+    calc(33% * var(--red) + 67% * var(--start) - var(--p) * 7.5% * var(--px))
+      calc(30% + var(--p) * 2% * var(--py)),
+    calc(54% * var(--red) + 46% * var(--start) - var(--p) * 6% * var(--px)) 100%,
+    0 100%
+  );
+}
+
+.home-hero__layer--orange {
+  background: var(--cream);
+  color: var(--maroon);
+  clip-path: polygon(
+    calc(40% * var(--orange) + 60% * var(--orange-start) + var(--p) * 7.5% * var(--px)) 0,
+    100% 0,
+    100% 100%,
+    calc(20% * var(--orange) + 80% * var(--orange-start) + var(--p) * 6% * var(--px)) 100%
+  );
+}
+
+.home-hero__arrow {
+  position: absolute;
+  top: 44%;
+  left: 75.5%;
+  visibility: hidden;
+  width: 11rem;
+  overflow: clip;
+}
+
+.home-hero__arrow .arrow {
+  width: 100%;
+}
+
+.home-hero__copy {
+  position: absolute;
+  bottom: 3rem;
+  left: calc(var(--rail) + 9rem);
+  width: 31rem;
+  visibility: hidden;
+  font-size: 1rem;
+}
+
+.home-hero__copy h2 {
+  margin-bottom: 2rem;
+  font-size: 3.25rem;
+}
+
+.home-hero__copy p {
+  width: 21rem;
+  font-size: 1.2rem;
+}
+
+.home-hero__zone--ink {
+  color: var(--maroon);
+}
+
+/* Shown on touch screens, where there is no cursor to carry the control. */
+.home-hero__play {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  display: none;
+  width: 5rem;
+  height: 5rem;
+  margin: -2.5rem 0 0 -2.5rem;
+  place-items: center;
+  background: var(--cream);
+  color: var(--ink);
+  clip-path: polygon(27% 3%, 69% 0, 100% 29%, 97% 72%, 72% 100%, 30% 97%, 2% 72%, 0 30%);
+}
+
+.home-hero__play .arrow {
+  width: 1.5rem;
+}
+
+.home-hero__pause-ic {
+  width: 1.1rem;
+  height: 1.4rem;
+  border-inline: 0.4rem solid var(--ink);
+}
+
+@media (hover: none), (max-width: 1024px) {
+  .home-hero__play {
+    display: grid;
+  }
+}
+
+/* Phones stack the shape: orange wedge on top, red wedge below, photo between. */
+@media (max-width: 1024px) {
+  .home-hero__title {
+    font-size: 4.4rem;
+    white-space: normal;
+  }
+
+  .home-hero__layer--cream,
+  .home-hero__layer--red .home-hero__title {
+    display: none;
+  }
+
+  .home-hero__layer--red {
+    --y1: 34%;
+    --y2: 32%;
+    --y3: 34%;
+    clip-path: polygon(
+      0 calc(100% - var(--y1) * var(--red) - var(--y1) * var(--start)),
+      15% calc(100% - var(--y2) * var(--red) - var(--y2) * var(--start)),
+      100% calc(100% - var(--y3) * var(--red) - var(--y3) * var(--start)),
+      100% 100%,
+      0 100%
+    );
+  }
+
+  .home-hero__layer--orange {
+    --y1: 56.5%;
+    --y2: 62%;
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(100% - var(--y1) * var(--orange-start) - (100% - var(--y1)) * var(--orange)),
+      0 calc(100% - var(--y2) * var(--orange-start) - (100% - var(--y2)) * var(--orange))
+    );
+  }
+
+  .home-hero__arrow {
+    top: 27%;
+    right: var(--box);
+    left: auto;
+    width: 3.75rem;
+  }
+
+  .home-hero__copy {
+    bottom: 1.5rem;
+    left: var(--box);
+    width: calc(100% - 2 * var(--box));
+    font-size: 0.85rem;
+  }
+
+  .home-hero__copy h2 {
+    margin-bottom: 0.75rem;
+    font-size: 1.9rem;
+  }
+
+  .home-hero__copy p {
+    width: auto;
+    font-size: 1rem;
+  }
+}

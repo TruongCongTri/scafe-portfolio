@@ -1,0 +1,33 @@
+.privacy {
+  min-height: 100vh;
+  background: var(--maroon);
+  color: var(--cream);
+}
+
+.privacy__title {
+  font-size: 13.4rem;
+}
+
+.privacy__body {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 56rem;
+  margin-top: 4rem;
+  color: var(--cream);
+  font-size: 1.5rem;
+}
+
+.privacy__body a {
+  text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+  .privacy__title {
+    font-size: 6rem;
+  }
+
+  .privacy__body {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+  }
+}

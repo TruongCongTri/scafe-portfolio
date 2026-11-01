@@ -1,0 +1,221 @@
+.home-room {
+  --y1: 100%;
+  --x2: 27.7%;
+  --y2: 100%;
+  --x3: 92.7%;
+  --y3: 100%;
+  --y4: 100%;
+  --left: 25rem;
+}
+
+.home-room__stage {
+  background: var(--ink);
+  color: var(--cream);
+  clip-path: polygon(0 var(--y1), var(--x2) var(--y2), var(--x3) var(--y3), 100% var(--y4), 100% 100%, 0 100%);
+}
+
+.home-room__content {
+  --p: 1;
+  position: absolute;
+  inset: 0;
+}
+
+.home-room__content--clone {
+  visibility: hidden;
+}
+
+/* Below the line the original shows; above it, the copy. */
+.is-ending .home-room__content {
+  clip-path: inset(50% 0 0 0);
+}
+
+.is-ending .home-room__content--clone {
+  visibility: visible;
+  clip-path: inset(0 0 50% 0);
+}
+
+.home-room__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.home-room__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 -10%;
+  background: linear-gradient(90deg, rgba(26, 8, 9, 0.6), rgba(26, 8, 9, 0.36) 50%, rgba(26, 8, 9, 0.3));
+}
+
+.home-room__layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+}
+
+/* Horizontal line: grows leftward from the right edge to the vertical one. */
+.home-room__rule {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 1;
+  width: calc((100% - var(--rail) - var(--left)) * var(--p));
+  height: 1px;
+  background: currentColor;
+}
+
+.home-room__box {
+  position: relative;
+  display: flex;
+  height: 100%;
+  padding-left: var(--rail);
+}
+
+.home-room__left {
+  position: relative;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--left);
+}
+
+/* Vertical line: grows downward from the top edge. */
+.home-room__left::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: calc(100% * var(--p));
+  background: currentColor;
+}
+
+.home-room__title {
+  --r: 0deg;
+  font-size: min(12rem, 19vh);
+  line-height: 1;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  rotate: calc(180deg + var(--r));
+}
+
+.home-room__line {
+  display: block;
+}
+
+.home-room__right {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-room__top {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 7rem 2.6875rem 2.6875rem;
+}
+
+.home-room__subtitle {
+  --r: 0deg;
+  max-width: 44rem;
+  font-size: 3.25rem;
+  rotate: var(--r);
+  text-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.55);
+  transform-origin: 100% 100%;
+}
+
+.home-room__bottom {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 1.3125rem 7rem 3rem 2.6875rem;
+}
+
+.home-room__bt {
+  --bt-bg: var(--cream);
+  --bt-fg: var(--ink);
+  flex: none;
+}
+
+.home-room__article {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 26rem;
+  height: 100%;
+  font-size: 1.375rem;
+  text-shadow: 0 0 1rem rgba(0, 0, 0, 0.6);
+}
+
+.home-room__stamp {
+  width: 9rem;
+}
+
+@media (max-width: 1024px) {
+  .home-room__rule {
+    display: none;
+  }
+
+  .home-room__box {
+    flex-direction: column;
+    padding: 4.75rem var(--box) var(--box);
+  }
+
+  .home-room__left {
+    justify-content: flex-start;
+    width: auto;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--cream);
+  }
+
+  .home-room__left::after {
+    display: none;
+  }
+
+  .home-room__title {
+    font-size: 4.5rem;
+    white-space: normal;
+    writing-mode: horizontal-tb;
+    rotate: none;
+  }
+
+  .home-room__line {
+    display: inline;
+  }
+
+  .home-room__top {
+    flex: none;
+    padding: 1.25rem 0 0;
+  }
+
+  .home-room__subtitle {
+    font-size: 2rem;
+  }
+
+  .home-room__bottom {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    padding: 1.5rem 0 0;
+  }
+
+  .home-room__article {
+    width: auto;
+    height: auto;
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .home-room__stamp {
+    width: 4rem;
+  }
+}

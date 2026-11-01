@@ -1,0 +1,144 @@
+.articles {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.articles__box {
+  padding-top: 7rem;
+  padding-bottom: 6rem;
+}
+
+.articles__title {
+  font-size: 11rem;
+}
+
+.articles__content {
+  display: grid;
+  grid-template-columns: 26rem 1fr;
+  margin-top: 6rem;
+  border-top: 1px solid rgba(225, 212, 195, 0.35);
+}
+
+.articles__categories {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+  border-right: 1px solid rgba(225, 212, 195, 0.35);
+}
+
+.articles__categories button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(225, 212, 195, 0.55);
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 300;
+  line-height: 1.15;
+  transition: color 0.25s var(--ease);
+}
+
+.articles__categories .arrow {
+  width: 0;
+  height: 1.35rem;
+  transition: width 0.3s var(--ease);
+}
+
+.articles__categories sup {
+  align-self: flex-start;
+  font-size: 0.9rem;
+}
+
+.articles__categories button.is-active {
+  color: var(--cream);
+}
+
+.articles__categories .is-active .arrow {
+  width: 1.6rem;
+}
+
+.articles__posts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem 2rem;
+  padding: 2rem 0 0 2rem;
+}
+
+.articles__card figure {
+  position: relative;
+  aspect-ratio: 1.5;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.articles__card img {
+  transition: transform 0.7s var(--ease);
+}
+
+.articles__card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  line-height: 1.08;
+}
+
+.articles__card time {
+  font-size: 0.95rem;
+}
+
+.articles__paging {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.articles__paging button {
+  width: 1.5rem;
+  opacity: 0.5;
+}
+
+.articles__paging button.is-active {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .articles__categories button:hover {
+    color: var(--cream);
+  }
+
+  .articles__card:hover img {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 1024px) {
+  .articles__box {
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+  }
+
+  .articles__title {
+    font-size: 4.5rem;
+  }
+
+  .articles__content {
+    grid-template-columns: 1fr;
+    margin-top: 2.5rem;
+  }
+
+  .articles__categories {
+    padding: 1rem 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(225, 212, 195, 0.35);
+  }
+
+  .articles__categories button {
+    font-size: 1.75rem;
+  }
+
+  .articles__posts {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-left: 0;
+  }
+}

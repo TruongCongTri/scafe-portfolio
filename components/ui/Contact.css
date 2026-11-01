@@ -1,0 +1,168 @@
+.contact {
+  --scene: 340vh;
+  --y1: 100%;
+}
+
+/* The scene before stays pinned through the 125vh reveal, not the usual 100vh. */
+.contact.scene--overlap {
+  margin-top: -225vh;
+}
+
+.contact--flow {
+  --scene: 300vh;
+  --y1: 0%;
+}
+
+.contact__stage {
+  padding-top: 0;
+  background: var(--ink);
+  clip-path: polygon(0 var(--y1), 100% var(--y1), 100% 100%, 0 100%);
+}
+
+.contact.is-locked .contact__stage {
+  pointer-events: none;
+}
+
+.contact__rows {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transform-origin: 50% 100%;
+}
+
+.contact__row {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+  transition: flex-grow 0.6s var(--ease);
+  text-align: left;
+}
+
+.contact__row--red {
+  background: var(--maroon);
+  color: var(--cream);
+}
+
+.contact__row--blue {
+  background: var(--maroon-deep);
+  color: var(--cream);
+}
+
+.contact__row--orange {
+  background: var(--cream);
+  color: var(--maroon);
+}
+
+.contact__row--blue .contact__bt {
+  --bt-bg: var(--cream);
+  --bt-fg: var(--maroon-deep);
+}
+
+.contact__row--orange .contact__bt {
+  --bt-bg: var(--maroon);
+  --bt-fg: var(--cream);
+}
+
+.contact__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  height: 100%;
+  padding: 0 calc(var(--box) + 1.75rem) 0 calc(var(--rail) + var(--box));
+}
+
+.contact__copy {
+  position: relative;
+  flex: 1;
+  display: block;
+}
+
+.contact__title {
+  display: block;
+  font-size: 11rem;
+  transition: opacity 0.35s var(--ease), transform 0.5s var(--ease);
+}
+
+.contact__more {
+  position: absolute;
+  inset: 50% 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  opacity: 0;
+  transform: translateY(-30%);
+  transition: opacity 0.35s var(--ease), transform 0.5s var(--ease);
+}
+
+.contact__more .contact__title {
+  font-size: 8rem;
+}
+
+.contact__ic {
+  flex: none;
+  width: 9rem;
+  transition: width 0.5s var(--ease), opacity 0.3s var(--ease);
+}
+
+.contact__ic--lead {
+  display: none;
+}
+
+.contact__row--blue .contact__ic--lead {
+  display: block;
+}
+
+.contact__row--blue .contact__ic--tail {
+  display: none;
+}
+
+@media (hover: hover) and (min-width: 1025px) {
+  .contact__row:hover {
+    flex-grow: 1.9;
+  }
+
+  .contact__row:hover .contact__copy > .contact__title {
+    opacity: 0;
+    transform: translateY(-40%);
+  }
+
+  .contact__row:hover .contact__more {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+
+  .contact__row:hover .contact__ic {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .contact__inner {
+    gap: 1rem;
+    padding: 0 var(--box);
+  }
+
+  .contact__title {
+    font-size: 4.5rem;
+  }
+
+  .contact__more {
+    display: none;
+  }
+
+  .contact__ic {
+    width: 3.75rem;
+  }
+
+  .contact__row:first-child .contact__inner {
+    padding-top: 4rem;
+  }
+
+  .contact__row:first-child {
+    flex-grow: 1.35;
+  }
+}

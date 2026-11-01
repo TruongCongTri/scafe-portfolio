@@ -1,0 +1,199 @@
+.home-crew {
+  --y1: 1;
+  --x2: 45.6%;
+  --y2: 1;
+  --y3: 1;
+  --y4: 0;
+  --x5: 43%;
+  --y5: 0;
+  --y6: 0;
+  --start: 1;
+  --row-gap: 1.125rem;
+  --band: 3.6rem;
+}
+
+.home-crew__stage {
+  /* Six points open away from the seam at 50%, the line Room splits along. */
+  clip-path: polygon(
+    0 calc(50% * var(--y1)),
+    var(--x2) calc(50% * var(--y2)),
+    100% calc(50% * var(--y3)),
+    100% calc(50% + 50% * var(--y4)),
+    var(--x5) calc(50% + 50% * var(--y5)),
+    0 calc(50% + 50% * var(--y6))
+  );
+  display: flex;
+  align-items: center;
+  background: var(--cream);
+  color: var(--maroon);
+}
+
+.home-crew__title {
+  margin-left: calc(var(--rail) + 12rem);
+  color: var(--maroon);
+  font-size: min(12.25rem, 18vh);
+  line-height: 1.06;
+}
+
+.home-crew__images {
+  position: absolute;
+  top: 50%;
+  left: calc(var(--rail) + (100% - var(--rail) - 7rem) * 0.2475 + 2.625rem);
+  z-index: 2;
+  width: 20.125rem;
+  height: 26.125rem;
+  pointer-events: none;
+  translate: -50% -50%;
+}
+
+/* Ten points: five along the top edge, then five back along the bottom. */
+.home-crew__images figure {
+  --t1: 100%;
+  --t2: 100%;
+  --t3: 100%;
+  --t4: 100%;
+  --t5: 100%;
+  --b1: 100%;
+  --b2: 100%;
+  --b3: 100%;
+  --b4: 100%;
+  --b5: 100%;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  clip-path: polygon(
+    0 var(--t1),
+    27.7% var(--t2),
+    65% var(--t3),
+    92.7% var(--t4),
+    100% var(--t5),
+    100% var(--b5),
+    92.7% var(--b4),
+    65% var(--b3),
+    27.7% var(--b2),
+    0 var(--b1)
+  );
+}
+
+.home-crew__list,
+.home-crew__band-list {
+  position: absolute;
+  top: 0;
+  right: calc(var(--box) + 1.75rem);
+  left: calc(var(--rail) + var(--box));
+  display: flex;
+  flex-direction: column;
+  gap: var(--row-gap);
+}
+
+.home-crew__list {
+  z-index: 3;
+}
+
+.home-crew__list button,
+.home-crew__row {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+}
+
+.home-crew__list button {
+  opacity: 0.6;
+  transition: opacity 0.25s var(--ease);
+}
+
+/* A fixed slit at mid-screen: rows brighten as they cross it. */
+.home-crew__band {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  clip-path: inset(calc(50% - var(--band) / 2) 0);
+  pointer-events: none;
+}
+
+.home-crew__num {
+  flex: 1;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.home-crew__name {
+  width: 25.25%;
+  font-size: 3.25rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.home-crew__role {
+  min-width: 25.25%;
+  font-size: 1.375rem;
+  line-height: 1.75;
+  text-align: right;
+}
+
+.home-crew__bt {
+  --bt-bg: var(--maroon);
+  --bt-fg: var(--cream);
+  position: absolute;
+  bottom: 2.375rem;
+  left: 50%;
+  z-index: 5;
+  translate: 0 calc((100% + 3rem) * var(--start));
+}
+
+@media (hover: hover) {
+  .home-crew__list button:hover {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .home-crew {
+    --band: 2.2rem;
+    --row-gap: 0.75rem;
+  }
+
+  .home-crew__title {
+    margin-left: var(--box);
+    font-size: 6rem;
+  }
+
+  .home-crew__images {
+    top: 6rem;
+    right: var(--box);
+    left: auto;
+    width: 9rem;
+    height: 11.75rem;
+    translate: none;
+  }
+
+  .home-crew__list,
+  .home-crew__band-list {
+    right: var(--box);
+    left: var(--box);
+  }
+
+  .home-crew__num {
+    flex: none;
+    width: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .home-crew__name {
+    flex: 1;
+    width: auto;
+    font-size: 1.5rem;
+  }
+
+  .home-crew__role {
+    min-width: 0;
+    font-size: 0.85rem;
+  }
+
+  .home-crew__bt {
+    left: var(--box);
+    bottom: var(--box);
+  }
+}

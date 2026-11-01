@@ -1,7 +1,4 @@
-.press-hero {
-  --scene: 300vh;
-}
-
-.featured {
-  --scene: 320vh;
+/* The list keeps scrolling behind the contact rows as they rise. */
+.articles + .contact.scene--overlap {
+  margin-top: -150vh;
 }

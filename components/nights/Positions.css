@@ -2,17 +2,22 @@
   position: relative;
   z-index: 1;
   margin-top: -100vh;
-  overflow: hidden;
+  overflow: clip;
+  padding-bottom: 25vh;
   background: var(--cream);
   color: var(--ink);
 }
 
 .positions__marquee {
+  position: relative;
+  z-index: 2;
+  display: flex;
   overflow: hidden;
-  padding: 1rem 0 1.25rem;
+  align-items: center;
+  height: 12.5rem;
   background: var(--maroon-deep);
   color: var(--cream);
-  font-size: 7rem;
+  font-size: 10rem;
   white-space: nowrap;
 }
 
@@ -24,15 +29,29 @@
   white-space: pre;
 }
 
+.positions__list {
+  translate: 0 var(--y, 0);
+}
+
 .positions__item {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 100vh;
+  background: var(--cream);
 }
 
 .positions__item figure {
-  position: relative;
+  position: sticky;
+  top: 0;
   overflow: hidden;
+  align-self: start;
+  height: 100vh;
+  background: var(--ink);
+}
+
+/* Posters carry their own dates and titles, so they show whole. */
+.positions__item img {
+  object-fit: contain;
 }
 
 .positions__content .rect-bt {
@@ -44,9 +63,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2rem;
-  padding: 5rem 7rem 5rem 4rem;
-  font-size: 1.2rem;
+  gap: 3rem;
+  padding: 5rem 7rem 3rem 3rem;
+  font-size: 1.375rem;
 }
 
 .positions__content header {
@@ -56,7 +75,7 @@
 }
 
 .positions__content h2 {
-  font-size: 2rem;
+  font-size: 2.25rem;
 }
 
 .positions__content h3 {
@@ -74,7 +93,8 @@
 
 @media (max-width: 1024px) {
   .positions__marquee {
-    padding-top: 4.5rem;
+    height: 6rem;
+    padding-top: 2rem;
     font-size: 3.5rem;
   }
 
@@ -84,7 +104,9 @@
   }
 
   .positions__item figure {
-    height: 18rem;
+    position: relative;
+    height: auto;
+    aspect-ratio: 4 / 5;
   }
 
   .positions__content {

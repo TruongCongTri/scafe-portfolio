@@ -1,15 +1,44 @@
 .articles {
-  background: var(--ink);
+  position: relative;
   color: var(--cream);
+  pointer-events: none;
 }
 
+.articles__wrapper {
+  background: var(--ink);
+  pointer-events: auto;
+}
+
+/* Room at the bottom for the contact rows to rise over the end of the list. */
 .articles__box {
   padding-top: 7rem;
-  padding-bottom: 6rem;
+  padding-bottom: calc(10rem + 75vh);
 }
 
 .articles__title {
-  font-size: 11rem;
+  font-size: 12rem;
+}
+
+@media (min-width: 1025px) {
+  .articles {
+    margin-top: -200vh;
+  }
+
+  .articles__wrapper {
+    clip-path: polygon(
+      0 calc(var(--end, 100vh) - 100vh * var(--y1, 0)),
+      25% calc(var(--end, 100vh) - 100vh * var(--y2, 0)),
+      60% calc(var(--end, 100vh) - 100vh * var(--y3, 0)),
+      75% calc(var(--end, 100vh) - 100vh * var(--y4, 0)),
+      100% calc(var(--end, 100vh) - 100vh * var(--y5, 0)),
+      100% 100%,
+      0 100%
+    );
+  }
+
+  .articles__box {
+    padding-top: 120vh;
+  }
 }
 
 .articles__content {
@@ -114,7 +143,7 @@
 @media (max-width: 1024px) {
   .articles__box {
     padding-top: 5rem;
-    padding-bottom: 4rem;
+    padding-bottom: calc(4rem + 50vh);
   }
 
   .articles__title {

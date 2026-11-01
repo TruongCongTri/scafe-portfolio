@@ -16,7 +16,7 @@ export default function PressPage() {
       <PressHero />
       <Featured />
       <Articles />
-      <Contact flow />
+      <Contact />
     </>
   );
 }

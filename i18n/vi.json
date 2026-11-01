@@ -5,7 +5,7 @@
     "about": "Giới thiệu",
     "crew": "Đội ngũ",
     "menu": "Thực đơn",
-    "nights": "Đêm sự kiện",
+    "nights": "Sự kiện",
     "press": "Tin tức",
     "privacy": "Quyền riêng tư"
   },
@@ -20,7 +20,7 @@
     "menu": "Thực đơn",
     "about": "Giới thiệu",
     "crew": "Đội ngũ",
-    "nights": "Đêm sự kiện",
+    "nights": "Sự kiện",
     "press": "Tin tức"
   },
   "shell": {
@@ -793,29 +793,62 @@
       "những cá tính"
     ],
     "heroSubtitle": "...người táo bạo, người tài hoa, người sắp gục",
-    "heroText": "Những ai mang đến đam mê, sự liều lĩnh và một câu chuyện hay cho những đêm giữ căn phòng này luôn sống động.",
+    "heroText": "Café bar từ 09:00 đến 17:00. Cocktail bar từ 17:00 đến khuya.",
     "heroCta": "Cho tôi tham gia",
-    "marquee": "Đang mở đăng ký đêm sự kiện",
-    "signUp": "Đăng ký cho tôi",
-    "signUpSubject": "Đăng ký:",
-    "signUpMessage": "Kể cho chúng tôi về bạn",
+    "marquee": "Thứ 6 có phim - Thứ 7 có nhạc",
+    "signUp": "Hỏi lịch đợt tới",
+    "signUpSubject": "Đêm:",
+    "signUpMessage": "Bạn muốn hỏi gì?",
     "events": [
       {
-        "heading": "Mang theo đĩa nhạc. Để lại huyền thoại.",
-        "text": "Mỗi thứ Năm, bàn đĩa mở cho bất kỳ ai có một câu chuyện và một đĩa than. Đăng ký một lượt mười lăm phút, đội ngũ sẽ rót mời dù bạn làm sàn nhảy trống trơn hay chật kín.",
+        "title": "Jam Session",
+        "time": "20:00 - 22:00",
+        "heading": "Good Music - Good People - Better Together",
+        "text": "Dành ra một buổi tối thứ 7 để chill, thưởng thức âm nhạc và hát cùng nhau tại S... Open Mic luôn sẵn sàng: ai cũng có thể lên hát bài mình thích, hát hay hay hát vui đều được chào đón. Hoặc chỉ đơn giản là tìm một góc nhỏ để thả lỏng và nghe nhạc.",
         "notes": [
-          "Từ 20:00, mỗi thứ Năm",
-          "Chỉ đĩa than, không playlist",
-          "Selector được uống miễn phí"
+          "Thứ 7, 31/10/2026, 20:00 - 22:00",
+          "Open Mic cho tất cả mọi người"
         ]
       },
       {
-        "heading": "Nghĩ mình phân biệt được rye và bourbon?",
-        "text": "Sáu ly, không nhãn, và một bàn những người lạ tự tin thái quá như nhau. Giải nếm rượu hằng tháng dành cho các đội hai người, và tên đội thắng sẽ ở trên tường cho đến khi có người giành lại.",
+        "title": "Coraline",
+        "time": "19:30",
+        "heading": "Đêm trước Halloween",
+        "text": "Đêm trước Halloween, S... đưa bạn vào hành trình ma mị, đen tối và đầy cuốn hút của siêu phẩm stop-motion Coraline, giữa không gian mờ ảo cùng một ly cocktail.",
         "notes": [
-          "Thứ Hai đầu tiên của tháng",
-          "Đội hai người",
-          "Tối đa mười hai đội"
+          "30/10/2026, 19:30",
+          "Đồng giá Menu Classic chỉ 100K"
+        ]
+      },
+      {
+        "title": "In the Mood for Love",
+        "time": "19:00",
+        "heading": "Tâm Trạng Khi Yêu",
+        "text": "Tối thứ Sáu, bước vào không gian Hồng Kông thập niên 60 của đạo diễn Vương Gia Vệ: ánh đèn vàng ấm áp, những tà sườn xám cổ điển và giai điệu Yumeji's Theme, bên cạnh một ly cocktail thật vừa vặn.",
+        "notes": [
+          "Thứ Sáu, 23/10/2026, 19:00",
+          "Đồng giá 100K toàn bộ Menu Classic trong suốt buổi chiếu"
+        ]
+      },
+      {
+        "title": "Howl's Moving Castle",
+        "time": "19:00",
+        "heading": "Lâu đài di động của Howl",
+        "text": "Một khoảng lặng sau cả tuần làm việc, chìm đắm vào thế giới kỳ ảo của Ghibli, vừa xem phim hay vừa nhâm nhi đồ uống yêu thích mở đầu cuối tuần.",
+        "notes": [
+          "Thứ Sáu, 16/10/2026, 19:00",
+          "Đồng giá 100K toàn bộ Menu Classic trong suốt buổi chiếu"
+        ]
+      },
+      {
+        "title": "S...LAY DAY",
+        "heading": "Ưu đãi hằng tuần tại S...",
+        "text": "4 cột mốc thời gian để mỗi lần tới Sờ là một lần hời. Áp dụng từ ngày 17/08/2026.",
+        "notes": [
+          "Thứ 2: Giảm 10% menu sáng (bill từ 2 ly)",
+          "17h - 20h (T2 - T5): Giảm 10%",
+          "Thứ 5: Tặng 1 snack cho nhóm từ 3 người",
+          "Chủ Nhật: Tặng thêm 1 ly Bespoke dành riêng cho phái Nữ"
         ]
       }
     ]
@@ -899,5 +932,12 @@
     "title": "Lượt gọi cuối",
     "text": "Trang này đã rời quán.",
     "cta": "Về đầu trang"
+  },
+  "promo": {
+    "upcoming": "Sắp diễn ra",
+    "latest": "Sự kiện gần nhất",
+    "cta": "Xem các đêm",
+    "close": "Đóng",
+    "hide": "Không hiện lại hôm nay"
   }
 }

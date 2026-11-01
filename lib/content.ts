@@ -148,9 +148,14 @@ const partnerNames = [
   "Slow Comet Roasters",
 ];
 
-const nightEvents = [
-  { title: "Vinyl Thursdays", image: "/images/taps-room.webp" },
-  { title: "The Blind Pour", image: "/images/glass-stack.webp" },
+// Posters and details come from the bar's own Instagram posts, newest first.
+// A date (YYYY-MM-DD) makes a night eligible for the promo popup.
+const nightEntries: { image: string; date?: string }[] = [
+  { image: "/images/events/jam.webp", date: "2026-10-31" },
+  { image: "/images/events/coraline.webp", date: "2026-10-30" },
+  { image: "/images/events/mood.webp", date: "2026-10-23" },
+  { image: "/images/events/howl.webp", date: "2026-10-16" },
+  { image: "/images/events/slay.webp" },
 ];
 
 export const categories = ["behindTheBar", "press", "drinks"] as const;
@@ -200,7 +205,7 @@ export const buildContent = (t: Dictionary) => ({
   },
   pillars: pillarImages.map((image, index) => ({ image, ...t.about.pillars[index] })),
   partners: partnerNames.map((name, index) => ({ name, text: t.about.partners.list[index] })),
-  nights: nightEvents.map((night, index) => ({ ...night, ...t.nights.events[index] })),
+  nights: nightEntries.map((night, index) => ({ ...night, ...t.nights.events[index] })),
   articles: articleEntries.map((article) => ({ ...article, ...t.articles[article.slug] })),
   pressHighlights: highlightEntries.map((item, index) => ({ ...item, title: t.press.highlights[index] })),
 });

@@ -14,7 +14,7 @@ export default function NightsPage() {
     <>
       <NightsHero />
       <Positions />
-      <Contact flow />
+      <Contact />
     </>
   );
 }

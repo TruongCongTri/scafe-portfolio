@@ -1,33 +1,51 @@
-.press-hero__stage {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: var(--maroon);
+.press-hero {
+  position: relative;
+  height: 100vh;
   color: var(--cream);
 }
 
-.press-hero__title {
+.press-hero__bg {
+  position: absolute;
+  inset: 0;
+  background: var(--maroon);
+}
+
+.press-hero__grid {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.press-hero__box {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.press-hero__title {
   font-size: 13.4rem;
   text-align: center;
 }
 
 .press-hero__footer {
-  position: relative;
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
-  padding-left: 22%;
-}
-
-.press-hero__arrow {
-  width: 9rem;
-  transform: rotate(90deg);
+  justify-content: space-around;
 }
 
 .press-hero__footer p {
   width: 28rem;
-  font-size: 1.2rem;
+  font-size: 1.375rem;
+}
+
+@media (min-width: 1025px) {
+  /* Outlasts the hero, so the grid stays behind the rising section. */
+  .press-hero__bg {
+    bottom: auto;
+    height: 275vh;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -40,11 +58,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
-    padding-left: 0;
-  }
-
-  .press-hero__arrow {
-    width: 4.5rem;
   }
 
   .press-hero__footer p {

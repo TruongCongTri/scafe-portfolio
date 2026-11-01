@@ -1,6 +1,6 @@
 "use client";
 
-import { gsap } from "./gsap";
+import { gsap, ScrollTrigger } from "./gsap";
 
 // Every scene is a tall section with a sticky 100vh stage. Sections overlap by
 // 200vh (see .scene in global.css), so the incoming stage is revealed by a
@@ -63,6 +63,46 @@ export function staggerFrom(targets: gsap.DOMTarget, vars: gsap.TweenVars, each:
     timeline.from(item, vars, each * (each < 0 ? index - items.length + 1 : index));
   });
   return timeline;
+}
+
+// A section that scrolls normally but rises on a wavy edge held to the viewport
+// bottom: --end tracks that bottom in the section's own coordinates. Once risen, the
+// clip comes off so nothing in the section can be cut.
+export function riseSection(section: HTMLElement, wrapper: HTMLElement) {
+  const setEnd = () => {
+    section.style.setProperty("--end", `${window.innerHeight - section.getBoundingClientRect().top}px`);
+  };
+  setEnd();
+  ScrollTrigger.create({ trigger: section, start: "top bottom", end: "bottom top", onUpdate: setEnd, onRefresh: setEnd });
+
+  const clip = (value: string) => () => {
+    wrapper.style.clipPath = value;
+  };
+  return gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: () => `+=${window.innerHeight}`,
+        scrub: true,
+        invalidateOnRefresh: true,
+        onEnter: clip(""),
+        onEnterBack: clip(""),
+        onLeave: clip("unset"),
+        onLeaveBack: clip(""),
+      },
+    })
+    .fromTo(
+      section,
+      { backgroundColor: "rgba(26, 8, 9, 0)" },
+      { backgroundColor: "rgba(26, 8, 9, 0.75)", duration: 2, ease: "quart.inOut" },
+      0
+    )
+    .fromTo(section, { "--y1": 0 }, { "--y1": 1, duration: 2, ease: "quad.inOut" }, 0)
+    .fromTo(section, { "--y2": 0 }, { "--y2": 1, duration: 1.85, ease: "quad.inOut" }, 0.15)
+    .fromTo(section, { "--y3": 0 }, { "--y3": 1, duration: 1.7, ease: "quad.inOut" }, 0.3)
+    .fromTo(section, { "--y4": 0 }, { "--y4": 1, duration: 1.5, ease: "quad.inOut" }, 0.5)
+    .fromTo(section, { "--y5": 0 }, { "--y5": 1, duration: 1.25, ease: "quad.inOut" }, 0.75);
 }
 
 export function sceneTimeline(section: HTMLElement, start = 1, end = 2) {

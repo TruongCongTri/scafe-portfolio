@@ -1,3 +1,9 @@
 .nights-hero {
   --scene: 200vh;
 }
+
+/* The last event stays on screen through the 125vh contact reveal. */
+.positions + .contact.scene--overlap {
+  z-index: 2;
+  margin-top: -125vh;
+}

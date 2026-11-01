@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { Lines } from "@/components/ui/Lines";
-import { useGSAP } from "@/lib/gsap";
-import { revealScene, SHAPES } from "@/lib/scene";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { riseSection } from "@/lib/scene";
+import { onSiteReady } from "@/lib/site";
 import { TransitionLink } from "@/components/shell/TransitionLink";
-import { TimezoneBar } from "@/components/ui/TimezoneBar";
 import "./Featured.css";
 
 export function Featured() {
@@ -15,15 +15,24 @@ export function Featured() {
   const { t, content } = useI18n();
 
   useGSAP(
-    () => {
-      if (root.current) revealScene(root.current, SHAPES.shelf);
+    (_context, contextSafe) => {
+      const section = root.current;
+      if (!section) return;
+      const build = contextSafe!(() => {
+        gsap.matchMedia().add("(min-width: 1025px)", () => {
+          riseSection(section, section.querySelector<HTMLElement>(".featured__wrapper")!);
+        });
+        ScrollTrigger.refresh();
+      });
+      return onSiteReady(build);
     },
     { scope: root }
   );
 
   return (
-    <section ref={root} className="featured scene scene--overlap">
-      <div className="stage featured__stage box">
+    <section ref={root} className="featured">
+      <div className="featured__wrapper">
+        <div className="featured__box box">
         <h2 className="featured__title display">
           <Lines lines={t.press.featuredTitle} />
         </h2>
@@ -41,7 +50,7 @@ export function Featured() {
             </TransitionLink>
           ))}
         </div>
-        <TimezoneBar />
+        </div>
       </div>
     </section>
   );

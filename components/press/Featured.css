@@ -1,30 +1,43 @@
-.featured__stage {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.featured {
+  position: relative;
+  pointer-events: none;
+}
+
+.featured__wrapper {
   background: var(--cream);
   color: var(--ink);
+  pointer-events: auto;
+}
+
+.featured__box {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 .featured__title {
-  font-size: 8rem;
+  font-size: 15rem;
 }
 
 .featured__cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  gap: 7.5rem;
 }
 
 .featured__card {
   display: block;
-  padding: 0 2.5rem;
-  border-left: 1px solid rgba(0, 0, 0, 0.35);
+  width: 36.7rem;
+  padding-left: 3rem;
+  border-left: 1px solid currentcolor;
 }
 
 .featured__card figure {
   position: relative;
-  width: min(32rem, 100%);
-  height: 30vh;
+  width: 33.7rem;
+  max-width: 100%;
+  height: 23rem;
   overflow: hidden;
 }
 
@@ -35,12 +48,38 @@
 .featured__meta {
   display: flex;
   gap: 1.5rem;
-  margin: 1rem 0 1.5rem;
-  font-size: 0.95rem;
+  margin: 2rem 0 5rem;
+  font-size: 1.375rem;
 }
 
 .featured__card h3 {
-  font-size: 3rem;
+  font-size: 3.25rem;
+}
+
+/* Sits under the rising section, with spare page behind it as Articles comes up. */
+@media (min-width: 1025px) {
+  .featured {
+    margin-top: -100vh;
+  }
+
+  .featured__wrapper {
+    clip-path: polygon(
+      0 calc(var(--end, 100vh) - 100vh * var(--y1, 0)),
+      25% calc(var(--end, 100vh) - 100vh * var(--y2, 0)),
+      60% calc(var(--end, 100vh) - 100vh * var(--y3, 0)),
+      75% calc(var(--end, 100vh) - 100vh * var(--y4, 0)),
+      100% calc(var(--end, 100vh) - 100vh * var(--y5, 0)),
+      100% 100%,
+      0 100%
+    );
+    padding-bottom: 100vh;
+  }
+
+  .featured__box {
+    gap: 15rem;
+    padding-top: 120vh;
+    padding-bottom: 8.75rem;
+  }
 }
 
 @media (hover: hover) {
@@ -55,7 +94,7 @@
   }
 
   .featured__cards {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 1rem;
   }
 
@@ -63,6 +102,7 @@
     display: grid;
     grid-template-columns: 8rem 1fr;
     gap: 0 0.75rem;
+    width: auto;
     padding: 0;
     border: 0;
   }

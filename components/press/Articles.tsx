@@ -1,11 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { Lines } from "@/components/ui/Lines";
 import { categories as articleCategories } from "@/lib/content";
-import { ScrollTrigger } from "@/lib/gsap";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { riseSection } from "@/lib/scene";
+import { onSiteReady } from "@/lib/site";
 import { TransitionLink } from "@/components/shell/TransitionLink";
 import { Arrow } from "@/components/ui/Icons";
 import "./Articles.css";
@@ -18,6 +20,23 @@ type Filter = (typeof categories)[number];
 
 export function Articles() {
   const { t, content } = useI18n();
+  const root = useRef<HTMLElement>(null);
+
+  useGSAP(
+    (_context, contextSafe) => {
+      const section = root.current;
+      if (!section) return;
+      const build = contextSafe!(() => {
+        gsap.matchMedia().add("(min-width: 1025px)", () => {
+          riseSection(section, section.querySelector<HTMLElement>(".articles__wrapper")!);
+        });
+        ScrollTrigger.refresh();
+      });
+      return onSiteReady(build);
+    },
+    { scope: root }
+  );
+
   const { articles } = content;
   const [category, setCategory] = useState<Filter>(ALL);
   const [page, setPage] = useState(0);
@@ -31,7 +50,8 @@ export function Articles() {
   const refreshLater = () => requestAnimationFrame(() => ScrollTrigger.refresh());
 
   return (
-    <section className="articles flow">
+    <section ref={root} className="articles">
+      <div className="articles__wrapper">
       <div className="articles__box box">
         <h2 className="articles__title display">
           <Lines lines={t.press.articlesTitle} />
@@ -90,6 +110,7 @@ export function Articles() {
             )}
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

@@ -90,4 +90,4 @@ From Wikimedia Commons, resized and converted to WebP. CC BY and CC BY-SA photos
 
 Brave Bull, BJ, Slippery Nipple and Monkey Brain reuse existing bar photos as stand-ins. Old Fashioned and Coffee Martini reuse the matching photos listed above. Bespoke shows a cocktail shaker.
 
-`drinks/` and `crews/` photos and `menu/` boards are the bar's own.
+`drinks/` and `crews/` photos, `menu/` boards and `events/` posters are the bar's own. The film posters include artwork from the films: confirm the rights before launch.

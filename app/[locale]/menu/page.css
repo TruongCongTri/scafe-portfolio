@@ -31,3 +31,10 @@
 .collection + .contact.scene--overlap {
   margin-top: -150vh;
 }
+
+/* Later sections must paint over the list, which rises above the signatures. */
+@media (max-width: 1024px) {
+  .collection + .contact.scene--overlap {
+    z-index: 1;
+  }
+}

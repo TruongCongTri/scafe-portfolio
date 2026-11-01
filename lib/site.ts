@@ -31,5 +31,9 @@ export const onSiteReady = (callback: () => void) => {
   };
 };
 
+// How far, in percent of its own height, masked text starts from its place. Stacked
+// Vietnamese marks rise above the line box, so one full height would leave them showing.
+export const MASK_OFFSET = 125;
+
 export const prefersReducedMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;

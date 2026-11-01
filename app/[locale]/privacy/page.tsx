@@ -1,11 +1,11 @@
-import { getI18n } from "@/i18n/server";
+import { getI18n, pageMetadata } from "@/i18n/server";
 import { Contact } from "@/components/ui/Contact";
 import { site } from "@/lib/content";
 import "./page.css";
 
 export async function generateMetadata() {
   const { t } = await getI18n();
-  return { title: t.meta.privacy };
+  return pageMetadata("/privacy", t.meta.privacy, t.meta.pages.privacy);
 }
 
 // Placeholder wording: have it reviewed before the site goes live.

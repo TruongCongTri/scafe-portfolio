@@ -108,7 +108,7 @@ export function PromoPopup() {
           <div className="promo__bg" data-cursor="close" onClick={close} />
           <div className={`promo__panel ${view.events.length > 1 ? "promo__panel--many" : ""}`} data-lenis-prevent>
             <figure className="promo__figure">
-              <Image src={view.events[0].image} alt="" fill sizes="(max-width: 1024px) 100vw, 30vw" className="cover" />
+              <Image src={view.events[0].image} alt={view.events[0].title} fill sizes="(max-width: 1024px) 100vw, 30vw" className="cover" />
             </figure>
             <div className="promo__content">
               <button type="button" className="promo__close" aria-label={t.promo.close} onClick={close}>

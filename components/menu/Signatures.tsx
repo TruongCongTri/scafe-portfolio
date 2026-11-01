@@ -6,7 +6,7 @@ import { useI18n } from "@/i18n/I18nProvider";
 import type { Content } from "@/lib/content";
 import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
 import { revealScene, SHAPES } from "@/lib/scene";
-import { onSiteReady, prefersReducedMotion } from "@/lib/site";
+import { MASK_OFFSET, onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { useContactForm } from "@/components/shell/ContactForms";
 import { Arrow } from "@/components/ui/Icons";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
@@ -75,8 +75,8 @@ function Signature({ item, even, last }: SignatureProps) {
             .fromTo(stage, { "--y3": "100%" }, { "--y3": "0%", duration: 1.75, ease: "quart.inOut" }, 0.25)
             .fromTo(stage, { "--y4": "100%" }, { "--y4": "0%", duration: 1.75, ease: "quad.inOut" }, 0)
             .fromTo(".signature__content", { "--p": 0 }, { "--p": 1, duration: 1.4, ease: "quart.inOut" }, 0.6)
-            .fromTo(title.lines, { yPercent: 100 }, { yPercent: 0, duration: 0.85, ease: "quart.out" }, 0.85)
-            .fromTo(tag.lines, { yPercent: 100 }, { yPercent: 0, duration: 0.75, ease: "quart.out" }, 1.1)
+            .fromTo(title.lines, { yPercent: MASK_OFFSET }, { yPercent: 0, duration: 0.85, ease: "quart.out" }, 0.85)
+            .fromTo(tag.lines, { yPercent: MASK_OFFSET }, { yPercent: 0, duration: 0.75, ease: "quart.out" }, 1.1)
             .fromTo(".signature__text", { y: "3.5rem", opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, ease: "quart.out" }, 1.15)
             .fromTo(".signature__play", { y: "3.5rem", opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, ease: "quart.out" }, 1.25);
 
@@ -127,7 +127,7 @@ function Signature({ item, even, last }: SignatureProps) {
     <section ref={root} className={`signature scene scene--overlap ${even ? "signature--even" : ""}`}>
       <div className="stage signature__stage box">
         <figure className="signature__bg">
-          <Image src={item.image} alt="" fill sizes="100vw" className="cover" style={{ objectPosition: item.focus }} />
+          <Image src={item.image} alt={item.title} fill sizes="100vw" className="cover" style={{ objectPosition: item.focus }} />
         </figure>
         <div className="signature__content">
           <div className="signature__left">

@@ -1,18 +1,26 @@
 {
   "meta": {
-    "homeTitle": "Scafe | Quán cocktail",
-    "description": "Scafe là quán cocktail độc lập trong phố cổ, với những ly rượu pha chuẩn chỉnh, ánh đèn dịu và những buổi tối thật dài.",
+    "homeTitle": "Scafe | Café & Cocktail Bar tại TP. Hồ Chí Minh",
+    "description": "Scafe là quán cà phê và cocktail nhỏ núp trong hẻm Quận 3, TP. Hồ Chí Minh: ban ngày thong thả, tối đến có ly ngon, đèn vàng và những câu chuyện dài.",
     "about": "Giới thiệu",
     "crew": "Đội ngũ",
     "menu": "Thực đơn",
     "nights": "Sự kiện",
     "press": "Tin tức",
-    "privacy": "Quyền riêng tư"
+    "privacy": "Quyền riêng tư",
+    "pages": {
+      "menu": "Thực đơn Scafe: cocktail signature, classic, shooter và đồ nhâm nhi buổi tối; cà phê, matcha, trà và nước ép ban ngày.",
+      "nights": "Chiếu phim, jam session và ưu đãi hằng tuần tại Scafe, Quận 3, TP. Hồ Chí Minh.",
+      "about": "Câu chuyện của Scafe, quán cà phê và cocktail nhỏ núp trong hẻm 60/69 Lý Chính Thắng, TP. Hồ Chí Minh.",
+      "crew": "Gặp gỡ những người đứng sau quầy bar của Scafe, TP. Hồ Chí Minh.",
+      "press": "Tin tức và chuyện hậu trường từ Scafe, quán cà phê và cocktail ở Quận 3, TP. Hồ Chí Minh.",
+      "privacy": "Cách website Scafe xử lý cookie và thông tin bạn gửi cho tụi mình."
+    }
   },
   "site": {
     "tagline": [
-      "Mở cửa đến khuya",
-      "cả bảy ngày trong tuần"
+      "Ngày cà phê",
+      "đêm cocktail"
     ],
     "address": "60/69 Lý Chính Thắng, Xuân Hòa, Hồ Chí Minh, Việt Nam"
   },
@@ -25,7 +33,7 @@
   },
   "shell": {
     "preloader": "Đang pha",
-    "scrollTip": "cuộn để xem thêm",
+    "scrollTip": "kéo xuống nhé",
     "homeLabel": "Trang chủ Scafe",
     "openMenu": "Mở menu",
     "closeMenu": "Đóng menu",
@@ -45,47 +53,47 @@
     "follow": "Theo dõi",
     "copyright": "Bản quyền",
     "privacy": "Quyền riêng tư",
-    "hello": "Gửi lời chào",
+    "hello": "Nhắn tụi mình",
     "map": "Scafe trên Google Maps"
   },
   "forms": {
     "contact": {
-      "title": "Cảm ơn bạn đã liên hệ",
-      "subject": "Lời chào từ website"
+      "title": "Cảm ơn bạn đã nhắn cho tụi mình",
+      "subject": "Chào Scafe"
     },
     "book": {
-      "title": "Hãy cho chúng tôi biết khi nào. Chỗ của bạn sẽ được giữ sẵn",
-      "subject": "Yêu cầu đặt bàn",
+      "title": "Cho tụi mình biết khi nào bạn ghé, chỗ sẽ được giữ sẵn",
+      "subject": "Đặt bàn",
       "messageLabel": "Ngày, giờ và số người"
     },
     "private": {
-      "title": "Rất mong được đón tiếp bạn",
-      "subject": "Thuê trọn quán",
-      "messageLabel": "Kể cho chúng tôi về buổi tối của bạn"
+      "title": "Tụi mình rất mong được đón bạn",
+      "subject": "Thuê nguyên quán",
+      "messageLabel": "Kể tụi mình nghe về buổi tối của bạn"
     },
     "close": "Đóng",
     "name": "Tên của bạn",
     "email": "Email của bạn",
     "emailPlaceholder": "Email",
     "message": "Lời nhắn",
-    "messagePlaceholder": "Nhập tại đây",
+    "messagePlaceholder": "Nhập ở đây",
     "send": "gửi"
   },
   "cookies": {
     "title": "Tùy chọn cookie",
     "back": "Quay lại",
-    "intro": "Chúng tôi dùng cookie để cải thiện trải nghiệm của bạn và hiểu cách website được sử dụng.",
+    "intro": "Tụi mình dùng cookie để website chạy mượt hơn và hiểu mọi người dùng trang thế nào.",
     "statistics": {
       "name": "Thống kê",
-      "text": "Cookie thống kê cho chúng tôi biết một cách ẩn danh cách khách truy cập sử dụng website."
+      "text": "Giúp tụi mình biết khách dùng website ra sao, hoàn toàn ẩn danh."
     },
     "media": {
       "name": "Nội dung bên ngoài",
-      "text": "Cookie nội dung bên ngoài cho phép hiển thị nội dung nhúng từ các nền tảng âm nhạc và mạng xã hội."
+      "text": "Cho phép hiện nội dung nhúng từ các nền tảng âm nhạc và mạng xã hội."
     },
     "essential": {
       "name": "Thiết yếu",
-      "text": "Cookie thiết yếu giúp các chức năng cơ bản hoạt động và là bắt buộc để website vận hành."
+      "text": "Cần có để website hoạt động nên không thể tắt."
     },
     "accept": "Chấp nhận tất cả",
     "decline": "Từ chối",
@@ -97,17 +105,17 @@
     "rows": [
       {
         "label": "liên hệ",
-        "title": "Kết nối với chúng tôi",
-        "cta": "Liên hệ ngay"
+        "title": "Nhắn cho tụi mình",
+        "cta": "Nhắn ngay"
       },
       {
         "label": "Đặt bàn",
-        "title": "Chỗ của bạn đang đợi",
+        "title": "Chỗ của bạn đã sẵn sàng",
         "cta": "Đặt ngay"
       },
       {
-        "label": "Thuê trọn quán",
-        "title": "Muốn cả căn phòng?",
+        "label": "Thuê nguyên quán",
+        "title": "Muốn bao cả quán?",
         "cta": "Thuê quán"
       }
     ]
@@ -115,33 +123,33 @@
   "home": {
     "hero": {
       "title": [
-        "Sẵn sàng",
-        "cho một ly ngon?"
+        "Làm một ly",
+        "ngon chứ?"
       ],
-      "copyTitle": "Scafe là nơi những đêm vui gặp những ly rượu ngon.",
-      "copyText": "Từ vòng khuấy đầu tiên đến lượt gọi cuối cùng, chúng tôi rót nên những buổi tối đáng để kể lại.",
-      "open": "Mở thước phim",
-      "play": "Phát thước phim",
-      "pause": "Tạm dừng thước phim",
+      "copyTitle": "Scafe là nơi đêm vui tìm đến ly ngon.",
+      "copyText": "Từ vòng khuấy đầu tiên đến ly cuối cùng trong đêm, tụi mình rót nên những buổi tối để về còn kể mãi.",
+      "open": "Xem video",
+      "play": "Phát video",
+      "pause": "Tạm dừng video",
       "reelAlts": [
         "Ly cocktail đỏ đang được rót vào ly coupe",
-        "Whisky với đá trên quầy bar tối màu",
+        "Ly whisky đá trên mặt quầy tối màu",
         "Những chiếc ly treo phía trên các hàng chai",
-        "Quầy bar đầy ắp chai rượu",
-        "Gin tonic trên nền tối",
-        "Ly old fashioned với quả cherry"
+        "Quầy bar chất đầy chai rượu",
+        "Ly gin tonic trên nền tối",
+        "Ly old fashioned với một quả cherry"
       ]
     },
     "pours": {
       "title": [
-        "Pha chế",
-        "nghiêm túc",
-        "từng ly."
+        "Ly nào",
+        "cũng pha",
+        "tử tế."
       ],
-      "subtitle": "Chúng tôi theo đuổi những hương vị đáng giá và tạo nên chúng bằng sự chính xác, kiên nhẫn và tận tâm.",
-      "text": "Từ cú lắc đầu tiên đến nhánh trang trí cuối cùng, chúng tôi tin một ly rượu ngon không chỉ là công thức. Đó là một màn kịch nhỏ làm đổi thay không khí căn phòng và giữ chân bạn lâu hơn dự định.",
+      "subtitle": "Tụi mình đi tìm những hương vị thật sự đáng nhớ, rồi kiên nhẫn chăm chút chúng bằng sự tỉ mỉ và cái tâm.",
+      "text": "Từ cú lắc đầu tiên đến chút trang trí sau cùng, với tụi mình một ly ngon không chỉ dừng ở công thức. Nó là một màn diễn nhỏ, đủ để đổi không khí cả căn phòng và giữ chân bạn lâu hơn dự tính.",
       "cta": "Xem thực đơn",
-      "brandsLabel": "Các thương hiệu tại quầy",
+      "brandsLabel": "Các nhãn rượu tại quầy",
       "brands": [
         {
           "type": "Gin",
@@ -176,7 +184,7 @@
           "origin": "Jalisco"
         },
         {
-          "type": "Scotch pha trộn",
+          "type": "Scotch blended",
           "origin": "Scotland"
         },
         {
@@ -216,15 +224,15 @@
           "origin": "Ý"
         },
         {
-          "type": "Rượu mùi thảo mộc",
+          "type": "Rượu thảo mộc",
           "origin": "Đức"
         },
         {
-          "type": "Kem Ireland",
+          "type": "Rượu kem",
           "origin": "Ireland"
         },
         {
-          "type": "Rượu mùi cam",
+          "type": "Rượu cam",
           "origin": "Pháp"
         }
       ]
@@ -232,127 +240,127 @@
     "room": {
       "title": [
         "Sinh ra",
-        "sau hoàng hôn"
+        "khi đêm về"
       ],
-      "subtitle": "Ẩn mình trong con hẻm yên tĩnh cuối cùng của phố cổ, chúng tôi tạo nên những buổi tối khó quên.",
-      "text": "Con hẻm không chỉ là nơi chúng tôi ở, mà còn là cách chúng tôi nghĩ. Bóng tối, sự ấm áp và nét gai góc của nó định hình từng ly rượu: táo bạo, khác biệt và chân thật.",
+      "subtitle": "Núp mình trong một con hẻm nhỏ ở Quận 3, tụi mình làm nên những buổi tối ở lại rất lâu trong lòng.",
+      "text": "Con hẻm không chỉ là chỗ tụi mình ở, mà còn là cách tụi mình nghĩ. Cái tối, cái ấm và chút gai góc của nó thấm vào từng ly: táo bạo, riêng biệt và rất thật.",
       "cta": "Về Scafe",
-      "alt": "Phố cổ và cây cầu đá lên đèn ven sông lúc chạng vạng"
+      "alt": "Thị trấn cổ và cây cầu đá lên đèn bên sông lúc chiều muộn"
     },
     "crew": {
       "title": [
         "Ly ngon",
-        "cần những",
+        "nhờ những",
         "đôi tay",
-        "tài hoa"
+        "khéo léo"
       ],
-      "cta": "Gặp đội ngũ"
+      "cta": "Gặp cả đội"
     },
     "news": {
       "title": [
-        "đêm lớn.",
-        "tiếng vang lớn."
+        "đêm thật vui.",
+        "tiếng lành đồn xa."
       ],
-      "subtitle": "Tin mới nhất từ Scafe",
-      "text": "Tin tức, báo chí và những câu chuyện sau quầy bar đáng để kể.",
-      "cta": "Tất cả tin tức"
+      "subtitle": "Sự kiện mới ở Scafe",
+      "text": "Chiếu phim, open mic và ưu đãi hằng tuần, mới nhất xếp trước.",
+      "cta": "Xem tất cả"
     }
   },
   "people": {
     "leads": [
       "Chủ quán",
-      "Bartender quầy bar",
+      "Pha chế bar",
       "Pha chế cà phê",
       "TBD"
     ],
-    "support": "Đội ngũ hỗ trợ"
+    "support": "Đội hỗ trợ"
   },
   "about": {
     "hero": {
       "title": [
-        "Sẵn sàng",
-        "cho đêm vui?",
-        "Có ngay!"
+        "Tối nay",
+        "ghé Sờ không?",
+        "Đợi bạn!"
       ],
-      "subtitle": "Chúng tôi theo đuổi những hương vị đáng giá và tạo nên chúng bằng sự chính xác, kiên nhẫn và tận tâm.",
-      "text": "Từ cú lắc đầu tiên đến nhánh trang trí cuối cùng, chúng tôi tin một ly rượu ngon không chỉ là công thức. Đó là một màn kịch nhỏ làm đổi thay không khí căn phòng và giữ chân bạn lâu hơn dự định."
+      "subtitle": "Tụi mình đi tìm những hương vị thật sự đáng nhớ, rồi kiên nhẫn chăm chút chúng bằng sự tỉ mỉ và cái tâm.",
+      "text": "Từ cú lắc đầu tiên đến chút trang trí sau cùng, với tụi mình một ly ngon không chỉ dừng ở công thức. Nó là một màn diễn nhỏ, đủ để đổi không khí cả căn phòng và giữ chân bạn lâu hơn dự tính."
     },
     "alley": {
-      "alt": "Phố cổ và cây cầu đá lên đèn ven sông lúc chạng vạng",
-      "title": "sinh ra sau hoàng hôn",
-      "subtitle": "Scafe mang đến những buổi tối chậm rãi như thước phim, với chiều sâu như chính con hẻm chúng tôi gọi là nhà."
+      "alt": "Thị trấn cổ và cây cầu đá lên đèn bên sông lúc chiều muộn",
+      "title": "sinh ra khi đêm về",
+      "subtitle": "Scafe dệt nên những buổi tối chậm rãi như một thước phim, sâu lắng như chính con hẻm tụi mình gọi là nhà."
     },
     "pillars": [
       {
         "title": [
-          "Đồ uống",
-          "nghiêm túc"
+          "Pha chế",
+          "tử tế"
         ],
-        "subtitle": "Khuấy, lắc, lặp lại",
-        "text": "Scafe dành trọn tâm sức cho những quyết định nhỏ phía sau một ly rượu ngon. Chúng tôi thử từng tỷ lệ, tự cắt đá và xem mỗi ly như ly duy nhất được phục vụ tối nay."
+        "subtitle": "Khuấy, lắc, rồi làm lại",
+        "text": "Scafe mê những chi tiết nhỏ làm nên một ly ngon. Tụi mình thử đi thử lại từng tỷ lệ, tự tay cắt đá và pha ly nào cũng như thể đó là ly duy nhất của tối nay."
       },
       {
         "title": [
-          "Đón tiếp",
-          "nghiêm túc"
+          "Đón khách",
+          "tử tế"
         ],
-        "subtitle": "Những buổi tối khó quên",
-        "text": "Chúng tôi tin một quán bar chỉ tốt khi nó khiến bạn thấy dễ chịu. Tên bạn được nhớ, món quen của bạn được để ý, và chẳng ai bước vào một mình mà còn lẻ loi được lâu."
+        "subtitle": "Những tối chẳng muốn về",
+        "text": "Với tụi mình, quán hay là quán khiến bạn thấy dễ chịu. Tên bạn được nhớ, món quen được thuộc lòng, và ai đến một mình cũng chẳng lẻ loi được lâu."
       },
       {
         "title": [
           "Không gian",
-          "nghiêm túc"
+          "tử tế"
         ],
-        "subtitle": "Một nơi để bạn nán lại",
-        "text": "Gỗ tối màu, đèn ấm và một đĩa nhạc được chọn có chủ đích. Căn phòng được tạo ra để bạn chậm lại, để một ly rượu lặng lẽ trở thành phần đẹp nhất trong tuần."
+        "subtitle": "Một chốn để nán lại",
+        "text": "Gỗ sẫm, đèn vàng và đĩa nhạc được chọn kỹ. Căn phòng này sinh ra để bạn chậm lại, để một ly rượu khẽ khàng thành khoảnh khắc đẹp nhất trong tuần."
       }
     ],
     "partners": {
       "title": [
-        "Đồ uống nghiêm túc.",
-        "Đối tác nghiêm túc."
+        "Pha chế tử tế.",
+        "Đối tác tử tế."
       ],
-      "cta": "Hợp tác cùng chúng tôi",
-      "subtitle": "Cùng những người trồng trọt, thợ thủ công và nghệ sĩ có chung niềm say mê, chúng tôi tạo nên những buổi tối đầy thú vị.",
+      "cta": "Hợp tác cùng Scafe",
+      "subtitle": "Cùng những người trồng, người làm nghề và người chơi nhạc có chung nỗi mê, tụi mình làm nên những buổi tối thật vui.",
       "list": [
-        "Dòng rye mẻ nhỏ làm theo yêu cầu riêng, ủ trong những thùng do chính chúng tôi chọn và chỉ có tại đây.",
-        "Thảo mộc ven biển và cam chanh từ một trang trại gia đình, đúng mùa và giao ngay trong buổi sáng thu hoạch.",
-        "Những selector thường trú lấp đầy góc nghe nhạc bằng đĩa than hiếm vào mỗi tối thứ Năm và Chủ nhật.",
-        "Hạt cà phê đơn nguồn làm nên The Night Shift, rang cách đây vài con phố và xay theo từng ly."
+        "Mẻ rye nhỏ làm riêng theo ý tụi mình, ủ trong những thùng do chính tay tụi mình chọn, và chỉ ở đây mới có.",
+        "Thảo mộc ven biển và cam chanh từ một nông trại gia đình, đúng mùa, hái sáng nào giao ngay sáng đó.",
+        "Những tay chọn nhạc quen thuộc, mang đĩa than hiếm đến góc nghe nhạc mỗi tối thứ Năm và Chủ nhật.",
+        "Hạt cà phê đơn nguồn làm nên The Night Shift, rang cách đây vài con phố và xay mới cho từng ly."
       ],
       "photoAlt": "Quầy bar đông khách",
       "photoTitle": [
-        "Ly ngon cần",
-        "những đôi tay tài hoa"
+        "Ly ngon nhờ",
+        "những đôi tay khéo"
       ],
-      "photoCta": "Gặp đội ngũ"
+      "photoCta": "Gặp cả đội"
     }
   },
   "crewPage": {
     "title": [
       "Gặp gỡ",
-      "đội ngũ"
+      "cả đội"
     ],
-    "subtitle": "Những con người biến ca làm dài thành những đêm khó quên.",
-    "text": "Từ người tạc đá đến kẻ săn đĩa than, đội ngũ của chúng tôi cũng sôi động như chính căn phòng này. Đây là những người tỉ mỉ với từng lần rót, từng khoảnh khắc, để mỗi vị khách đều được chăm sóc chu đáo.",
+    "subtitle": "Những người khiến ca làm dài hóa thành những đêm đáng nhớ.",
+    "text": "Từ người đẽo đá đến người săn đĩa than, cả đội cũng rộn ràng như chính căn phòng này. Họ chăm chút từng lần rót, từng khoảnh khắc, để vị khách nào cũng được đón tiếp trọn vẹn.",
     "closeTitle": [
-      "Gặp gỡ",
+      "Và còn",
       "những người",
-      "còn lại"
+      "phía sau"
     ]
   },
   "menu": {
-    "heroAlt": "Quầy bar đầy ắp chai rượu",
+    "heroAlt": "Quầy bar chất đầy chai rượu",
     "heroTitle": [
-      "Sẵn sàng cho",
-      "một đêm khó quên?"
+      "Tối nay",
+      "uống gì đây?"
     ],
-    "seat": "Giữ chỗ cho tôi",
+    "seat": "Giữ chỗ giúp mình",
     "signatures": [
       {
         "tag": "Signature / 250",
-        "text": "Ly quen thuộc của tôi mỗi lần ghé nơi này. Không chỉ vì vị đắng, vị cay hay độ rượu, mà còn vì câu chuyện em đã kể cho tôi nghe. Tôi bắt đầu yêu em từ lúc nào không hay, và đó là lý do tôi cứ quay lại: để cảm nhận sự chăm chút mà em gửi vào từng ly, để nghe giọng em, và hơn hết là để được gặp em nhiều hơn."
+        "text": "Ly quen thuộc của tôi mỗi lần ghé nơi này. Không chỉ vì vị đắng, vị cay hay độ rượu, mà còn vì câu chuyện em đã kể cho tôi nghe. Tôi bắt đầu có tình cảm với em từ lúc nào không hay, và đó cũng là lý do tôi cứ quay lại nơi đây: để cảm nhận sự chăm chút mà em gửi vào từng ly, để nghe giọng em, để nhìn em thật lâu, và hơn hết là để được gặp em nhiều hơn."
       },
       {
         "tag": "Thử nghiệm mới",
@@ -360,14 +368,14 @@
       },
       {
         "tag": "Shooter / 99",
-        "text": "Một ly shooter nhiều tầng trong danh sách classic, đốt lửa ngay tại quầy và uống cạn một hơi."
+        "text": "Ly shooter nhiều tầng trong danh sách classic, châm lửa ngay tại quầy rồi làm một hơi cạn sạch."
       }
     ],
     "collectionTitle": "Thực đơn Scafe",
-    "credits": "Ảnh đồ uống chỉ mang tính minh họa. Nguồn ảnh",
+    "credits": "Ảnh đồ uống chỉ để minh họa. Nguồn ảnh",
     "evening": {
       "tab": "Buổi tối",
-      "subtitle": "Cocktail, shooter và đồ ăn nhẹ",
+      "subtitle": "Cocktail, shooter và chút gì nhâm nhi",
       "text": "Thực đơn có cồn, từ signature đến classic.",
       "footnote": "Giá chưa bao gồm 5% phí dịch vụ.",
       "groups": [
@@ -560,7 +568,7 @@
           ]
         },
         {
-          "title": "Đồ ăn nhẹ",
+          "title": "Đồ nhâm nhi",
           "items": [
             {
               "name": "SALTED",
@@ -580,7 +588,7 @@
     },
     "morning": {
       "tab": "Buổi sáng",
-      "subtitle": "Cà phê, trà và nhiều hơn thế",
+      "subtitle": "Cà phê, trà và đủ thứ ngon lành",
       "text": "Thực đơn ban ngày: cà phê, matcha, choco, yogurt, trà và nước ép.",
       "footnote": "",
       "groups": [
@@ -789,16 +797,16 @@
   },
   "nights": {
     "heroTitle": [
-      "Gọi tất cả",
-      "những cá tính"
+      "Những tâm hồn",
+      "thú vị đâu rồi?"
     ],
-    "heroSubtitle": "...người táo bạo, người tài hoa, người sắp gục",
-    "heroText": "Café bar từ 09:00 đến 17:00. Cocktail bar từ 17:00 đến khuya.",
-    "heroCta": "Cho tôi tham gia",
+    "heroSubtitle": "...dù gan dạ, tài hoa hay sắp gục tới nơi",
+    "heroText": "Café bar 09:00 - 17:00. Cocktail bar 17:00 đến khuya.",
+    "heroCta": "Tính mình một vé",
     "marquee": "Thứ 6 có phim - Thứ 7 có nhạc",
     "signUp": "Hỏi lịch đợt tới",
-    "signUpSubject": "Đêm:",
-    "signUpMessage": "Bạn muốn hỏi gì?",
+    "signUpSubject": "Sự kiện:",
+    "signUpMessage": "Bạn muốn hỏi gì nè?",
     "events": [
       {
         "title": "Jam Session",
@@ -855,88 +863,88 @@
   },
   "press": {
     "heroTitle": [
-      "Cập nhật",
-      "mọi điều mới"
+      "Chuyện mới",
+      "ở Scafe"
     ],
-    "heroText": "Tò mò dạo này chúng tôi làm gì? Khá nhiều đấy. Hãy xem tất cả những điều thú vị đang diễn ra tại Scafe.",
+    "heroText": "Dạo này tụi mình làm gì á? Nhiều lắm. Ngồi xuống đây, tụi mình kể cho nghe.",
     "featuredTitle": [
       "Scafe",
-      "trên báo chí"
+      "lên báo"
     ],
     "highlights": [
-      "Cách một quán bar trong hẻm biến việc chờ đợi thành thời thượng",
-      "Cẩm nang thành phố gọi tên Scafe là quán bar đáng chú ý"
+      "Quán bar trong hẻm đã biến chuyện xếp hàng thành mốt như thế nào",
+      "Cẩm nang thành phố điểm tên Scafe trong danh sách quán đáng thử"
     ],
     "articlesTitle": [
-      "Scafe có gì mới",
-      "phải không?"
+      "Scafe dạo này",
+      "có gì mới?"
     ],
     "all": "Tất cả",
     "categories": {
-      "behindTheBar": "Sau quầy bar",
+      "behindTheBar": "Hậu trường",
       "press": "Báo chí",
       "drinks": "Đồ uống"
     },
     "pages": "Trang",
-    "back": "Quay lại tin tức"
+    "back": "Về trang tin tức"
   },
   "articles": {
     "the-ice-program": {
-      "title": "Bên trong chương trình đá mới đầy ám ảnh của chúng tôi",
+      "title": "Chuyện làm đá của tụi mình, kỹ đến mức hơi quá",
       "body": [
-        "Đá trong là công việc chậm rãi. Tủ đông mới của chúng tôi làm lạnh từ dưới lên, đẩy không khí và tạp chất đi suốt ba ngày trước khi từng khối được cắt bằng tay.",
-        "Kết quả là đá tan chậm hơn, đẹp hơn trong ly và giữ ly rượu khuấy đúng vị lâu hơn. Chúng tôi thừa nhận chuyện này hơi lố. Nhưng vẫn sẽ tiếp tục."
+        "Làm đá trong là việc không vội được. Tủ đông mới đông từ dưới lên, đẩy dần bọt khí và tạp chất ra suốt ba ngày, rồi từng khối mới được cắt bằng tay.",
+        "Đá tan chậm hơn, vào ly đẹp hơn và giữ vị ly rượu khuấy được lâu hơn. Tụi mình biết là hơi quá. Nhưng vẫn làm."
       ]
     },
     "last-ember-joins-the-list": {
-      "title": "“Last Ember” gia nhập thực đơn của quán",
+      "title": "“Last Ember” chính thức lên thực đơn",
       "body": [
-        "Sau mười một phiên bản và một sự cố nhỏ với súng hun khói, Last Ember đã giành được vị trí đầu thực đơn.",
-        "Ly rượu dựa trên thùng rye riêng của quán, kết thúc bằng cam cháy và được khuấy đến khi cả phòng lặng đi. Hãy đến và cho chúng tôi biết mình đã làm đúng chưa."
+        "Qua mười một lần thử và một phen hú vía với súng hun khói, Last Ember đã giành được vị trí đầu bảng.",
+        "Nền là thùng rye riêng của quán, thêm chút cam cháy, khuấy đến khi cả phòng lặng đi. Ghé thử rồi nói tụi mình nghe đã đúng vị chưa nhé."
       ]
     },
     "six-years-of-red-hour": {
-      "title": "Sáu năm của Red Hour",
+      "title": "Sáu năm Red Hour",
       "body": [
-        "Nó bắt đầu như một cách lấp đầy khoảng lặng trước tám giờ. Sáu năm sau, Red Hour là lý do người ta tan làm đúng giờ.",
-        "Mùa thu này, công thức aperitivo chuyển sang cam đỏ. Giá, danh sách nhạc và những vị khách quen vẫn giữ nguyên."
+        "Ban đầu chỉ là cách lấp khoảng vắng trước tám giờ. Sáu năm sau, Red Hour thành cái cớ để người ta tan làm đúng giờ.",
+        "Thu này, công thức aperitivo đổi sang cam đỏ. Còn giá, nhạc và mấy gương mặt quen thì vẫn y nguyên."
       ]
     },
     "city-guide-names-scafe": {
-      "title": "Cẩm nang thành phố gọi tên Scafe là quán bar đáng chú ý",
+      "title": "Cẩm nang thành phố điểm tên Scafe trong danh sách quán đáng thử",
       "body": [
-        "Chúng tôi cố không đọc các bài đánh giá về mình, nhưng bài này đã được ghim lên tường phòng nhân viên trước khi mực kịp khô.",
-        "Cảm ơn tất cả những ai từng kiên nhẫn đợi một ly rượu khuấy. Lời khen này thuộc về căn phòng cũng như đội ngũ."
+        "Tụi mình vốn cố không đọc review về mình, vậy mà bài này được ghim lên tường phòng nhân viên khi mực còn chưa khô.",
+        "Cảm ơn những ai từng kiên nhẫn đợi một ly rượu khuấy. Lời khen này là của cả căn phòng, không riêng gì cả đội."
       ]
     },
     "meet-the-barrel": {
       "title": "Làm quen với thùng rượu riêng đầu tiên",
       "body": [
-        "Chúng tôi đến Ember & Oak với sáu mẫu thử, hai ý kiến và không hề định đồng ý với nhau. Năm tiếng sau, một thùng rượu đã được chọn.",
-        "Nó là xương sống của các ly rye trong năm nay. Hết là hết."
+        "Tụi mình đến Ember & Oak với sáu mẫu thử, hai ý kiến và chẳng ai định nhường ai. Năm tiếng sau, cũng chốt được một thùng.",
+        "Năm nay các ly rye đều dựa vào nó. Hết là hết thật."
       ]
     },
     "a-room-with-low-light": {
-      "title": "Một căn phòng ánh sáng dịu",
+      "title": "Căn phòng đèn vàng",
       "body": [
-        "Chẳng ai phải lòng một quán bar dưới ánh đèn huỳnh quang. Đôi dòng về những ngọn đèn, thớ gỗ và hai năm chúng tôi dành ra để căn phòng lúc nào cũng như chín giờ tối."
+        "Chẳng ai mê nổi một quán bar dưới ánh đèn tuýp. Đôi dòng về mấy ngọn đèn, thớ gỗ và hai năm loay hoay để căn phòng lúc nào cũng như chín giờ tối."
       ]
     }
   },
   "privacy": {
     "title": "Quyền riêng tư",
-    "cookies": "Website này ghi nhớ lựa chọn cookie ngay trên trình duyệt của bạn và không chạy công cụ phân tích.",
-    "forms": "Các biểu mẫu sẽ mở ứng dụng email với nội dung điền sẵn, nên mọi thứ bạn gửi đến chúng tôi như email thông thường. Để hỏi về thông tin của bạn, hãy viết đến"
+    "cookies": "Website chỉ ghi nhớ lựa chọn cookie ngay trên trình duyệt của bạn và không dùng công cụ phân tích nào.",
+    "forms": "Khi gửi biểu mẫu, ứng dụng email của bạn sẽ mở ra với nội dung điền sẵn, nên tụi mình nhận được như một email bình thường. Có thắc mắc về thông tin của bạn, cứ viết cho tụi mình tại"
   },
   "notFound": {
-    "title": "Lượt gọi cuối",
-    "text": "Trang này đã rời quán.",
-    "cta": "Về đầu trang"
+    "title": "Ly cuối rồi",
+    "text": "Trang này rời quán mất rồi.",
+    "cta": "Về trang chủ"
   },
   "promo": {
     "upcoming": "Sắp diễn ra",
-    "latest": "Sự kiện gần nhất",
-    "cta": "Xem các đêm",
+    "latest": "Sự kiện mới nhất",
+    "cta": "Xem sự kiện",
     "close": "Đóng",
     "hide": "Không hiện lại hôm nay"
   }

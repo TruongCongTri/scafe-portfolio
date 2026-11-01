@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { TransitionLink } from "@/components/shell/TransitionLink";
 import { Contact } from "@/components/ui/Contact";
 import { SplitLines } from "@/components/ui/SplitLines";
-import { getI18n } from "@/i18n/server";
+import { getI18n, pageMetadata } from "@/i18n/server";
 import { articleSlugs } from "@/lib/content";
 import "./page.css";
 
@@ -18,7 +18,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const { content } = await getI18n();
-  return { title: content.articles.find((article) => article.slug === slug)?.title };
+  const article = content.articles.find((item) => item.slug === slug);
+  if (!article) return {};
+  // Sample stories stay out of search until real ones replace them.
+  return { ...(await pageMetadata(`/press/${slug}`, article.title, article.body[0])), robots: { index: false, follow: true } };
 }
 
 export default function ArticlePage({ params }: PageProps) {
@@ -49,7 +52,7 @@ async function ArticleContent({ params }: PageProps) {
           </SplitLines>
         </header>
         <figure className="post__figure">
-          <Image src={article.image} alt="" fill sizes="100vw" preload className="cover" />
+          <Image src={article.image} alt={article.title} fill sizes="100vw" preload className="cover" />
         </figure>
         <div className="post__body box">
           {article.body.map((paragraph) => (

@@ -1,4 +1,4 @@
-import { getI18n } from "@/i18n/server";
+import { getI18n, pageMetadata } from "@/i18n/server";
 import { Articles } from "@/components/press/Articles";
 import { Featured } from "@/components/press/Featured";
 import { PressHero } from "@/components/press/PressHero";
@@ -7,7 +7,7 @@ import "./page.css";
 
 export async function generateMetadata() {
   const { t } = await getI18n();
-  return { title: t.meta.press };
+  return pageMetadata("/press", t.meta.press, t.meta.pages.press);
 }
 
 export default function PressPage() {

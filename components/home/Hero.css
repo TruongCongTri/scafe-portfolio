@@ -85,10 +85,15 @@
   );
 }
 
+/* Holds the arrow to the title, whose height changes with the language. */
+.home-hero__head {
+  position: relative;
+}
+
 .home-hero__arrow {
   position: absolute;
-  top: 44%;
-  left: 75.5%;
+  top: calc(100% + 1.5rem);
+  left: 72%;
   visibility: hidden;
   width: 11rem;
   overflow: clip;
@@ -189,8 +194,9 @@
   }
 
   .home-hero__arrow {
-    top: 27%;
-    right: var(--box);
+    top: auto;
+    right: 0;
+    bottom: 0.4rem;
     left: auto;
     width: 3.75rem;
   }

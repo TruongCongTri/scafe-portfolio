@@ -6,6 +6,21 @@ const nextConfig: NextConfig = {
     agentFeedback: true,
     globalNotFound: true,
   },
+  poweredByHeader: false,
+  images: {
+    formats: ["image/avif", "image/webp"],
+    qualities: [75],
+    deviceSizes: [640, 828, 1080, 1440, 1920],
+    minimumCacheTTL: 2678400,
+  },
+  async headers() {
+    return [
+      {
+        source: "/images/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=2592000" }],
+      },
+    ];
+  },
   cacheComponents: true,
   partialPrefetching: true,
 };

@@ -61,11 +61,11 @@
   margin-left: 2.45em;
 }
 
-.home-news__olive {
+.home-news__stamp {
   position: absolute;
   bottom: 0.14em;
-  left: 0.08em;
-  width: 1.7em;
+  left: 0.3em;
+  width: 0.95em;
   color: var(--cream);
 }
 
@@ -135,7 +135,13 @@
   transition: clip-path 0.3s var(--ease);
 }
 
-.home-news__card img {
+/* Posters carry their own dates and titles, so they show whole. */
+.home-news__card figure {
+  background: var(--ink);
+}
+
+.home-news__card figure img {
+  object-fit: contain;
   transition: scale 0.3s cubic-bezier(0.5, 1, 0.89, 1);
 }
 
@@ -189,11 +195,11 @@
     margin-left: 0;
   }
 
-  .home-news__olive {
+  .home-news__stamp {
     right: 0;
     bottom: 0.2em;
     left: auto;
-    width: 6.5rem;
+    width: 4rem;
   }
 
   .home-news__bottom {
@@ -262,7 +268,7 @@
 
 /* The longer second line needs the icon's space on phones. */
 @media (max-width: 1024px) {
-  html[lang="vi"] .home-news__olive {
+  html[lang="vi"] .home-news__stamp {
     display: none;
   }
 }

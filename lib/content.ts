@@ -8,6 +8,8 @@ type Dictionary = typeof en;
 
 export const site = {
   name: "Scafe",
+  // Set NEXT_PUBLIC_SITE_URL to the live domain: canonical links and the sitemap use it.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://scafe.example",
   email: "hello@scafe.example",
   timeZone: "Asia/Ho_Chi_Minh",
   mapEmbed:
@@ -38,26 +40,26 @@ const heroImages = [
 ];
 
 const brandLogos = [
-  { name: "Tanqueray", logo: "/images/brands/tanqueray.png" },
+  { name: "Tanqueray", logo: "/images/brands/tanqueray.webp" },
   { name: "Absolut", logo: "/images/brands/absolut.svg" },
-  { name: "Grey Goose", logo: "/images/brands/greygoose.svg" },
+  { name: "Grey Goose", logo: "/images/brands/greygoose.webp" },
   { name: "Belvedere", logo: "/images/brands/belvedere.svg" },
-  { name: "Bacardi", logo: "/images/brands/bacardi.svg" },
-  { name: "Havana Club", logo: "/images/brands/havanaclub.png" },
-  { name: "Malibu", logo: "/images/brands/malibu.png" },
-  { name: "Jose Cuervo", logo: "/images/brands/josecuervo.svg" },
-  { name: "Johnnie Walker", logo: "/images/brands/johnniewalker.svg" },
+  { name: "Bacardi", logo: "/images/brands/bacardi.webp" },
+  { name: "Havana Club", logo: "/images/brands/havanaclub.webp" },
+  { name: "Malibu", logo: "/images/brands/malibu.webp" },
+  { name: "Jose Cuervo", logo: "/images/brands/josecuervo.webp" },
+  { name: "Johnnie Walker", logo: "/images/brands/johnniewalker.webp" },
   { name: "Glenfiddich", logo: "/images/brands/glenfiddich.svg" },
   { name: "The Macallan", logo: "/images/brands/macallan.svg" },
-  { name: "Wild Turkey", logo: "/images/brands/wildturkey.png" },
-  { name: "Hennessy", logo: "/images/brands/hennessy.svg" },
-  { name: "Martell", logo: "/images/brands/martell.svg" },
-  { name: "Rémy Martin", logo: "/images/brands/remymartin.png" },
-  { name: "Campari", logo: "/images/brands/campari.png" },
+  { name: "Wild Turkey", logo: "/images/brands/wildturkey.webp" },
+  { name: "Hennessy", logo: "/images/brands/hennessy.webp" },
+  { name: "Martell", logo: "/images/brands/martell.webp" },
+  { name: "Rémy Martin", logo: "/images/brands/remymartin.webp" },
+  { name: "Campari", logo: "/images/brands/campari.webp" },
   { name: "Aperol", logo: "/images/brands/aperol.svg" },
-  { name: "Martini", logo: "/images/brands/martini.png" },
+  { name: "Martini", logo: "/images/brands/martini.webp" },
   { name: "Jägermeister", logo: "/images/brands/jagermeister.png" },
-  { name: "Baileys", logo: "/images/brands/baileys.png" },
+  { name: "Baileys", logo: "/images/brands/baileys.webp" },
   { name: "Grand Marnier", logo: "/images/brands/grandmarnier.svg" },
 ];
 

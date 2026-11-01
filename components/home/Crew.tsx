@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { Lines } from "@/components/ui/Lines";
 import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
-import { getLenis, onSiteReady, prefersReducedMotion } from "@/lib/site";
+import { getLenis, MASK_OFFSET, onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { RectButton } from "@/components/ui/RectButton";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
 import "./Crew.css";
@@ -155,7 +155,7 @@ export function Crew() {
             if (!distance) return;
             reveal.fromTo(
               word,
-              { yPercent: index < middle ? 100 : -100 },
+              { yPercent: index < middle ? MASK_OFFSET : -MASK_OFFSET },
               { yPercent: 0, duration: 0.75, ease: "quart.out" },
               distance / 2 + 0.25
             );
@@ -201,6 +201,23 @@ export function Crew() {
             onLeave: hideActive,
             onLeaveBack: hideActive,
           });
+
+          // On phones the rows cross the title, so it steps back while they pass.
+          if (!context.conditions?.desktop) {
+            gsap
+              .timeline({
+                defaults: { ease: "none" },
+                scrollTrigger: {
+                  trigger: section,
+                  start: () => `top+=${height() * REVEAL_END} top`,
+                  end: () => `top+=${height() * LIST_END} top`,
+                  scrub: true,
+                  invalidateOnRefresh: true,
+                },
+              })
+              .fromTo(title, { filter: "blur(0px)", opacity: 1 }, { filter: "blur(6px)", opacity: 0.2, duration: 0.15 }, 0)
+              .to(title, { filter: "blur(0px)", opacity: 1, duration: 0.15 }, 0.85);
+          }
 
           // Falls back as the next scene covers it.
           gsap.fromTo(

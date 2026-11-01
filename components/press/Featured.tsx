@@ -40,7 +40,7 @@ export function Featured() {
           {content.pressHighlights.map((item) => (
             <TransitionLink key={item.href} href={item.href} className="featured__card">
               <figure>
-                <Image src={item.image} alt="" fill sizes="(max-width: 1024px) 100vw, 30vw" className="cover" />
+                <Image src={item.image} alt={item.title} fill sizes="(max-width: 1024px) 100vw, 30vw" className="cover" />
               </figure>
               <p className="featured__meta">
                 <time>{item.date}</time>

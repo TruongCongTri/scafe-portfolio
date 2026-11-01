@@ -55,7 +55,7 @@ export function Positions() {
           {content.nights.map((night) => (
             <article key={night.title} className="positions__item">
               <figure>
-                <Image src={night.image} alt="" fill sizes="(max-width: 1024px) 100vw, 50vw" className="cover" />
+                <Image src={night.image} alt={night.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="cover" />
               </figure>
               <div className="positions__content">
                 <header>

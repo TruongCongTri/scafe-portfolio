@@ -8,6 +8,9 @@ import { Logo } from "@/components/ui/Icons";
 import { VectorGrid } from "@/components/ui/VectorGrid";
 import "./Preloader.css";
 
+// One intro per visit: later full page loads, like a language switch, go straight in.
+const SEEN_KEY = "scafe-intro-seen";
+
 const WAVES = [
   "polygon(0% 100%, 22% 100%, 60% 100%, 80% 100%, 100% 100%, 100% 100%, 0% 100%)",
   "polygon(0% 62%, 22% 38%, 60% 56%, 80% 34%, 100% 60%, 100% 100%, 0% 100%)",
@@ -30,7 +33,15 @@ export function Preloader() {
         getLenis()?.start();
       };
 
-      if (prefersReducedMotion()) {
+      let seen = false;
+      try {
+        seen = window.sessionStorage.getItem(SEEN_KEY) === "1";
+        window.sessionStorage.setItem(SEEN_KEY, "1");
+      } catch {
+        // Storage blocked: the intro simply plays.
+      }
+
+      if (seen || prefersReducedMotion()) {
         markSiteReady();
         finish();
         return;
@@ -65,10 +76,10 @@ export function Preloader() {
 
       const fill = gsap
         .timeline()
-        .fromTo(".preloader__bg", { clipPath: WAVES[0] }, { clipPath: WAVES[1], duration: 0.7, ease: "power2.out" })
-        .to(".preloader__logo, .preloader__text", { autoAlpha: 1, duration: 0.3 }, 0.15)
-        .to(count, { value: 100, duration: 1.2, ease: "power1.inOut", onUpdate: render }, 0.1)
-        .to(".preloader__bg", { clipPath: WAVES[2], duration: 0.6, ease: "power2.inOut" }, 0.7);
+        .fromTo(".preloader__bg", { clipPath: WAVES[0] }, { clipPath: WAVES[1], duration: 0.4, ease: "power2.out" })
+        .to(".preloader__logo, .preloader__text", { autoAlpha: 1, duration: 0.2 }, 0.1)
+        .to(count, { value: 100, duration: 0.7, ease: "power1.inOut", onUpdate: render }, 0.05)
+        .to(".preloader__bg", { clipPath: WAVES[2], duration: 0.35, ease: "power2.inOut" }, 0.4);
 
       Promise.all([document.fonts.ready, fill.then()]).then(leave);
     },

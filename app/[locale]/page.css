@@ -26,3 +26,15 @@
 .home-news {
   --scene: 445vh;
 }
+
+/* Phones have no assembly to play, so Pours and Room move on sooner. Room starts
+   at Pours' --scene minus 200vh, and Crew at Room's --scene minus 265vh. */
+@media (max-width: 1024px) {
+  .home-pours {
+    --scene: 400vh;
+  }
+
+  .home-room {
+    --scene: 415vh;
+  }
+}

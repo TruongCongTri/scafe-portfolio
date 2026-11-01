@@ -37,14 +37,3 @@ export function Stamp({ className = "" }: { className?: string }) {
     </svg>
   );
 }
-
-export function Olive({ className = "" }: { className?: string }) {
-  return (
-    <svg className={`olive ${className}`} viewBox="0 0 330 188" aria-hidden="true">
-      <path d="M0 94H66M264 94H330" stroke="currentColor" strokeWidth="10" />
-      <path d="M312 94l18-13v26Z" fill="currentColor" />
-      <ellipse cx="165" cy="94" rx="118" ry="78" fill="none" stroke="currentColor" strokeWidth="24" />
-      <circle cx="165" cy="94" r="36" fill="currentColor" />
-    </svg>
-  );
-}

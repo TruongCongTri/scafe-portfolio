@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
 import { trackViewportEnd } from "@/lib/scene";
-import { onSiteReady, prefersReducedMotion } from "@/lib/site";
+import { MASK_OFFSET, onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { useContactForm } from "@/components/shell/ContactForms";
 import { Stamp } from "@/components/ui/Icons";
 import { Lines } from "@/components/ui/Lines";
@@ -73,7 +73,7 @@ export function Partners() {
             .fromTo(wrapper, { "--y2": 1 }, { "--y2": 0, duration: 2, ease: "quad.inOut" }, 0)
             .fromTo(wrapper, { "--y3": 1 }, { "--y3": 0, duration: 1.4, ease: "quad.inOut" }, 0.6)
             .fromTo(wrapper, { "--y4": 1 }, { "--y4": 0, duration: 1, ease: "quart.inOut" }, 1)
-            .fromTo(title.lines, { yPercent: 100 }, { yPercent: 0, duration: 0.85, ease: "quart.out" }, 0.75);
+            .fromTo(title.lines, { yPercent: MASK_OFFSET }, { yPercent: 0, duration: 0.85, ease: "quart.out" }, 0.75);
 
           gsap
             .timeline({

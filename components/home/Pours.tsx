@@ -14,7 +14,9 @@ import "./Pours.css";
 // Scroll distances in viewport heights: the section assembles and settles,
 // then further scrolling walks the brands across the pinned strip.
 const ASSEMBLE_DISTANCE = 1.75;
-const MOBILE_REVEAL_DISTANCE = 1;
+const MOBILE_REVEAL_DISTANCE = 0.6;
+// Must stay below where Room starts on phones: .home-pours --scene minus 200vh.
+const MOBILE_STRIP_END = 1.9;
 const STRIP_END = 4.75;
 // Must match where Room starts: .home-pours --scene minus the 200vh overlap.
 const COVER_START = 4.9;
@@ -37,14 +39,14 @@ export function Pours() {
       const width = () => window.innerWidth;
 
       // Scrubbed both ways: down moves the brands left, up brings them back.
-      const scrubStrip = (startAt: number) =>
+      const scrubStrip = (startAt: number, endAt: number) =>
         gsap.to(track, {
           x: () => houses.clientWidth - track.scrollWidth,
           ease: "none",
           scrollTrigger: {
             trigger: section,
             start: () => `top+=${height() * startAt} top`,
-            end: () => `top+=${height() * STRIP_END} top`,
+            end: () => `top+=${height() * endAt} top`,
             scrub: true,
             invalidateOnRefresh: true,
           },
@@ -89,7 +91,7 @@ export function Pours() {
             .add(staggerFrom(lines.lines, { x: () => width() * 0.6, duration: 1, ease: "quad.inOut" }, 0.01), 1.25)
             .from(".home-pours__bt", { x: () => width() * 0.75, duration: 1.25 }, 1.25);
 
-          scrubStrip(ASSEMBLE_DISTANCE);
+          scrubStrip(ASSEMBLE_DISTANCE, STRIP_END);
 
           // Falls back into the distance as the next scene arrives.
           gsap.to(".home-pours__content", {
@@ -119,7 +121,7 @@ export function Pours() {
             .fromTo(section, { "--x1": "100%" }, { "--x1": "0%", duration: 1 }, 0)
             .fromTo(section, { "--x2": "130%" }, { "--x2": "0%", duration: 1 }, 0);
 
-          scrubStrip(MOBILE_REVEAL_DISTANCE);
+          scrubStrip(MOBILE_REVEAL_DISTANCE, MOBILE_STRIP_END);
         });
 
         ScrollTrigger.refresh();

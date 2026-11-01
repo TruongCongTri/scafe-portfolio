@@ -1,13 +1,21 @@
 {
   "meta": {
-    "homeTitle": "Scafe | Cocktail bar",
-    "description": "Scafe is an independent cocktail bar in the old town, serving precise drinks, low light and long evenings.",
+    "homeTitle": "Scafe | Café & Cocktail Bar in Ho Chi Minh City",
+    "description": "Scafe is a small café and cocktail bar tucked down an alley in District 3, Ho Chi Minh City: coffee by day, cocktails from 17:00 until late.",
     "about": "About",
     "crew": "Crew",
     "menu": "Menu",
     "nights": "Nights",
     "press": "Press",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "pages": {
+      "menu": "The Scafe menus: signature cocktails, classics, shooters and bar snacks by night, coffee, matcha, tea and juice by day.",
+      "nights": "Film screenings, jam sessions and weekly deals at Scafe in District 3, Ho Chi Minh City.",
+      "about": "The story of Scafe, a small café and cocktail bar tucked down an alley at 60/69 Lý Chính Thắng, Ho Chi Minh City.",
+      "crew": "Meet the people behind the bar at Scafe, Ho Chi Minh City.",
+      "press": "News and stories from Scafe, a café and cocktail bar in District 3, Ho Chi Minh City.",
+      "privacy": "How the Scafe website handles cookies and the details you send us."
+    }
   },
   "site": {
     "tagline": [
@@ -255,8 +263,8 @@
         "big buzz."
       ],
       "subtitle": "The latest from Scafe",
-      "text": "News, press and behind-the-bar stories worth talking about.",
-      "cta": "All the news"
+      "text": "Film screenings, open mics and weekly deals, newest first.",
+      "cta": "All events"
     }
   },
   "people": {
@@ -353,7 +361,7 @@
     "signatures": [
       {
         "tag": "Signature / 250",
-        "text": "My go-to drink whenever I visit this place. Not just for the bitterness, the spice or the strength, but for the story you shared with me. I started to fall in love with it, and that's why I keep coming back: to feel the care you put into every drink, to listen to your voice, and most of all, to see you."
+        "text": "My go-to drink whenever I visit this place. Not just for the bitterness, the spice or the strength, but for the story you shared with me. I started to fall in love with it, and that's why I keep coming back: to feel the care you put into every drink, to listen to your voice, to keep my eyes on you a little longer, and most of all, to see you."
       },
       {
         "tag": "New experiment",

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
-import { onSiteReady, prefersReducedMotion } from "@/lib/site";
+import { MASK_OFFSET, onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { Lines } from "@/components/ui/Lines";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
 import "./CrewClose.css";
@@ -98,6 +98,7 @@ export function CrewClose() {
               if (images.children.length) moveY(y);
               else moveY(y, y);
               shown = row.querySelector(".crew-close__image")!.cloneNode(true) as Element;
+              shown.querySelector("img")?.setAttribute("loading", "eager");
               images.appendChild(shown);
               wipe(shown, IMAGE_IN);
             };
@@ -173,7 +174,7 @@ export function CrewClose() {
             if (!distance) return;
             open.fromTo(
               line,
-              { yPercent: index < middle ? 100 : -100 },
+              { yPercent: index < middle ? MASK_OFFSET : -MASK_OFFSET },
               { yPercent: 0, duration: 0.75, ease: "quart.out" },
               distance / 2 + 0.25
             );
@@ -227,7 +228,7 @@ export function CrewClose() {
                   <span className="crew-close__role">{member.role}</span>
                 </div>
                 <figure className="crew-close__image">
-                  <Image src={member.image} alt="" fill sizes="(max-width: 1024px) 30vw, 16vw" loading="eager" className="cover" />
+                  <Image src={member.image} alt="" fill sizes="(max-width: 1024px) 30vw, 16vw" className="cover" />
                 </figure>
               </li>
             ))}

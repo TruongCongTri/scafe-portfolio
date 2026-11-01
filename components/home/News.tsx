@@ -3,12 +3,13 @@
 import Image from "next/image";
 import { Suspense, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import { useI18n } from "@/i18n/I18nProvider";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { staggerFrom } from "@/lib/scene";
 import { TransitionLink } from "@/components/shell/TransitionLink";
-import { Olive } from "@/components/ui/Icons";
+import { Stamp } from "@/components/ui/Icons";
 import { RectButton } from "@/components/ui/RectButton";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
 import "./News.css";
@@ -77,10 +78,10 @@ export function News() {
             .fromTo(section, { "--line-h": 0 }, { "--line-h": 1, duration: 1.7, ease: "quad.inOut" }, 0.65)
             .from(".home-news__article", { y: () => height() * 0.6, duration: 1.5 }, 0.65)
             .from(".home-news__bt", { y: () => height() * 0.6, duration: 1 }, 1.15)
-            // Drops in with a tilt, back to front: the olive, then each line.
+            // Drops in with a tilt, back to front: the stamp, then each line.
             .add(
               staggerFrom(
-                [...gsap.utils.toArray<HTMLElement>(".home-news__title span"), ...gsap.utils.toArray<HTMLElement>(".home-news__olive")],
+                [...gsap.utils.toArray<HTMLElement>(".home-news__title span"), ...gsap.utils.toArray<HTMLElement>(".home-news__stamp")],
                 { y: () => -0.65 * (title?.offsetHeight ?? 0), rotation: -5, duration: 1.25, ease: "quad.out" },
                 -0.15
               ),
@@ -141,7 +142,7 @@ export function News() {
                 <span>{copy.title[0]}</span>
                 <span>{copy.title[1]}</span>
               </h2>
-              <Olive className="home-news__olive" />
+              <Stamp className="home-news__stamp" />
             </div>
           </div>
 
@@ -151,22 +152,22 @@ export function News() {
                 <h3 className="serif">{copy.subtitle}</h3>
                 <p>{copy.text}</p>
               </article>
-              <RectButton label={copy.cta} href="/press" className="home-news__bt" />
+              <RectButton label={copy.cta} href="/nights" className="home-news__bt" />
             </div>
 
             <div className="home-news__right" data-cursor="drag">
               <Suspense fallback={null}>
                 <Swiper slidesPerView="auto" spaceBetween={36} grabCursor>
-                  {content.articles.slice(0, 4).map((article) => (
-                    <SwiperSlide key={article.slug} className="home-news__slide">
-                      <TransitionLink href={`/press/${article.slug}`} className="home-news__card">
+                  {content.nights.map((night) => (
+                    <SwiperSlide key={night.title} className="home-news__slide">
+                      <TransitionLink href="/nights" className="home-news__card">
                         <figure>
-                          <Image src={article.image} alt="" fill sizes="(max-width: 1024px) 70vw, 30vw" className="cover" />
+                          <Image src={night.image} alt={night.title} fill sizes="(max-width: 1024px) 70vw, 30vw" className="cover" />
                         </figure>
                         <h4 className="display">
-                          <span>{article.title}</span>
+                          <span>{night.title}</span>
                         </h4>
-                        <time>{article.date}</time>
+                        {night.date && <time dateTime={night.date}>{night.date.split("-").reverse().join(".")}</time>}
                       </TransitionLink>
                     </SwiperSlide>
                   ))}

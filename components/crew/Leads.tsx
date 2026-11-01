@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
-import { onSiteReady, prefersReducedMotion } from "@/lib/site";
+import { MASK_OFFSET, onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { VectorGrid } from "@/components/ui/VectorGrid";
 import "./Leads.css";
 
@@ -85,10 +85,10 @@ export function Leads() {
               .fromTo(figure, { "--y4": "100%" }, { "--y4": "0%", duration: 1.1, ease: "quart.inOut" }, 0.9);
 
             if (lines.length) {
-              enter.fromTo(lines, { yPercent: 100 }, { yPercent: 0, duration: 1.7, ease: "quart.inOut" }, 0.3);
+              enter.fromTo(lines, { yPercent: MASK_OFFSET }, { yPercent: 0, duration: 1.7, ease: "quart.inOut" }, 0.3);
               if (!last) {
                 gsap.to(lines, {
-                  yPercent: -100,
+                  yPercent: -MASK_OFFSET,
                   ease: "quart.inOut",
                   immediateRender: false,
                   scrollTrigger: {

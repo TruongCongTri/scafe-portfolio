@@ -83,7 +83,7 @@ export function Articles() {
               {visible.map((article) => (
                 <TransitionLink key={article.slug} href={`/press/${article.slug}`} className="articles__card">
                   <figure>
-                    <Image src={article.image} alt="" fill sizes="(max-width: 1024px) 100vw, 30vw" className="cover" />
+                    <Image src={article.image} alt={article.title} fill sizes="(max-width: 1024px) 100vw, 30vw" className="cover" />
                   </figure>
                   <h3 className="display">{article.title}</h3>
                   <time>{article.date}</time>

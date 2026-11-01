@@ -1,4 +1,4 @@
-import { getI18n } from "@/i18n/server";
+import { getI18n, pageMetadata } from "@/i18n/server";
 import { AboutHero } from "@/components/about/AboutHero";
 import { AboutTeam } from "@/components/about/AboutTeam";
 import { Alley } from "@/components/about/Alley";
@@ -9,7 +9,7 @@ import "./page.css";
 
 export async function generateMetadata() {
   const { t } = await getI18n();
-  return { title: t.meta.about };
+  return pageMetadata("/about", t.meta.about, t.meta.pages.about);
 }
 
 export default function AboutPage() {

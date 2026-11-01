@@ -2,7 +2,7 @@
 
 import { useRef, type ElementType, type ReactNode } from "react";
 import { gsap, SplitText, useGSAP } from "@/lib/gsap";
-import { onSiteReady } from "@/lib/site";
+import { MASK_OFFSET, onSiteReady } from "@/lib/site";
 
 type SplitLinesProps = {
   as?: ElementType;
@@ -28,7 +28,7 @@ export function SplitLines({ as: Tag = "div", className, children, delay = 0 }: 
           split = SplitText.create(element, { type: "lines", mask: "lines", linesClass: "split-line" });
           gsap.set(element, { autoAlpha: 1 });
           gsap.from(split.lines, {
-            yPercent: 110,
+            yPercent: MASK_OFFSET,
             duration: 1,
             delay,
             ease: "power3.out",

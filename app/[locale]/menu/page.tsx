@@ -1,4 +1,4 @@
-import { getI18n } from "@/i18n/server";
+import { getI18n, pageMetadata } from "@/i18n/server";
 import { Collection } from "@/components/menu/Collection";
 import { MenuHero } from "@/components/menu/MenuHero";
 import { Signatures } from "@/components/menu/Signatures";
@@ -7,7 +7,7 @@ import "./page.css";
 
 export async function generateMetadata() {
   const { t } = await getI18n();
-  return { title: t.meta.menu };
+  return pageMetadata("/menu", t.meta.menu, t.meta.pages.menu);
 }
 
 export default function MenuPage() {

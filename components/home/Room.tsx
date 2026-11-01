@@ -15,7 +15,7 @@ import "./Room.css";
 const LAYERS = ["base", "far", "mid", "near"];
 // Scroll distance, in viewport heights, that assembles the section.
 const ASSEMBLE_DISTANCE = 3.1;
-const MOBILE_REVEAL_DISTANCE = 1;
+const MOBILE_REVEAL_DISTANCE = 0.6;
 // The split runs with the Crew reveal: .home-room --scene minus Crew's 265vh overlap.
 const SPLIT_START = 3.2;
 const SPLIT_DISTANCE = 1.625;
@@ -147,7 +147,7 @@ export function Room() {
         });
 
         media.add("(max-width: 1024px)", () => {
-          gsap
+          const reveal = gsap
             .timeline({
               defaults: { ease: "none", duration: 1 },
               scrollTrigger: {
@@ -163,6 +163,10 @@ export function Room() {
             .fromTo(section, { "--y4": "100%" }, { "--y4": "0%", duration: 0.85 }, 0.15)
             .fromTo(section, { "--y2": "100%" }, { "--y2": "0%", duration: 0.7 }, 0.3)
             .fromTo(section, { "--y1": "100%" }, { "--y1": "0%", duration: 0.55 }, 0.45);
+
+          gsap.utils.toArray<HTMLElement>(".home-room__layer", content).forEach((layer, index) => {
+            reveal.fromTo(layer, { yPercent: 5 + 2 ** (LAYERS.length - index) }, { yPercent: 0, ease: "power2.out" }, 0);
+          });
         });
 
         ScrollTrigger.refresh();

@@ -1,4 +1,4 @@
-import { getI18n } from "@/i18n/server";
+import { getI18n, pageMetadata } from "@/i18n/server";
 import { CrewClose } from "@/components/crew/CrewClose";
 import { CrewHero } from "@/components/crew/CrewHero";
 import { Leads } from "@/components/crew/Leads";
@@ -7,7 +7,7 @@ import "./page.css";
 
 export async function generateMetadata() {
   const { t } = await getI18n();
-  return { title: t.meta.crew };
+  return pageMetadata("/crew", t.meta.crew, t.meta.pages.crew);
 }
 
 export default function CrewPage() {

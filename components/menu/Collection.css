@@ -168,8 +168,19 @@
     font-size: 5rem;
   }
 
+  /* Sits just under the top bar, with the page colour behind it. */
   .collection__tabs {
+    position: sticky;
+    z-index: 5;
+    top: calc(var(--gutter) + 3.25rem);
     margin-top: 2rem;
+    padding: 0.5rem 0;
+    background: var(--ink);
+  }
+
+  .collection__group-title,
+  .collection__header {
+    scroll-margin-top: calc(var(--gutter) + 7rem);
   }
 
   .collection__tabs button {

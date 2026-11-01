@@ -1,11 +1,6 @@
 .logo,
 .arrow,
 .stamp,
-.olive {
-  display: block;
-  overflow: visible;
-}
-
 .arrow {
   aspect-ratio: 120 / 100;
 }

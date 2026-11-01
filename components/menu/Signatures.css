@@ -1,5 +1,7 @@
-.signature {
-  z-index: 2;
+@media (min-width: 1025px) {
+  .signature {
+    z-index: 2;
+  }
 }
 
 .signature__stage {

@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { ScrollTrigger } from "@/lib/gsap";
+import { getLenis } from "@/lib/site";
 import type { Content } from "@/lib/content";
 import { SplitLines } from "@/components/ui/SplitLines";
 import "./Collection.css";
@@ -16,11 +17,20 @@ export function Collection() {
   const { t, content } = useI18n();
   const [active, setActive] = useState<MenuName>("evening");
   const copy = t.menu[active];
+  const header = useRef<HTMLElement>(null);
 
   const choose = (name: MenuName) => {
     setActive(name);
     // The list changes height, so pinned scenes further down must re-measure.
-    requestAnimationFrame(() => ScrollTrigger.refresh());
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+      // Deep in a long list, the shorter one would leave the visitor past its end.
+      const element = header.current;
+      if (!element || element.getBoundingClientRect().top >= 0) return;
+      const lenis = getLenis();
+      if (lenis) lenis.scrollTo(element, { immediate: true, force: true, offset: -120 });
+      else element.scrollIntoView();
+    });
   };
 
   return (
@@ -42,7 +52,7 @@ export function Collection() {
             </button>
           ))}
         </div>
-        <header className="collection__header">
+        <header ref={header} className="collection__header">
           <h3 className="serif">{copy.subtitle}</h3>
           <p>{copy.text}</p>
         </header>
@@ -57,7 +67,7 @@ export function Collection() {
                   <li key={item.name} className="collection__item">
                     {item.image && (
                       <figure>
-                        <Image src={item.image} alt="" fill sizes="(max-width: 1024px) 50vw, 22vw" className="cover" />
+                        <Image src={item.image} alt={item.name} fill sizes="(max-width: 1024px) 50vw, 22vw" className="cover" />
                       </figure>
                     )}
                     <div className="collection__meta">

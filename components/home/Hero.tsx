@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { Lines } from "@/components/ui/Lines";
 import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
-import { getLenis, onSiteReady, prefersReducedMotion } from "@/lib/site";
+import { getLenis, MASK_OFFSET, onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { staggerFrom } from "@/lib/scene";
 import { Arrow } from "@/components/ui/Icons";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
@@ -34,6 +34,8 @@ export function Hero() {
   const copy = t.home.hero;
   const root = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
+  // Only the showing frame and the next are mounted, so the reel loads one photo at a time.
+  const [mounted, setMounted] = useState(2);
   const [paused, setPaused] = useState(false);
   const [opened, setOpened] = useState(false);
   const openedRef = useRef(false);
@@ -43,6 +45,7 @@ export function Hero() {
     if (paused || prefersReducedMotion()) return;
     const id = window.setInterval(() => {
       setActive((index) => (index + 1) % heroReel.length);
+      setMounted((count) => Math.min(count + 1, heroReel.length));
     }, 1400);
     return () => window.clearInterval(id);
   }, [paused, heroReel.length]);
@@ -67,12 +70,13 @@ export function Hero() {
             defaults: { ease: "quart.out" },
             onComplete: () => {
               titles.revert();
-              lines.revert();
+              // Rejoined only when it must re-wrap: a late swap counts as a new largest paint.
+              window.addEventListener("resize", () => lines.revert(), { once: true });
             },
           })
           .to(section, { "--start": 0, "--orange-start": 1, duration: 1.5, ease: "quart.inOut" }, 0)
           .from(".home-hero__zone", { x: () => window.innerWidth * 0.2, autoAlpha: 0, duration: 0.75 }, 0.85)
-          .from(titles.words, { yPercent: 100, duration: 0.85 }, 1.05)
+          .from(titles.words, { yPercent: MASK_OFFSET, duration: 0.85 }, 1.05)
           .fromTo(".home-hero__arrow .arrow", { xPercent: -100 }, { xPercent: 0, duration: 0.75 }, 1.15)
           .add(staggerFrom(lines.lines, { yPercent: 100, opacity: 0, duration: 0.65, ease: "quart.out" }, 0.035), 1.2)
           .fromTo(".home-hero__play", { scale: 0 }, { scale: 1, duration: 0.5 }, 0.9);
@@ -116,7 +120,8 @@ export function Hero() {
         .to(
           ".home-hero__title",
           {
-            y: (_index, target: HTMLElement) => -(target.offsetTop + target.offsetHeight) * 1.1,
+            y: (_index, target: HTMLElement) =>
+              -(target.offsetTop + ((target.offsetParent as HTMLElement | null)?.offsetTop ?? 0) + target.offsetHeight) * 1.1,
             rotation: -2,
             duration: 1.75,
             ease: "quad.inOut",
@@ -199,7 +204,7 @@ export function Hero() {
     <section ref={root} className="home-hero scene">
       <div className="stage home-hero__stage">
         <div className="home-hero__reel">
-          {heroReel.map((frame, index) => (
+          {heroReel.slice(0, mounted).map((frame, index) => (
             <Image
               key={frame.src}
               src={frame.src}
@@ -241,9 +246,11 @@ export function Hero() {
 
         <div className="home-hero__layer home-hero__layer--orange box">
           <VectorGrid />
-          <Title decorative />
-          <div className="home-hero__arrow" aria-hidden="true">
-            <Arrow />
+          <div className="home-hero__head">
+            <Title decorative />
+            <div className="home-hero__arrow" aria-hidden="true">
+              <Arrow />
+            </div>
           </div>
           <TimezoneBar className="home-hero__zone home-hero__zone--ink" />
         </div>

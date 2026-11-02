@@ -35,13 +35,15 @@
 
 .featured__card figure {
   position: relative;
-  width: 33.7rem;
+  width: 26rem;
   max-width: 100%;
-  height: 23rem;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
 }
 
+/* Square posters keep their text panel, which sits on the left. */
 .featured__card img {
+  object-position: 0 50%;
   transition: transform 0.7s var(--ease);
 }
 
@@ -110,7 +112,6 @@
   .featured__card figure {
     grid-row: span 2;
     width: auto;
-    height: 8rem;
   }
 
   .featured__meta {

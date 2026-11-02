@@ -35,8 +35,9 @@
 
 .positions__item {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto 1fr;
   min-height: 100vh;
+  padding-left: var(--rail);
   background: var(--cream);
 }
 
@@ -45,13 +46,23 @@
   top: 0;
   overflow: hidden;
   align-self: start;
-  height: 100vh;
-  background: var(--ink);
+  height: min(calc(100vh - var(--ticker, 0px)), 62.5vw);
 }
 
-/* Posters carry their own dates and titles, so they show whole. */
+.positions__item figure a {
+  display: block;
+  height: 100%;
+}
+
+/* Posters carry their own dates and titles, so each card takes the poster's shape.
+   One too wide for its half keeps its left side, where square posters hold their text. */
 .positions__item img {
-  object-fit: contain;
+  display: block;
+  width: auto;
+  max-width: 50vw;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 50%;
 }
 
 .positions__content .rect-bt {
@@ -111,20 +122,24 @@
     font-size: 3.5rem;
   }
 
-  /* Each card fills the screen below the top bar, and the poster takes what's left. */
   .positions__item {
     display: flex;
     flex-direction: column;
-    height: calc(100svh - var(--gutter) * 2 - 3.25rem - var(--ticker, 0px));
     min-height: 0;
     border-bottom: 1px solid rgba(26, 8, 9, 0.3);
   }
 
   .positions__item figure {
     position: relative;
-    flex: 1;
-    align-self: stretch;
-    min-height: 0;
+    align-self: center;
+    width: 100%;
+    max-width: 58svh;
+    height: auto;
+  }
+
+  .positions__item img {
+    width: 100%;
+    max-width: none;
     height: auto;
   }
 

@@ -1,6 +1,6 @@
 .event {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr auto;
   background: var(--cream);
   color: var(--ink);
 }
@@ -60,12 +60,16 @@
   position: sticky;
   top: 0;
   align-self: start;
-  height: 100vh;
-  background: var(--ink);
+  height: min(calc(100vh - var(--ticker, 0px)), 62.5vw);
 }
 
 .event__poster img {
-  object-fit: contain;
+  display: block;
+  width: auto;
+  max-width: 50vw;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 50%;
 }
 
 @media (max-width: 1024px) {
@@ -76,8 +80,17 @@
   .event__poster {
     position: relative;
     order: -1;
-    height: 62svh;
+    justify-self: center;
+    width: 100%;
+    max-width: 58svh;
+    height: auto;
     margin-top: calc(var(--gutter) * 2 + 3.25rem);
+  }
+
+  .event__poster img {
+    width: 100%;
+    max-width: none;
+    height: auto;
   }
 
   .event__content {

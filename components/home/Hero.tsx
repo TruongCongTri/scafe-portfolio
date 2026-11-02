@@ -16,6 +16,7 @@ import "./Hero.css";
 const OPEN_DISTANCE = 1.25;
 // Must match where Pours starts: .home-hero --scene minus the 200vh overlap.
 const COVER_START = 2;
+const MOBILE_COVER_START = 1.4;
 const POINTER_LERP = 0.05;
 
 const Title = ({ decorative }: { decorative?: boolean }) => {
@@ -145,7 +146,7 @@ export function Hero() {
         ease: "quad.in",
         scrollTrigger: {
           trigger: section,
-          start: () => `top+=${window.innerHeight * COVER_START} top`,
+          start: () => `top+=${window.innerHeight * (window.innerWidth > 1024 ? COVER_START : MOBILE_COVER_START)} top`,
           end: () => `+=${window.innerHeight}`,
           scrub: true,
         },

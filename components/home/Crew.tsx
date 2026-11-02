@@ -15,8 +15,11 @@ const REVEAL_END = 1.625;
 const LIST_BAND_START = 2;
 const LIST_BAND_END = 4;
 const BAND_MARGIN = 0.04;
+const BAND_LEAD = 0.01;
 // Must match where News starts: .home-crew --scene minus News's 287vh overlap.
 const LIST_END = 4.4;
+const MOBILE_BAND_END = 3;
+const MOBILE_LIST_END = 3.2;
 const COVER_DISTANCE = 1.87;
 const SNAP_THRESHOLD = 0.3;
 // The jagged edge crosses the image over two thirds of a second.
@@ -32,6 +35,9 @@ const EDGE: [number, number][] = [
 ];
 const TOP = ["--t1", "--t2", "--t3", "--t4", "--t5"];
 const BOTTOM = ["--b1", "--b2", "--b3", "--b4", "--b5"];
+
+const bandEnd = () => (window.innerWidth > 1024 ? LIST_BAND_END : MOBILE_BAND_END);
+const listEnd = () => (window.innerWidth > 1024 ? LIST_END : MOBILE_LIST_END);
 
 function wipe(figure: HTMLElement, points: string[], onComplete?: () => void) {
   const timeline = gsap.timeline({ onComplete });
@@ -91,6 +97,8 @@ export function Crew() {
         const figure = figures[active];
         active = -1;
         gsap.delayedCall(0.1, () => {
+          // The visitor may have scrolled straight back to this row.
+          if (figures[active] === figure) return;
           wipe(figure, BOTTOM, () => {
             if (figures[active] !== figure) resetFigure(figure);
           });
@@ -168,35 +176,36 @@ export function Crew() {
               scrollTrigger: {
                 trigger: section,
                 start: () => `top+=${height() * REVEAL_END} top`,
-                end: () => `top+=${height() * LIST_END} top`,
+                end: () => `top+=${height() * listEnd()} top`,
                 scrub: true,
                 invalidateOnRefresh: true,
               },
             })
             .fromTo(lists, { y: height }, { y: () => rowY(0), duration: LIST_BAND_START - REVEAL_END })
-            .to(lists, { y: () => rowY(leads.length - 1), duration: LIST_BAND_END - LIST_BAND_START })
-            .to(lists, { y: () => -list.offsetHeight, duration: LIST_END - LIST_BAND_END });
+            .to(lists, { y: () => rowY(leads.length - 1), duration: bandEnd() - LIST_BAND_START })
+            .to(lists, { y: () => -list.offsetHeight, duration: listEnd() - bandEnd() });
 
           const last = leads.length - 1;
           if (snaps) {
             ScrollTrigger.create({
               trigger: section,
               start: () => `top+=${height() * LIST_BAND_START} top`,
-              end: () => `top+=${height() * LIST_BAND_END} top`,
+              end: () => `top+=${height() * bandEnd()} top`,
               snap: { snapTo: 1 / last, directional: false, duration: { min: 0.25, max: 0.5 }, delay: 0.08, ease: "power1.inOut" },
             });
           }
 
-          // Slightly wider than the band, so rows snapped to its very ends still count.
+          // Slightly wider than the band, so rows snapped to its very ends still count. The
+          // first image waits for its row to arrive, and each row gets an equal share.
           const bandTop = () => section.offsetTop + height() * LIST_BAND_START;
-          const bandLength = () => height() * (LIST_BAND_END - LIST_BAND_START);
+          const bandLength = () => height() * (bandEnd() - LIST_BAND_START);
           ScrollTrigger.create({
             trigger: section,
-            start: () => `top+=${height() * (LIST_BAND_START - BAND_MARGIN)} top`,
-            end: () => `top+=${height() * (LIST_BAND_END + BAND_MARGIN)} top`,
+            start: () => `top+=${height() * (LIST_BAND_START - BAND_LEAD)} top`,
+            end: () => `top+=${height() * (bandEnd() + BAND_MARGIN)} top`,
             onUpdate: (self) => {
               const progress = gsap.utils.clamp(0, 1, (self.scroll() - bandTop()) / bandLength());
-              showRow(Math.round(progress * last));
+              showRow(Math.min(Math.floor(progress * leads.length), last));
             },
             onLeave: hideActive,
             onLeaveBack: hideActive,
@@ -210,7 +219,7 @@ export function Crew() {
                 scrollTrigger: {
                   trigger: section,
                   start: () => `top+=${height() * REVEAL_END} top`,
-                  end: () => `top+=${height() * LIST_END} top`,
+                  end: () => `top+=${height() * listEnd()} top`,
                   scrub: true,
                   invalidateOnRefresh: true,
                 },
@@ -230,7 +239,7 @@ export function Crew() {
               immediateRender: false,
               scrollTrigger: {
                 trigger: section,
-                start: () => `top+=${height() * LIST_END} top`,
+                start: () => `top+=${height() * listEnd()} top`,
                 end: () => `+=${height() * COVER_DISTANCE}`,
                 scrub: true,
               },
@@ -249,7 +258,7 @@ export function Crew() {
   const goToRow = (index: number) => {
     const section = root.current;
     if (!section) return;
-    const span = LIST_BAND_END - LIST_BAND_START;
+    const span = bandEnd() - LIST_BAND_START;
     const top = section.offsetTop + window.innerHeight * (LIST_BAND_START + (span * index) / (leads.length - 1));
     const lenis = getLenis();
     if (lenis) lenis.scrollTo(top, { duration: 0.8 });

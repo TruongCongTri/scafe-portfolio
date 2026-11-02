@@ -16,7 +16,7 @@ import "./Pours.css";
 const ASSEMBLE_DISTANCE = 1.75;
 const MOBILE_REVEAL_DISTANCE = 0.6;
 // Must stay below where Room starts on phones: .home-pours --scene minus 200vh.
-const MOBILE_STRIP_END = 1.9;
+const MOBILE_STRIP_END = 1.25;
 const STRIP_END = 4.75;
 // Must match where Room starts: .home-pours --scene minus the 200vh overlap.
 const COVER_START = 4.9;

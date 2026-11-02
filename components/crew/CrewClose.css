@@ -168,7 +168,12 @@
   }
 
   .crew-close__list-wrapper {
-    padding: 130vh var(--box) 200vh;
+    padding: 100vh var(--box) 150vh;
+  }
+
+  .crew-close__image {
+    width: 4.5rem;
+    height: 5.75rem;
   }
 
   .crew-close__content {

@@ -211,8 +211,8 @@
 
   .collection__group {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
-    padding: 2rem 0;
+    gap: 1rem;
+    padding: 1.5rem 0;
   }
 
   .collection__group-title {
@@ -222,7 +222,12 @@
 
   .collection__cards {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.75rem 1rem;
+    gap: 1.25rem 1rem;
+  }
+
+  .collection__item figure {
+    aspect-ratio: 4 / 3;
+    margin-bottom: 0.6rem;
   }
 
   .collection__rows {

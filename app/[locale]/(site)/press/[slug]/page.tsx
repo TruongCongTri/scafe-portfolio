@@ -52,7 +52,7 @@ async function ArticleContent({ params }: PageProps) {
           </SplitLines>
         </header>
         <figure className="post__figure">
-          <Image src={article.image} alt={article.title} fill sizes="100vw" preload className="cover" />
+          <Image src={article.image} alt={article.title} width={1200} height={1500} sizes="(max-width: 1024px) 100vw, 70vw" preload />
         </figure>
         <div className="post__body box">
           {article.body.map((paragraph) => (

@@ -27,14 +27,27 @@
   --scene: 445vh;
 }
 
-/* Phones have no assembly to play, so Pours and Room move on sooner. Room starts
-   at Pours' --scene minus 200vh, and Crew at Room's --scene minus 265vh. */
+/* Phones keep the reveals but spend less scroll inside each scene. Every next scene
+   starts at this --scene minus its overlap, and the JS constants rely on that:
+   Hero MOBILE_COVER_START, Pours MOBILE_STRIP_END and Crew MOBILE_LIST_END. */
 @media (max-width: 1024px) {
+  .home-hero {
+    --scene: 340vh;
+  }
+
   .home-pours {
-    --scene: 400vh;
+    --scene: 330vh;
   }
 
   .home-room {
-    --scene: 415vh;
+    --scene: 365vh;
+  }
+
+  .home-crew.scene--overlap {
+    --scene: 607vh;
+  }
+
+  .home-news {
+    --scene: 375vh;
   }
 }

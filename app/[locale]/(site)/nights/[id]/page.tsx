@@ -83,7 +83,7 @@ async function EventContent({ params }: PageProps) {
           </TransitionLink>
         </div>
         <figure className="event__poster">
-          <Image src={night.image} alt={night.title} fill sizes="(max-width: 1024px) 100vw, 50vw" preload className="cover" />
+          <Image src={night.image} alt={night.title} width={1200} height={1500} sizes="(max-width: 1024px) 100vw, 50vw" preload />
         </figure>
       </article>
       <Contact flow />

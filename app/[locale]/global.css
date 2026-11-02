@@ -142,7 +142,8 @@ html.lenis body {
   pointer-events: auto;
   position: sticky;
   top: 0;
-  height: 100vh;
+  /* Ends where the offer ticker starts, so nothing held on screen sits under it. */
+  height: calc(100vh - var(--ticker, 0px));
   overflow: hidden;
   will-change: clip-path;
 }
@@ -153,7 +154,7 @@ html.lenis body {
 
 @media (max-width: 1024px) {
   .stage {
-    height: 100svh;
+    height: calc(100svh - var(--ticker, 0px));
   }
 
   .box {

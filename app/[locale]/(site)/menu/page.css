@@ -1,11 +1,12 @@
 /* Scene lengths and overlaps for the menu page. Each signature rises 175vh after
-   the one before, and JS in Signatures.tsx and MenuHero.tsx relies on these. */
+   the one before on desktop and 120vh on phones, and JS in Signatures.tsx and
+   MenuHero.tsx relies on these. */
 .menu-hero {
   --scene: 300vh;
 }
 
 .signature {
-  --scene: 340vh;
+  --scene: 320vh;
 }
 
 @media (min-width: 1025px) {

@@ -42,7 +42,7 @@
 }
 
 .crew-hero__inner {
-  padding: 5rem 7rem 3rem 3rem;
+  padding: 5rem 7rem calc(3rem + var(--ticker, 0px)) 3rem;
 }
 
 @media (min-width: 1025px) {
@@ -93,6 +93,6 @@
   }
 
   .crew-hero__inner {
-    padding: 0 var(--box) var(--box);
+    padding: 0 var(--box) calc(var(--box) + var(--ticker, 0px));
   }
 }

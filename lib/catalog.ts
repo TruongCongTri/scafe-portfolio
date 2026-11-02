@@ -1,5 +1,7 @@
 // What the manager changes on top of the built-in menu and events. Safe for client code.
 
+import type { Size } from "./posters";
+
 export type MenuName = "evening" | "morning";
 
 export type DrinkCopy = { name: string; note?: string };
@@ -21,6 +23,8 @@ export type AddedEvent = {
   date: string;
   time?: string;
   image: string;
+  // Missing on events saved before sizes were recorded.
+  imageSize?: Size;
   vi: EventCopy;
   en: EventCopy;
 };

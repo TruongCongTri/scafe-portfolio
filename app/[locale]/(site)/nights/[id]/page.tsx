@@ -83,7 +83,7 @@ async function EventContent({ params }: PageProps) {
           </TransitionLink>
         </div>
         <PosterSlider
-          images={night.images ?? [night.image]}
+          images={night.posters}
           alt={night.title}
           sizes="(max-width: 1024px) 100vw, 50vw"
           className="event__poster"

@@ -8,6 +8,7 @@ import { pickEvents, todayIn } from "@/lib/events";
 import { site, type NightEvent } from "@/lib/content";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { todaysOffers, type Offer } from "@/lib/offers";
+import { poster } from "@/lib/posters";
 import { getLenis, onSiteReady } from "@/lib/site";
 import { Arrow } from "@/components/ui/Icons";
 import { RectButton } from "@/components/ui/RectButton";
@@ -144,19 +145,23 @@ export function PromoPopup() {
 
   const label = slide?.kind === "offer" ? t.offers.label : t.promo.upcoming;
   const many = slide?.kind === "events" && slide.events.length > 1;
+  const figure = slide?.kind === "offer" ? poster(slide.offer.image) : slide?.events[0].cover;
 
   return (
     <div ref={root}>
-      {slides && slide && (
+      {slides && slide && figure && (
         <div className="promo" role="dialog" aria-modal="true" aria-label={label}>
           <div className="promo__bg" data-cursor="close" onClick={close} />
           <div className={`promo__panel ${many ? "promo__panel--many" : ""}`} data-lenis-prevent>
             <figure className="promo__figure">
-              {slide.kind === "events" ? (
-                <Image key={slide.events[0].image} src={slide.events[0].image} alt={slide.events[0].title} width={1200} height={1500} sizes="(max-width: 1024px) 40vw, 30vw" />
-              ) : (
-                <Image key={slide.offer.image} src={slide.offer.image} alt={slide.offer.name} width={1200} height={1200} sizes="(max-width: 1024px) 40vw, 30vw" />
-              )}
+              <Image
+                key={figure.src}
+                src={figure.src}
+                alt={slide.kind === "events" ? slide.events[0].title : slide.offer.name}
+                width={figure.width}
+                height={figure.height}
+                sizes="(max-width: 1024px) 85vw, 30vw"
+              />
             </figure>
             <div className="promo__content">
               <button type="button" className="promo__close" aria-label={t.promo.close} onClick={close}>

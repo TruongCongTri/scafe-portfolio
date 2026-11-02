@@ -39,6 +39,7 @@
   max-width: 100%;
   aspect-ratio: 4 / 5;
   overflow: hidden;
+  background: rgba(26, 8, 9, 0.08);
 }
 
 /* Square posters keep their text panel, which sits on the left. */

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
+import type { Poster } from "@/lib/posters";
 import { Arrow } from "./Icons";
 import "./PosterSlider.css";
 
@@ -10,7 +11,7 @@ import "./PosterSlider.css";
 const SWIPE = 40;
 
 type PosterSliderProps = {
-  images: readonly string[];
+  images: readonly Poster[];
   alt: string;
   sizes: string;
   className?: string;
@@ -39,13 +40,13 @@ export function PosterSlider({ images, alt, sizes, className = "", preload }: Po
           if (many && Math.abs(dx) > SWIPE) step(dx < 0 ? 1 : -1);
         }}
       >
-        {images.map((src, i) => (
+        {images.map(({ src, width, height }, i) => (
           <Image
             key={src}
             src={src}
             alt={many ? `${alt} (${i + 1}/${images.length})` : alt}
-            width={1200}
-            height={1500}
+            width={width}
+            height={height}
             sizes={sizes}
             preload={preload && i === 0}
             hidden={i !== index}

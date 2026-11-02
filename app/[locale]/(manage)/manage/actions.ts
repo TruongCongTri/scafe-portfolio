@@ -31,16 +31,16 @@ const guarded = async (action: () => Promise<ActionResult>): Promise<ActionResul
 const toggled = (list: string[], id: string, active: boolean) =>
   active ? list.filter((item) => item !== id) : [...new Set([...list, id])];
 
-// Re-encoding also proves the upload is a real image.
+// Re-encoding also proves the upload is a real image. The size lets pages hold its space.
 async function storeImage(file: FormDataEntryValue | null) {
   if (!(file instanceof File) || !file.size) return undefined;
   if (file.size > MAX_UPLOAD) throw new Error("too large");
-  const image = await sharp(Buffer.from(await file.arrayBuffer()))
+  const { data, info } = await sharp(Buffer.from(await file.arrayBuffer()))
     .rotate()
     .resize({ width: 1400, withoutEnlargement: true })
     .webp({ quality: 78 })
-    .toBuffer();
-  return saveUpload(image);
+    .toBuffer({ resolveWithObject: true });
+  return { src: await saveUpload(data), size: { width: info.width, height: info.height } };
 }
 
 export async function signIn(phone: string) {
@@ -72,7 +72,7 @@ export const addDrink = async (form: FormData) =>
 
     let image: string | undefined;
     try {
-      image = await storeImage(form.get("image"));
+      image = (await storeImage(form.get("image")))?.src;
     } catch {
       return { ok: false, code: "image" };
     }
@@ -113,19 +113,20 @@ export const addEvent = async (form: FormData) =>
       return { ok: false, code: "invalid" };
     }
 
-    let image: string | undefined;
+    let stored: Awaited<ReturnType<typeof storeImage>>;
     try {
-      image = await storeImage(form.get("image"));
+      stored = await storeImage(form.get("image"));
     } catch {
       return { ok: false, code: "image" };
     }
-    if (!image) return { ok: false, code: "image" };
+    if (!stored) return { ok: false, code: "image" };
 
     const event = {
       id: randomUUID(),
       date,
       time: time || undefined,
-      image,
+      image: stored.src,
+      imageSize: stored.size,
       vi: { title, heading, text: body, notes: lines("notes") },
       en: {
         title: text(form, "titleEn", 100) || title,

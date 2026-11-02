@@ -4,6 +4,11 @@
   touch-action: pan-y;
 }
 
+/* Each image carries its real size, so its box is held, tinted, until it loads. */
+.poster-slider__frame img {
+  background: rgba(26, 8, 9, 0.08);
+}
+
 .poster-slider__frame img[hidden] {
   display: none;
 }

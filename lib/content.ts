@@ -6,6 +6,7 @@ import type { Locale } from "@/i18n/config";
 import type en from "@/i18n/en.json";
 import type { Catalog, MenuName } from "./catalog";
 import { OFFER_POSTERS } from "./offers";
+import { poster, type Poster } from "./posters";
 
 type Dictionary = typeof en;
 
@@ -163,8 +164,9 @@ const joinMenu = (menu: MenuName, groups: MenuGroup[], details: MenuDetail[][], 
 export type NightEvent = {
   id: string;
   image: string;
-  // Every poster for the event's own page, when there's more than the cover.
-  images?: readonly string[];
+  // The card image with its size, and every poster for the event's own page.
+  cover: Poster;
+  posters: Poster[];
   date?: string;
   time?: string;
   title: string;
@@ -178,21 +180,28 @@ export type NightEvent = {
 // Newest first, with undated events like the weekly deals after them.
 const joinEvents = (t: Dictionary, locale: Locale, catalog: Catalog) =>
   [
-    ...nightEntries.map((night, index): NightEvent => ({
+    ...nightEntries.map(({ images, ...night }, index): NightEvent => ({
       ...t.nights.events[index],
       ...night,
+      cover: poster(night.image),
+      posters: (images ?? [night.image]).map((src) => poster(src)),
       active: !catalog.inactiveEvents.includes(night.id),
       added: false,
     })),
-    ...catalog.addedEvents.map((event): NightEvent => ({
-      ...event[locale],
-      id: event.id,
-      image: event.image,
-      date: event.date,
-      time: event.time,
-      active: !catalog.inactiveEvents.includes(event.id),
-      added: true,
-    })),
+    ...catalog.addedEvents.map((event): NightEvent => {
+      const cover = poster(event.image, event.imageSize);
+      return {
+        ...event[locale],
+        id: event.id,
+        image: event.image,
+        cover,
+        posters: [cover],
+        date: event.date,
+        time: event.time,
+        active: !catalog.inactiveEvents.includes(event.id),
+        added: true,
+      };
+    }),
   ]
     .filter((event) => !catalog.removedEvents.includes(event.id))
     .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
@@ -303,7 +312,11 @@ export const buildContent = (t: Dictionary, locale: Locale, catalog: Catalog) =>
   pillars: pillarImages.map((image, index) => ({ image, ...t.about.pillars[index] })),
   partners: partnerNames.map((name, index) => ({ name, text: t.about.partners.list[index] })),
   nights: joinEvents(t, locale, catalog).filter((event) => event.active),
-  articles: articleEntries.map((article) => ({ ...article, ...t.articles[article.slug] })),
+  articles: articleEntries.map(({ images, ...article }) => ({
+    ...article,
+    ...t.articles[article.slug],
+    posters: (images ?? [article.image]).map((src) => poster(src)),
+  })),
   pressHighlights: highlightEntries.map((item, index) => ({ ...item, title: t.press.highlights[index] })),
   };
 };

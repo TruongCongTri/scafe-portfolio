@@ -1,8 +1,9 @@
 /* Scene lengths and overlaps for the menu page. Each signature rises 175vh after
    the one before on desktop and 120vh on phones, and JS in Signatures.tsx and
-   MenuHero.tsx relies on these. */
+   MenuHero.tsx relies on these. On phones the hero has no scroll motion of its
+   own, so the first signature starts rising after the same short 20vh pause. */
 .menu-hero {
-  --scene: 300vh;
+  --scene: 220vh;
 }
 
 .signature {

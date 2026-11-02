@@ -52,7 +52,7 @@ async function ArticleContent({ params }: PageProps) {
           </SplitLines>
         </header>
         <PosterSlider
-          images={article.images ?? [article.image]}
+          images={article.posters}
           alt={article.title}
           sizes="(max-width: 1024px) 100vw, 70vw"
           className="post__figure"

@@ -36,6 +36,8 @@
   max-width: 40vw;
   height: 100%;
   object-fit: cover;
+  /* The image carries its real size, so its box is held, tinted, until it loads. */
+  background: rgba(26, 8, 9, 0.08);
 }
 
 .promo__content {
@@ -151,7 +153,7 @@
   .promo__figure {
     display: flex;
     justify-content: center;
-    height: 11rem;
+    height: min(42svh, 26rem);
     padding-top: 1rem;
   }
 
@@ -195,9 +197,9 @@
     font-size: 1rem;
   }
 
-  /* Several events only fit on a phone without the photo. */
+  /* Several events leave less room, so their first poster shows smaller. */
   .promo__panel--many .promo__figure {
-    display: none;
+    height: min(26svh, 15rem);
   }
 
   .promo__panel--many .promo__events {

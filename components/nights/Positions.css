@@ -58,6 +58,8 @@
    One too wide for its half keeps its left side, where square posters hold their text. */
 .positions__item img {
   display: block;
+  /* Holds the poster's own shape while it loads. */
+  background: rgba(26, 8, 9, 0.08);
   width: auto;
   max-width: 50vw;
   height: 100%;

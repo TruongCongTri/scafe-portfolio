@@ -61,7 +61,7 @@ export function Positions() {
             <article key={night.id} className="positions__item">
               <figure>
                 <TransitionLink href={`/nights/${night.id}`} aria-label={`${t.nights.details}: ${night.title}`}>
-                  <Image src={night.image} alt={night.title} width={1200} height={1500} sizes="(max-width: 1024px) 100vw, 50vw" />
+                  <Image src={night.cover.src} alt={night.title} width={night.cover.width} height={night.cover.height} sizes="(max-width: 1024px) 100vw, 50vw" />
                 </TransitionLink>
               </figure>
               <div className="positions__content">

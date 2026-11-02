@@ -62,9 +62,14 @@
     height: auto;
   }
 
-  .post__figure img {
+  /* A set width, so the image can hold its shape before it loads. */
+  .post__figure .poster-slider__frame {
     width: 100%;
     max-width: 58svh;
+  }
+
+  .post__figure img {
+    width: 100%;
     height: auto;
   }
 

@@ -5,6 +5,7 @@
 import type { Locale } from "@/i18n/config";
 import type en from "@/i18n/en.json";
 import type { Catalog, MenuName } from "./catalog";
+import { OFFER_POSTERS } from "./offers";
 
 type Dictionary = typeof en;
 
@@ -162,6 +163,8 @@ const joinMenu = (menu: MenuName, groups: MenuGroup[], details: MenuDetail[][], 
 export type NightEvent = {
   id: string;
   image: string;
+  // Every poster for the event's own page, when there's more than the cover.
+  images?: readonly string[];
   date?: string;
   time?: string;
   title: string;
@@ -205,12 +208,12 @@ const partnerNames = [
 
 // Posters and details come from the bar's own Instagram posts, newest first.
 // A date (YYYY-MM-DD) makes a night eligible for the promo popup.
-const nightEntries: { id: string; image: string; date?: string }[] = [
+const nightEntries: { id: string; image: string; images?: readonly string[]; date?: string }[] = [
   { id: "jam", image: "/images/events/jam.webp", date: "2026-10-31" },
   { id: "coraline", image: "/images/events/coraline.webp", date: "2026-10-30" },
   { id: "mood", image: "/images/events/mood.webp", date: "2026-10-23" },
   { id: "howl", image: "/images/events/howl.webp", date: "2026-10-16" },
-  { id: "slay", image: "/images/events/slay.webp" },
+  { id: "slay", image: "/images/events/slay.webp", images: OFFER_POSTERS },
 ];
 
 export const categories = ["news", "behindTheBar", "press", "drinks"] as const;
@@ -223,13 +226,22 @@ const articleEntries: {
   author: string;
   category: Category;
   image: string;
+  // Every photo for the article's own page, when there's more than the cover.
+  images?: readonly string[];
   // Placeholder stories: kept out of search until real ones replace them.
   sample?: boolean;
 }[] = [
   { slug: "how-to-find-scafe", date: "13.10.2026", author: site.name, category: "news", image: "/images/press/how-to-find.webp" },
-  { slug: "grand-opening", date: "13.10.2026", author: site.name, category: "behindTheBar", image: "/images/press/grand-opening.webp" },
+  {
+    slug: "grand-opening",
+    date: "13.10.2026",
+    author: site.name,
+    category: "behindTheBar",
+    image: "/images/press/grand-opening.webp",
+    images: ["/images/press/grand-opening.webp", "/images/press/grand-opening.jpg"],
+  },
   { slug: "soft-opening", date: "13.10.2026", author: site.name, category: "behindTheBar", image: "/images/press/soft-opening.webp" },
-  { slug: "weekly-deals", date: "17.08.2026", author: site.name, category: "news", image: "/images/events/slay.webp" },
+  { slug: "weekly-deals", date: "17.08.2026", author: site.name, category: "news", image: "/images/events/slay.webp", images: OFFER_POSTERS },
   { slug: "the-ice-program", date: "07.10.2026", author: site.name, category: "behindTheBar", image: "/images/glass-stack.webp", sample: true },
   { slug: "last-ember-joins-the-list", date: "02.09.2026", author: site.name, category: "drinks", image: "/images/whisky.webp", sample: true },
   { slug: "six-years-of-red-hour", date: "01.09.2026", author: site.name, category: "drinks", image: "/images/pour.webp", sample: true },

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { EventAsk } from "@/components/nights/EventAsk";
 import { TransitionLink } from "@/components/shell/TransitionLink";
 import { Contact } from "@/components/ui/Contact";
 import { JsonLd } from "@/components/ui/JsonLd";
+import { PosterSlider } from "@/components/ui/PosterSlider";
 import { SplitLines } from "@/components/ui/SplitLines";
 import { intlLocales } from "@/i18n/config";
 import { getI18n, pageMetadata } from "@/i18n/server";
@@ -82,9 +82,13 @@ async function EventContent({ params }: PageProps) {
             {t.nights.back}
           </TransitionLink>
         </div>
-        <figure className="event__poster">
-          <Image src={night.image} alt={night.title} width={1200} height={1500} sizes="(max-width: 1024px) 100vw, 50vw" preload />
-        </figure>
+        <PosterSlider
+          images={night.images ?? [night.image]}
+          alt={night.title}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="event__poster"
+          preload
+        />
       </article>
       <Contact flow />
     </>

@@ -5,9 +5,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { intlLocales, withLocale } from "@/i18n/config";
 import { useI18n } from "@/i18n/I18nProvider";
 import { pickEvents, todayIn } from "@/lib/events";
-import { site } from "@/lib/content";
+import { site, type NightEvent } from "@/lib/content";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { todaysOffers, type Offer } from "@/lib/offers";
 import { getLenis, onSiteReady } from "@/lib/site";
+import { Arrow } from "@/components/ui/Icons";
 import { RectButton } from "@/components/ui/RectButton";
 import { usePageTransition } from "./PageTransition";
 import "./PromoPopup.css";
@@ -15,15 +17,29 @@ import "./PromoPopup.css";
 // Holds the bar's local date on which the visitor opted out.
 const STORAGE_KEY = "scafe-promo-hidden";
 const OPEN_DELAY = 1200;
+// The night whose page lists the weekly deals.
+const DEALS_ID = "slay";
 
 const CLOSED = "polygon(0% 100%, 25% 100%, 60% 100%, 100% 100%, 100% 100%, 0% 100%)";
 const OPEN = "polygon(0% 0%, 25% 0%, 60% 0%, 100% 0%, 100% 100%, 0% 100%)";
+
+type Slide = { kind: "events"; events: NightEvent[] } | { kind: "offer"; offer: Offer };
+
+// Upcoming nights come first, then each of today's deals that hasn't ended.
+const buildSlides = (nights: NightEvent[]): Slide[] => {
+  const next = pickEvents(nights, todayIn(site.timeZone));
+  return [
+    ...(next.upcoming ? [{ kind: "events" as const, events: next.events }] : []),
+    ...todaysOffers(site.timeZone).map((offer) => ({ kind: "offer" as const, offer })),
+  ];
+};
 
 export function PromoPopup() {
   const { locale, t, content } = useI18n();
   const { navigate } = usePageTransition();
   const root = useRef<HTMLDivElement>(null);
-  const [view, setView] = useState<ReturnType<typeof pickEvents<(typeof content.nights)[number]>> | null>(null);
+  const [slides, setSlides] = useState<Slide[] | null>(null);
+  const [index, setIndex] = useState(0);
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
@@ -37,9 +53,10 @@ export function PromoPopup() {
     let timer = 0;
     const cancel = onSiteReady(() => {
       timer = window.setTimeout(() => {
-        const next = pickEvents(content.nights, today);
-        if (!next.events.length) return;
-        setView(next);
+        const next = buildSlides(content.nights);
+        if (!next.length) return;
+        setSlides(next);
+        setIndex(0);
         getLenis()?.stop();
       }, OPEN_DELAY);
     });
@@ -51,11 +68,28 @@ export function PromoPopup() {
 
   useGSAP(
     () => {
-      if (!view) return;
+      if (!slides) return;
       gsap.fromTo(".promo__bg", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 });
       gsap.fromTo(".promo__panel", { clipPath: CLOSED }, { clipPath: OPEN, duration: 0.8, ease: "quart.inOut" });
     },
-    { scope: root, dependencies: [view] }
+    { scope: root, dependencies: [slides] }
+  );
+
+  // Each step fades the new slide in where the last one was.
+  useGSAP(
+    () => {
+      if (!slides || index === 0) return;
+      gsap.fromTo(".promo__figure img, .promo__slide", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, ease: "quad.out" });
+    },
+    { scope: root, dependencies: [index] }
+  );
+
+  const step = useCallback(
+    (by: number) => {
+      if (!slides || slides.length < 2) return;
+      setIndex((current) => (current + by + slides.length) % slides.length);
+    },
+    [slides]
   );
 
   const close = useCallback(() => {
@@ -65,20 +99,22 @@ export function PromoPopup() {
       duration: 0.5,
       ease: "quart.in",
       onComplete: () => {
-        setView(null);
+        setSlides(null);
         getLenis()?.start();
       },
     });
   }, []);
 
   useEffect(() => {
-    if (!view) return;
+    if (!slides) return;
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") close();
+      else if (event.key === "ArrowRight") step(1);
+      else if (event.key === "ArrowLeft") step(-1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [view, close]);
+  }, [slides, close, step]);
 
   const toggleHidden = (checked: boolean) => {
     setHidden(checked);
@@ -90,11 +126,15 @@ export function PromoPopup() {
     }
   };
 
+  const slide = slides?.[index];
+
   const seeNights = () => {
-    const single = view?.events.length === 1 ? `/${view.events[0].id}` : "";
-    setView(null);
+    let path = "";
+    if (slide?.kind === "events" && slide.events.length === 1) path = `/${slide.events[0].id}`;
+    if (slide?.kind === "offer" && content.nights.some((night) => night.id === DEALS_ID)) path = `/${DEALS_ID}`;
+    setSlides(null);
     getLenis()?.start();
-    navigate(withLocale(locale, `/nights${single}`));
+    navigate(withLocale(locale, `/nights${path}`));
   };
 
   const formatDate = (date: string) =>
@@ -102,31 +142,61 @@ export function PromoPopup() {
       new Date(`${date}T00:00:00Z`)
     );
 
+  const label = slide?.kind === "offer" ? t.offers.label : t.promo.upcoming;
+  const many = slide?.kind === "events" && slide.events.length > 1;
+
   return (
     <div ref={root}>
-      {view && (
-        <div className="promo" role="dialog" aria-modal="true" aria-label={view.upcoming ? t.promo.upcoming : t.promo.latest}>
+      {slides && slide && (
+        <div className="promo" role="dialog" aria-modal="true" aria-label={label}>
           <div className="promo__bg" data-cursor="close" onClick={close} />
-          <div className={`promo__panel ${view.events.length > 1 ? "promo__panel--many" : ""}`} data-lenis-prevent>
+          <div className={`promo__panel ${many ? "promo__panel--many" : ""}`} data-lenis-prevent>
             <figure className="promo__figure">
-              <Image src={view.events[0].image} alt={view.events[0].title} width={1200} height={1500} sizes="(max-width: 1024px) 40vw, 30vw" />
+              {slide.kind === "events" ? (
+                <Image key={slide.events[0].image} src={slide.events[0].image} alt={slide.events[0].title} width={1200} height={1500} sizes="(max-width: 1024px) 40vw, 30vw" />
+              ) : (
+                <Image key={slide.offer.image} src={slide.offer.image} alt={slide.offer.name} width={1200} height={1200} sizes="(max-width: 1024px) 40vw, 30vw" />
+              )}
             </figure>
             <div className="promo__content">
               <button type="button" className="promo__close" aria-label={t.promo.close} onClick={close}>
                 &times;
               </button>
-              <p className="promo__label display">{view.upcoming ? t.promo.upcoming : t.promo.latest}</p>
-              <ul className="promo__events">
-                {view.events.map((event) => (
-                  <li key={event.id}>
-                    <time dateTime={event.date}>
-                      {formatDate(event.date)}
-                      {event.time && ` · ${event.time}`}
-                    </time>
-                    <h3 className="promo__title display">{event.title}</h3>
-                    <p className="serif">{event.heading}</p>
+              <div className="promo__top">
+                <p className="promo__label display">{label}</p>
+                {slides.length > 1 && (
+                  <div className="promo__nav">
+                    <button type="button" aria-label={t.slider.previous} onClick={() => step(-1)}>
+                      <Arrow className="promo__back" />
+                    </button>
+                    <span aria-live="polite">
+                      {index + 1}/{slides.length}
+                    </span>
+                    <button type="button" aria-label={t.slider.next} onClick={() => step(1)}>
+                      <Arrow />
+                    </button>
+                  </div>
+                )}
+              </div>
+              <ul className="promo__events promo__slide">
+                {slide.kind === "events" ? (
+                  slide.events.map((event) => (
+                    <li key={event.id}>
+                      <time dateTime={event.date}>
+                        {event.date && formatDate(event.date)}
+                        {event.time && ` · ${event.time}`}
+                      </time>
+                      <h3 className="promo__title display">{event.title}</h3>
+                      <p className="serif">{event.heading}</p>
+                    </li>
+                  ))
+                ) : (
+                  <li>
+                    {/* The wording and the poster already give each deal's day and hours. */}
+                    <h3 className="promo__title display">{slide.offer.name}</h3>
+                    <p className="serif">{t.offers.items[slide.offer.id]}</p>
                   </li>
-                ))}
+                )}
               </ul>
               <RectButton label={t.promo.cta} className="promo__bt" onClick={seeNights} />
               <label className="promo__hide">

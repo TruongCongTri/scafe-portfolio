@@ -6,18 +6,24 @@ export type Track = { src: string; title: string };
 
 const TRACKS = {
   yumeji: { src: "/audio/yumeji.mp3", title: "Yumeji's Theme" },
+  flyMe: { src: "/audio/fly-me-to-the-moon.mp3", title: "Fly Me to the Moon" },
+  feelingGood: { src: "/audio/feeling-good.mp3", title: "Feeling Good" },
+  takeFive: { src: "/audio/take-five.mp3", title: "Take Five" },
+  merryGoRound: { src: "/audio/merry-go-round-of-life.mp3", title: "Merry-Go-Round of Life" },
+  dream: { src: "/audio/dream-a-little-dream.mp3", title: "Dream a Little Dream of Me" },
 } satisfies Record<string, Track>;
 
-// One track per day, in the bar's own time zone. Add files to public/audio, list them
-// above, then give each day its own: a film score on Friday, jazz on Saturday, and so on.
+// One track per day, in the bar's own time zone, matched to the day's deal or night:
+// happy-hour jazz midweek, Ghibli for Wednesday, the film-night score on Friday,
+// Sinatra for the Saturday jam, Nina Simone on Sunday. Monday borrows Friday's.
 const WEEK: Record<(typeof WEEKDAYS)[number], Track> = {
   Mon: TRACKS.yumeji,
-  Tue: TRACKS.yumeji,
-  Wed: TRACKS.yumeji,
-  Thu: TRACKS.yumeji,
+  Tue: TRACKS.takeFive,
+  Wed: TRACKS.merryGoRound,
+  Thu: TRACKS.dream,
   Fri: TRACKS.yumeji,
-  Sat: TRACKS.yumeji,
-  Sun: TRACKS.yumeji,
+  Sat: TRACKS.flyMe,
+  Sun: TRACKS.feelingGood,
 };
 
 // A slow connection falls back to streaming rather than holding the preloader for good.

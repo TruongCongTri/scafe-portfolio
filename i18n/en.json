@@ -984,10 +984,13 @@
   },
   "promo": {
     "upcoming": "Coming up",
-    "latest": "Latest event",
     "cta": "See the nights",
     "close": "Close",
     "hide": "Don't show again today"
+  },
+  "slider": {
+    "previous": "Previous",
+    "next": "Next"
   },
   "manage": {
     "title": "Manage Scafe",

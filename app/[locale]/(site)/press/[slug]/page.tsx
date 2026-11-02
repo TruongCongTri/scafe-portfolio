@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { TransitionLink } from "@/components/shell/TransitionLink";
 import { Contact } from "@/components/ui/Contact";
+import { PosterSlider } from "@/components/ui/PosterSlider";
 import { SplitLines } from "@/components/ui/SplitLines";
 import { getI18n, pageMetadata } from "@/i18n/server";
 import { articleSlugs } from "@/lib/content";
@@ -51,9 +51,13 @@ async function ArticleContent({ params }: PageProps) {
             {article.title}
           </SplitLines>
         </header>
-        <figure className="post__figure">
-          <Image src={article.image} alt={article.title} width={1200} height={1500} sizes="(max-width: 1024px) 100vw, 70vw" preload />
-        </figure>
+        <PosterSlider
+          images={article.images ?? [article.image]}
+          alt={article.title}
+          sizes="(max-width: 1024px) 100vw, 70vw"
+          className="post__figure"
+          preload
+        />
         <div className="post__body box">
           {article.body.map((paragraph) => (
             <p key={paragraph} className="serif">

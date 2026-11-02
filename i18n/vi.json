@@ -983,10 +983,13 @@
   },
   "promo": {
     "upcoming": "Sắp diễn ra",
-    "latest": "Sự kiện mới nhất",
     "cta": "Xem sự kiện",
     "close": "Đóng",
     "hide": "Không hiện lại hôm nay"
+  },
+  "slider": {
+    "previous": "Trước",
+    "next": "Tiếp"
   },
   "manage": {
     "title": "Quản lý Scafe",

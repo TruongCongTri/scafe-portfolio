@@ -1,0 +1,38 @@
+.poster-slider__frame {
+  position: relative;
+  height: 100%;
+  touch-action: pan-y;
+}
+
+.poster-slider__frame img[hidden] {
+  display: none;
+}
+
+.poster-slider__nav {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.6rem;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.poster-slider__nav button {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.poster-slider__nav .arrow {
+  width: 1.25rem;
+}
+
+.poster-slider__back {
+  transform: scaleX(-1);
+}

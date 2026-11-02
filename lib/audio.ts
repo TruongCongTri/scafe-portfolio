@@ -21,6 +21,9 @@ const WEEK: Record<(typeof WEEKDAYS)[number], Track> = {
 
 // A slow connection falls back to streaming rather than holding the preloader for good.
 const LOAD_LIMIT = 8000;
+// Phone browsers can refuse to buffer before a user gesture, so "ready" may never come.
+// The whole file is on the device by then, so this wait can stay short.
+const READY_LIMIT = 1500;
 const VOLUME = 0.6;
 const PAUSED_KEY = "scafe-audio-paused";
 
@@ -100,7 +103,7 @@ export function prepareAudio(onProgress: (share: number) => void = () => {}) {
     const limit = window.setTimeout(() => controller.abort(), LOAD_LIMIT);
     try {
       element.src = await download(track.src, controller.signal, onProgress);
-      await readyToPlay(element);
+      await Promise.race([readyToPlay(element), new Promise((resolve) => window.setTimeout(resolve, READY_LIMIT))]);
     } catch (error) {
       if (!controller.signal.aborted) throw error;
       element.src = track.src;

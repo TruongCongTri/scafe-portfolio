@@ -148,6 +148,11 @@ html.lenis body {
   will-change: clip-path;
 }
 
+.is-offscreen .stage {
+  visibility: hidden;
+  will-change: auto;
+}
+
 .box {
   padding: var(--box) calc(var(--box) + 1.75rem) var(--box) calc(var(--rail) + var(--box));
 }

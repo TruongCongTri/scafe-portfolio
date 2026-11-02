@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { trackViewportEnd } from "@/lib/scene";
 import { onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { VectorGrid } from "@/components/ui/VectorGrid";
@@ -82,7 +82,7 @@ export function Pillars() {
           });
         });
 
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);
@@ -117,7 +117,7 @@ export function Pillars() {
                 </h2>
               </div>
               <figure className="pillars__photo">
-                <Image src={pillar.image} alt="" fill sizes="100vw" className="cover" />
+                <Image src={pillar.image} alt="" fill sizes="(max-width: 1024px) 85vw, 100vw" className="cover" />
               </figure>
               <div className="pillars__right">
                 <div className="pillars__num display">0{index + 1}</div>

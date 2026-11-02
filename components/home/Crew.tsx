@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { Lines } from "@/components/ui/Lines";
-import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
 import { getLenis, MASK_OFFSET, onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { RectButton } from "@/components/ui/RectButton";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
@@ -224,8 +224,8 @@ export function Crew() {
                   invalidateOnRefresh: true,
                 },
               })
-              .fromTo(title, { filter: "blur(0px)", opacity: 1 }, { filter: "blur(6px)", opacity: 0.2, duration: 0.15 }, 0)
-              .to(title, { filter: "blur(0px)", opacity: 1, duration: 0.15 }, 0.85);
+              .fromTo(title, { opacity: 1 }, { opacity: 0.2, duration: 0.15 }, 0)
+              .to(title, { opacity: 1, duration: 0.15 }, 0.85);
           }
 
           // Falls back as the next scene covers it.
@@ -247,7 +247,7 @@ export function Crew() {
           );
         });
 
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);

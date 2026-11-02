@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { Lines } from "@/components/ui/Lines";
 import { categories as articleCategories } from "@/lib/content";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { riseSection } from "@/lib/scene";
 import { onSiteReady } from "@/lib/site";
 import { TransitionLink } from "@/components/shell/TransitionLink";
@@ -30,7 +30,7 @@ export function Articles() {
         gsap.matchMedia().add("(min-width: 1025px)", () => {
           riseSection(section, section.querySelector<HTMLElement>(".articles__wrapper")!);
         });
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
       return onSiteReady(build);
     },

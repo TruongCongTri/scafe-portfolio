@@ -80,7 +80,8 @@ export function Navbar() {
         start: 0,
         end: "max",
         onUpdate: (self) => {
-          root.current?.style.setProperty("--progress", self.progress.toFixed(4));
+          // On the bar itself: a value on the root would restyle the whole menu on every scroll.
+          root.current?.querySelector<HTMLElement>(".navbar__progress")?.style.setProperty("--progress", self.progress.toFixed(4));
         },
       });
     },

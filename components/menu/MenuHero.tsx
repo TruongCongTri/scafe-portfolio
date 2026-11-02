@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, useGSAP } from "@/lib/gsap";
 import { onSiteReady } from "@/lib/site";
 import { DropArrow } from "@/components/ui/Icons";
 import { Lines } from "@/components/ui/Lines";
@@ -45,7 +45,7 @@ export function MenuHero() {
             .fromTo(".menu-hero__box", { scale: 1 }, { scale: 0.85 }, 0);
         });
 
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);
@@ -57,7 +57,7 @@ export function MenuHero() {
     <section ref={root} className="menu-hero scene">
       <div className="stage menu-hero__stage">
         <figure className="menu-hero__bg">
-          <Image src="/images/shelf.webp" alt={t.menu.heroAlt} fill sizes="100vw" preload className="cover" />
+          <Image src="/images/shelf.webp" alt={t.menu.heroAlt} fill sizes="(max-width: 1024px) 85vw, 100vw" preload className="cover" />
         </figure>
         <div className="menu-hero__box box">
           <DropArrow />

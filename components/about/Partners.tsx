@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
-import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
 import { trackViewportEnd } from "@/lib/scene";
 import { MASK_OFFSET, onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { useContactForm } from "@/components/shell/ContactForms";
@@ -92,7 +92,7 @@ export function Partners() {
           return () => ScrollTrigger.removeEventListener("refreshInit", measure);
         });
 
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);

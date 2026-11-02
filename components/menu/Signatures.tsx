@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import type { Content } from "@/lib/content";
-import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, SplitText, useGSAP } from "@/lib/gsap";
 import { revealScene, SHAPES } from "@/lib/scene";
 import { MASK_OFFSET, onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { useContactForm } from "@/components/shell/ContactForms";
@@ -115,7 +115,7 @@ function Signature({ item, even, last }: SignatureProps) {
           );
         });
 
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);
@@ -127,7 +127,7 @@ function Signature({ item, even, last }: SignatureProps) {
     <section ref={root} className={`signature scene scene--overlap ${even ? "signature--even" : ""}`}>
       <div className="stage signature__stage box">
         <figure className="signature__bg">
-          <Image src={item.image} alt={item.title} fill sizes="100vw" className="cover" style={{ objectPosition: item.focus }} />
+          <Image src={item.image} alt={item.title} fill sizes="(max-width: 1024px) 85vw, 100vw" className="cover" style={{ objectPosition: item.focus }} />
         </figure>
         <div className="signature__content">
           <div className="signature__left">

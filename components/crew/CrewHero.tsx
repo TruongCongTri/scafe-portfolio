@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
-import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, SplitText, useGSAP } from "@/lib/gsap";
 import { onSiteReady } from "@/lib/site";
 import { DropArrow } from "@/components/ui/Icons";
 import { Lines } from "@/components/ui/Lines";
@@ -49,7 +49,7 @@ export function CrewHero() {
           );
         });
 
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);

@@ -5,7 +5,7 @@ import { Suspense, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useI18n } from "@/i18n/I18nProvider";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, useGSAP } from "@/lib/gsap";
 import { onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { staggerFrom } from "@/lib/scene";
 import { TransitionLink } from "@/components/shell/TransitionLink";
@@ -124,7 +124,7 @@ export function News() {
             .fromTo(section, { "--y5": "100%" }, { "--y5": "0%", duration: 0.55 }, 0.45);
         });
 
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);

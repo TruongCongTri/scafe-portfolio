@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { Lines } from "@/components/ui/Lines";
-import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, SplitText, useGSAP } from "@/lib/gsap";
 import { onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { staggerFrom } from "@/lib/scene";
 import { Stamp } from "@/components/ui/Icons";
@@ -124,7 +124,7 @@ export function Pours() {
           scrubStrip(MOBILE_REVEAL_DISTANCE, MOBILE_STRIP_END);
         });
 
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
-import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, SplitText, useGSAP } from "@/lib/gsap";
 import { onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { staggerFrom } from "@/lib/scene";
 import { Stamp } from "@/components/ui/Icons";
@@ -169,7 +169,7 @@ export function Room() {
           });
         });
 
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);
@@ -189,7 +189,7 @@ export function Room() {
                 alt={index === 0 ? copy.alt : ""}
                 width={1920}
                 height={1233}
-                sizes="100vw"
+                sizes="(max-width: 1024px) 85vw, 100vw"
                 className="home-room__layer"
               />
             ))}

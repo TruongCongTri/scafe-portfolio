@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { prefersReducedMotion } from "@/lib/site";
+import { isLite, isTouch, prefersReducedMotion } from "@/lib/site";
 import "./VectorGrid.css";
 
 const SPACING = 44;
 const SEGMENT = 34;
+// The drift is slow enough that phones lose nothing at a fraction of the frames.
+const TOUCH_FRAME = 66;
 
 // Zig-zag rule lines that drift slowly and lean away from the pointer.
 export function VectorGrid({ color = "rgba(107, 35, 36, 0.3)" }: { color?: string }) {
@@ -17,6 +19,7 @@ export function VectorGrid({ color = "rgba(107, 35, 36, 0.3)" }: { color?: strin
     if (!canvas || !context) return;
 
     const reduced = prefersReducedMotion();
+    const touch = isTouch();
     const pointer = { x: -9999, y: -9999, strength: 0 };
     let width = 0;
     let height = 0;
@@ -59,9 +62,13 @@ export function VectorGrid({ color = "rgba(107, 35, 36, 0.3)" }: { color?: strin
       }
     };
 
+    let drawn = 0;
     const loop = (time: number) => {
-      draw(time);
-      if (visible && !reduced) frame = requestAnimationFrame(loop);
+      if (!touch || time - drawn >= TOUCH_FRAME) {
+        draw(time);
+        drawn = time;
+      }
+      if (visible && !reduced && !isLite()) frame = requestAnimationFrame(loop);
     };
 
     const onPointer = (event: PointerEvent) => {
@@ -81,7 +88,7 @@ export function VectorGrid({ color = "rgba(107, 35, 36, 0.3)" }: { color?: strin
     resize();
     observer.observe(canvas);
     resizer.observe(canvas);
-    window.addEventListener("pointermove", onPointer, { passive: true });
+    if (!touch) window.addEventListener("pointermove", onPointer, { passive: true });
 
     return () => {
       cancelAnimationFrame(frame);

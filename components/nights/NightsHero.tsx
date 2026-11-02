@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, useGSAP } from "@/lib/gsap";
 import { onSiteReady } from "@/lib/site";
 import { useContactForm } from "@/components/shell/ContactForms";
 import { DropArrow } from "@/components/ui/Icons";
@@ -46,7 +46,7 @@ export function NightsHero() {
             .fromTo(".nights-hero__box", { yPercent: 0 }, { yPercent: -50 }, 0);
         });
 
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);

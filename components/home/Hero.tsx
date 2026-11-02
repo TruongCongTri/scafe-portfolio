@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { Lines } from "@/components/ui/Lines";
 import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
-import { getLenis, MASK_OFFSET, onSiteReady, prefersReducedMotion } from "@/lib/site";
+import { getLenis, isLite, MASK_OFFSET, onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { staggerFrom } from "@/lib/scene";
 import { Arrow } from "@/components/ui/Icons";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
@@ -44,11 +44,21 @@ export function Hero() {
   // Quick-cut reel standing in for footage until the bar has its own video.
   useEffect(() => {
     if (paused || prefersReducedMotion()) return;
+    // Scrolled away, the reel stops, along with the photos it would go on loading.
+    let onScreen = true;
+    const observer = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+    });
+    if (root.current) observer.observe(root.current);
     const id = window.setInterval(() => {
+      if (!onScreen || isLite()) return;
       setActive((index) => (index + 1) % heroReel.length);
       setMounted((count) => Math.min(count + 1, heroReel.length));
     }, 1400);
-    return () => window.clearInterval(id);
+    return () => {
+      window.clearInterval(id);
+      observer.disconnect();
+    };
   }, [paused, heroReel.length]);
 
   useGSAP(
@@ -211,7 +221,7 @@ export function Hero() {
               src={frame.src}
               alt={index === 0 ? frame.alt : ""}
               fill
-              sizes="100vw"
+              sizes="(max-width: 1024px) 85vw, 100vw"
               preload={index === 0}
               className={`cover ${index === active ? "is-active" : ""}`}
             />

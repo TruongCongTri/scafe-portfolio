@@ -37,3 +37,8 @@ export const MASK_OFFSET = 125;
 
 export const prefersReducedMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+export const isTouch = () => window.matchMedia("(pointer: coarse)").matches;
+
+// Set for weak phones, up front or once scrolling proves slow. Decoration then holds still.
+export const isLite = () => document.documentElement.classList.contains("lite");

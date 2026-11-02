@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, useGSAP } from "@/lib/gsap";
 import { onSiteReady } from "@/lib/site";
 import { DropArrow } from "@/components/ui/Icons";
 import { SplitLines } from "@/components/ui/SplitLines";
@@ -35,7 +35,7 @@ export function AboutHero() {
           );
         });
 
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);

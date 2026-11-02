@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, useGSAP } from "@/lib/gsap";
 import { onSiteReady } from "@/lib/site";
 import { Lines } from "@/components/ui/Lines";
 import { RectButton } from "@/components/ui/RectButton";
@@ -44,7 +44,7 @@ export function AboutTeam() {
             .fromTo(".about-team__figure", { scale: 1 }, { scale: 1.1, duration: 2 }, 0);
         });
 
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);
@@ -57,7 +57,7 @@ export function AboutTeam() {
       <div className="about-team__bg">
         <div className="about-team__bg-wrapper">
           <figure className="about-team__figure">
-            <Image src="/images/taps-room.webp" alt={copy.photoAlt} fill sizes="100vw" className="cover" />
+            <Image src="/images/taps-room.webp" alt={copy.photoAlt} fill sizes="(max-width: 1024px) 85vw, 100vw" className="cover" />
           </figure>
           <TimezoneBar />
         </div>

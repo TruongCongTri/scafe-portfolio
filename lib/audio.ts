@@ -1,5 +1,6 @@
 import { site } from "./content";
 import { WEEKDAYS } from "./offers";
+import { isTouch } from "./site";
 
 export type Track = { src: string; title: string };
 
@@ -92,8 +93,9 @@ export function prepareAudio(onProgress: (share: number) => void = () => {}) {
   setState({ track });
 
   const load = async () => {
+    // Phones refuse sound before a tap, so holding the page open for the file gains nothing.
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
-    if (saveData) {
+    if (saveData || isTouch()) {
       element.preload = "none";
       element.src = track.src;
       return;
@@ -138,15 +140,15 @@ const rememberPaused = (paused: boolean) => {
   }
 };
 
-const GESTURES = ["pointerdown", "keydown"] as const;
+// Touch only counts as a gesture once the finger lifts, so pointerdown alone is refused.
+const GESTURES = ["pointerdown", "pointerup", "keydown"] as const;
 
 const stopWaiting = () => GESTURES.forEach((name) => window.removeEventListener(name, onGesture));
 
 // The player's own button handles itself, or one tap would start and stop the track.
 function onGesture(event: Event) {
   if (event.target instanceof Element && event.target.closest(".audio-player")) return;
-  stopWaiting();
-  audio?.play().catch(() => {});
+  audio?.play().then(stopWaiting).catch(() => {});
 }
 
 // Browsers refuse sound until the visitor has interacted with the page, so a refused

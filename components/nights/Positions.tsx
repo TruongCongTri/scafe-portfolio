@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, useGSAP } from "@/lib/gsap";
 import { onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { TransitionLink } from "@/components/shell/TransitionLink";
 import { EventAsk } from "./EventAsk";
@@ -17,7 +17,13 @@ export function Positions() {
   useGSAP(
     (_context, contextSafe) => {
       if (!prefersReducedMotion()) {
-        gsap.to(".positions__track", { xPercent: -50, duration: 30, ease: "none", repeat: -1 });
+        gsap.to(".positions__track", {
+          xPercent: -50,
+          duration: 30,
+          ease: "none",
+          repeat: -1,
+          scrollTrigger: { trigger: ".positions__marquee", toggleActions: "play pause resume pause" },
+        });
       }
 
       const build = contextSafe!(() => {
@@ -33,7 +39,7 @@ export function Positions() {
             }
           );
         });
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
-import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
+import { gsap, refreshSoon, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
 import { MASK_OFFSET, onSiteReady, prefersReducedMotion } from "@/lib/site";
 import { Lines } from "@/components/ui/Lines";
 import { TimezoneBar } from "@/components/ui/TimezoneBar";
@@ -199,7 +199,7 @@ export function CrewClose() {
           );
         });
 
-        ScrollTrigger.refresh();
+        refreshSoon();
       });
 
       return onSiteReady(build);
